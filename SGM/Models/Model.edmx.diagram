@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dcafceb8d9ec4cb8b69ff0fbbfe40457" Name="Diagram1">
+        <EntityTypeShape EntityType="BDSGMModel.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Empresa" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Equipo" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Guardia" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Tarea" Width="1.5" PointX="7.625" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="BDSGMModel.FK_Empleado_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="BDSGMModel.FK_Tarea_Guardia" ManuallyRouted="false" />
+        <AssociationConnector Association="BDSGMModel.Guardia_Empeado" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDSGMModel.Detalle_Tarea" Width="1.5" PointX="9.75" PointY="2.25" />
+        <EntityTypeShape EntityType="BDSGMModel.Recurso" Width="1.5" PointX="13.375" PointY="5.25" />
+        <EntityTypeShape EntityType="BDSGMModel.Recurso_DetalleTarea" Width="1.5" PointX="12.125" PointY="2.5" />
+        <AssociationConnector Association="BDSGMModel.FK_Detalle_Tarea_Tarea" />
+        <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" />
+        <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" />
+        <AssociationConnector Association="BDSGMModel.Empleado_DetalleTarea" />
+        <AssociationConnector Association="BDSGMModel.EquipoTarea" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

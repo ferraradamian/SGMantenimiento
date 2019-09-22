@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SGM.Models.Recurso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.recurso_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.recurso_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.recurso_id })
+        </td>
+    </tr>
+}
+
+</table>

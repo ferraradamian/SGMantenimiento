@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDSGMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Detalle_Tarea">
+          <Key>
+            <PropertyRef Name="detalleTarea_id" />
+          </Key>
+          <Property Name="detalleTarea_id" Type="int" Nullable="false" />
+          <Property Name="tarea_id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="250" />
+          <Property Name="cantidad" Type="float" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="empleado_id" />
+          </Key>
+          <Property Name="empleado_id" Type="int" Nullable="false" />
+          <Property Name="empresa_id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="funcion" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDSGM.dbo.Empleado_DetalleTarea' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Empleado_DetalleTarea">
+          <Key>
+            <PropertyRef Name="empleado_id" />
+            <PropertyRef Name="detalleTarea_id" />
+          </Key>
+          <Property Name="empleado_id" Type="int" Nullable="false" />
+          <Property Name="detalleTarea_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="empresa_id" />
+          </Key>
+          <Property Name="empresa_id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefono" Type="nchar" MaxLength="10" />
+          <Property Name="email" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="equipo_id" />
+          </Key>
+          <Property Name="equipo_id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="estadoActual" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="marca" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="modelo" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="numeroSerie" Type="nchar" MaxLength="20" />
+          <Property Name="inicioOperacion" Type="date" Nullable="false" />
+          <Property Name="finOperacion" Type="date" />
+          <Property Name="esCritico" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipoTarea">
+          <Key>
+            <PropertyRef Name="equipo_id" />
+            <PropertyRef Name="tarea_id" />
+          </Key>
+          <Property Name="equipo_id" Type="int" Nullable="false" />
+          <Property Name="tarea_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guardia">
+          <Key>
+            <PropertyRef Name="guardia_id" />
+          </Key>
+          <Property Name="guardia_id" Type="int" Nullable="false" />
+          <Property Name="coodinador_id" Type="int" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="horaInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="horaFin" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guardia_Empeado">
+          <Key>
+            <PropertyRef Name="guardia_id" />
+            <PropertyRef Name="empleado_id" />
+          </Key>
+          <Property Name="guardia_id" Type="int" Nullable="false" />
+          <Property Name="empleado_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="recurso_id" />
+          </Key>
+          <Property Name="recurso_id" Type="int" Nullable="false" />
+          <Property Name="cantidadStock" Type="float" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="marca" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Recurso_DetalleTarea">
+          <Key>
+            <PropertyRef Name="detalleTarea_id" />
+            <PropertyRef Name="recurso_id" />
+            <PropertyRef Name="cantidadUsada" />
+          </Key>
+          <Property Name="detalleTarea_id" Type="int" Nullable="false" />
+          <Property Name="recurso_id" Type="int" Nullable="false" />
+          <Property Name="cantidadUsada" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="tarea_id" />
+          </Key>
+          <Property Name="tarea_id" Type="int" Nullable="false" />
+          <Property Name="guardia_id" Type="int" Nullable="false" />
+          <Property Name="estado" Type="nchar" MaxLength="10" />
+          <Property Name="ubucacion" Type="nchar" MaxLength="50" />
+          <Property Name="costo" Type="float" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" />
+          <Property Name="fecha" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Detalle_Tarea_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+          <End Role="Detalle_Tarea" Type="Self.Detalle_Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="tarea_id" />
+            </Principal>
+            <Dependent Role="Detalle_Tarea">
+              <PropertyRef Name="tarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_DetalleTarea_Detalle_Tarea">
+          <End Role="Detalle_Tarea" Type="Self.Detalle_Tarea" Multiplicity="1" />
+          <End Role="Empleado_DetalleTarea" Type="Self.Empleado_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detalle_Tarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Principal>
+            <Dependent Role="Empleado_DetalleTarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_DetalleTarea_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Empleado_DetalleTarea" Type="Self.Empleado_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="empleado_id" />
+            </Principal>
+            <Dependent Role="Empleado_DetalleTarea">
+              <PropertyRef Name="empleado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empresa_id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Tarea_Equipo">
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1" />
+          <End Role="EquipoTarea" Type="Self.EquipoTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="equipo_id" />
+            </Principal>
+            <Dependent Role="EquipoTarea">
+              <PropertyRef Name="equipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipo_Tarea_Tarea">
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+          <End Role="EquipoTarea" Type="Self.EquipoTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="tarea_id" />
+            </Principal>
+            <Dependent Role="EquipoTarea">
+              <PropertyRef Name="tarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guardia_Empeado_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Guardia_Empeado" Type="Self.Guardia_Empeado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="empleado_id" />
+            </Principal>
+            <Dependent Role="Guardia_Empeado">
+              <PropertyRef Name="empleado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guardia_Empeado_Guardia">
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1" />
+          <End Role="Guardia_Empeado" Type="Self.Guardia_Empeado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guardia">
+              <PropertyRef Name="guardia_id" />
+            </Principal>
+            <Dependent Role="Guardia_Empeado">
+              <PropertyRef Name="guardia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_DetalleTarea_Detalle_Tarea">
+          <End Role="Detalle_Tarea" Type="Self.Detalle_Tarea" Multiplicity="1" />
+          <End Role="Recurso_DetalleTarea" Type="Self.Recurso_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detalle_Tarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Principal>
+            <Dependent Role="Recurso_DetalleTarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_DetalleTarea_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="Recurso_DetalleTarea" Type="Self.Recurso_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="recurso_id" />
+            </Principal>
+            <Dependent Role="Recurso_DetalleTarea">
+              <PropertyRef Name="recurso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Guardia">
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guardia">
+              <PropertyRef Name="guardia_id" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="guardia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDSGMModelStoreContainer">
+          <EntitySet Name="Detalle_Tarea" EntityType="Self.Detalle_Tarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipoTarea" EntityType="Self.EquipoTarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guardia" EntityType="Self.Guardia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guardia_Empeado" EntityType="Self.Guardia_Empeado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recurso" EntityType="Self.Recurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado_DetalleTarea" EntityType="Self.Empleado_DetalleTarea" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Empleado_DetalleTarea].[empleado_id] AS [empleado_id], 
+    [Empleado_DetalleTarea].[detalleTarea_id] AS [detalleTarea_id]
+    FROM [dbo].[Empleado_DetalleTarea] AS [Empleado_DetalleTarea]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Recurso_DetalleTarea" EntityType="Self.Recurso_DetalleTarea" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Recurso_DetalleTarea].[detalleTarea_id] AS [detalleTarea_id], 
+    [Recurso_DetalleTarea].[recurso_id] AS [recurso_id], 
+    [Recurso_DetalleTarea].[cantidadUsada] AS [cantidadUsada]
+    FROM [dbo].[Recurso_DetalleTarea] AS [Recurso_DetalleTarea]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Detalle_Tarea_Tarea" Association="Self.FK_Detalle_Tarea_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_DetalleTarea_Detalle_Tarea" Association="Self.FK_Empleado_DetalleTarea_Detalle_Tarea">
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+            <End Role="Empleado_DetalleTarea" EntitySet="Empleado_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_DetalleTarea_Empleado" Association="Self.FK_Empleado_DetalleTarea_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Empleado_DetalleTarea" EntitySet="Empleado_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Empresa" Association="Self.FK_Empleado_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Tarea_Equipo" Association="Self.FK_Equipo_Tarea_Equipo">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="EquipoTarea" EntitySet="EquipoTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Tarea_Tarea" Association="Self.FK_Equipo_Tarea_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="EquipoTarea" EntitySet="EquipoTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guardia_Empeado_Empleado" Association="Self.FK_Guardia_Empeado_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Guardia_Empeado" EntitySet="Guardia_Empeado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guardia_Empeado_Guardia" Association="Self.FK_Guardia_Empeado_Guardia">
+            <End Role="Guardia" EntitySet="Guardia" />
+            <End Role="Guardia_Empeado" EntitySet="Guardia_Empeado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_DetalleTarea_Detalle_Tarea" Association="Self.FK_Recurso_DetalleTarea_Detalle_Tarea">
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+            <End Role="Recurso_DetalleTarea" EntitySet="Recurso_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_DetalleTarea_Recurso" Association="Self.FK_Recurso_DetalleTarea_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Recurso_DetalleTarea" EntitySet="Recurso_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Guardia" Association="Self.FK_Tarea_Guardia">
+            <End Role="Guardia" EntitySet="Guardia" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDSGMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="empleado_id" />
+          </Key>
+          <Property Name="empleado_id" Type="Int32" Nullable="false" />
+          <Property Name="empresa_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="funcion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleado_Empresa" FromRole="Empleado" ToRole="Empresa" />
+          <NavigationProperty Name="Guardia" Relationship="Self.Guardia_Empeado" FromRole="Empleado" ToRole="Guardia" />
+          <NavigationProperty Name="Detalle_Tarea" Relationship="BDSGMModel.Empleado_DetalleTarea" FromRole="Empleado" ToRole="Detalle_Tarea" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="empresa_id" />
+          </Key>
+          <Property Name="empresa_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Empresa" FromRole="Empresa" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="equipo_id" />
+          </Key>
+          <Property Name="equipo_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="estadoActual" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="numeroSerie" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="inicioOperacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="finOperacion" Type="DateTime" Precision="0" />
+          <Property Name="esCritico" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.EquipoTarea" FromRole="Equipo" ToRole="Tarea" />
+        </EntityType>
+        <EntityType Name="Guardia">
+          <Key>
+            <PropertyRef Name="guardia_id" />
+          </Key>
+          <Property Name="guardia_id" Type="Int32" Nullable="false" />
+          <Property Name="coodinador_id" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="horaInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="horaFin" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Tarea" Relationship="Self.FK_Tarea_Guardia" FromRole="Guardia" ToRole="Tarea" />
+          <NavigationProperty Name="Empleado" Relationship="Self.Guardia_Empeado" FromRole="Guardia" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="tarea_id" />
+          </Key>
+          <Property Name="tarea_id" Type="Int32" Nullable="false" />
+          <Property Name="guardia_id" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Guardia" Relationship="Self.FK_Tarea_Guardia" FromRole="Tarea" ToRole="Guardia" />
+          <Property Name="ubucacion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="fecha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Detalle_Tarea" Relationship="BDSGMModel.FK_Detalle_Tarea_Tarea" FromRole="Tarea" ToRole="Detalle_Tarea" />
+          <NavigationProperty Name="Equipo" Relationship="BDSGMModel.EquipoTarea" FromRole="Tarea" ToRole="Equipo" />
+        </EntityType>
+        <Association Name="FK_Empleado_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empresa_id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Guardia">
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guardia">
+              <PropertyRef Name="guardia_id" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="guardia_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Guardia_Empeado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BDSGMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" />
+          <EntitySet Name="Guardia" EntityType="Self.Guardia" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" />
+          <AssociationSet Name="FK_Empleado_Empresa" Association="Self.FK_Empleado_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Guardia" Association="Self.FK_Tarea_Guardia">
+            <End Role="Guardia" EntitySet="Guardia" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="Guardia_Empeado" Association="Self.Guardia_Empeado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Guardia" EntitySet="Guardia" />
+          </AssociationSet>
+          <EntitySet Name="Detalle_Tarea" EntityType="BDSGMModel.Detalle_Tarea" />
+          <EntitySet Name="Recurso" EntityType="BDSGMModel.Recurso" />
+          <EntitySet Name="Recurso_DetalleTarea" EntityType="BDSGMModel.Recurso_DetalleTarea" />
+          <AssociationSet Name="FK_Detalle_Tarea_Tarea" Association="BDSGMModel.FK_Detalle_Tarea_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_DetalleTarea_Detalle_Tarea" Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea">
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+            <End Role="Recurso_DetalleTarea" EntitySet="Recurso_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recurso_DetalleTarea_Recurso" Association="BDSGMModel.FK_Recurso_DetalleTarea_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Recurso_DetalleTarea" EntitySet="Recurso_DetalleTarea" />
+          </AssociationSet>
+          <AssociationSet Name="Empleado_DetalleTarea" Association="BDSGMModel.Empleado_DetalleTarea">
+            <End Role="Detalle_Tarea" EntitySet="Detalle_Tarea" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="EquipoTarea" Association="BDSGMModel.EquipoTarea">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Detalle_Tarea">
+          <Key>
+            <PropertyRef Name="detalleTarea_id" />
+          </Key>
+          <Property Name="detalleTarea_id" Type="Int32" Nullable="false" />
+          <Property Name="tarea_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="cantidad" Type="Double" />
+          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.FK_Detalle_Tarea_Tarea" FromRole="Detalle_Tarea" ToRole="Tarea" />
+          <NavigationProperty Name="Recurso_DetalleTarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Detalle_Tarea" ToRole="Recurso_DetalleTarea" />
+          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.Empleado_DetalleTarea" FromRole="Detalle_Tarea" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="recurso_id" />
+          </Key>
+          <Property Name="recurso_id" Type="Int32" Nullable="false" />
+          <Property Name="cantidadStock" Type="Double" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="marca" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Recurso_DetalleTarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" FromRole="Recurso" ToRole="Recurso_DetalleTarea" />
+        </EntityType>
+        <EntityType Name="Recurso_DetalleTarea">
+          <Key>
+            <PropertyRef Name="detalleTarea_id" />
+            <PropertyRef Name="recurso_id" />
+            <PropertyRef Name="cantidadUsada" />
+          </Key>
+          <Property Name="detalleTarea_id" Type="Int32" Nullable="false" />
+          <Property Name="recurso_id" Type="Int32" Nullable="false" />
+          <Property Name="cantidadUsada" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Detalle_Tarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Recurso_DetalleTarea" ToRole="Detalle_Tarea" />
+          <NavigationProperty Name="Recurso" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" FromRole="Recurso_DetalleTarea" ToRole="Recurso" />
+        </EntityType>
+        <Association Name="FK_Detalle_Tarea_Tarea">
+          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="1" />
+          <End Type="BDSGMModel.Detalle_Tarea" Role="Detalle_Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarea">
+              <PropertyRef Name="tarea_id" />
+            </Principal>
+            <Dependent Role="Detalle_Tarea">
+              <PropertyRef Name="tarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_DetalleTarea_Detalle_Tarea">
+          <End Type="BDSGMModel.Detalle_Tarea" Role="Detalle_Tarea" Multiplicity="1" />
+          <End Type="BDSGMModel.Recurso_DetalleTarea" Role="Recurso_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detalle_Tarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Principal>
+            <Dependent Role="Recurso_DetalleTarea">
+              <PropertyRef Name="detalleTarea_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recurso_DetalleTarea_Recurso">
+          <End Type="BDSGMModel.Recurso" Role="Recurso" Multiplicity="1" />
+          <End Type="BDSGMModel.Recurso_DetalleTarea" Role="Recurso_DetalleTarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="recurso_id" />
+            </Principal>
+            <Dependent Role="Recurso_DetalleTarea">
+              <PropertyRef Name="recurso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Empleado_DetalleTarea">
+          <End Type="BDSGMModel.Detalle_Tarea" Role="Detalle_Tarea" Multiplicity="*" />
+          <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="*" />
+        </Association>
+        <Association Name="EquipoTarea">
+          <End Type="BDSGMModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDSGMModelStoreContainer" CdmEntityContainer="BDSGMEntities">
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="BDSGMModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="empleado_id" ColumnName="empleado_id" />
+                <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="funcion" ColumnName="funcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="BDSGMModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipo">
+            <EntityTypeMapping TypeName="BDSGMModel.Equipo">
+              <MappingFragment StoreEntitySet="Equipo">
+                <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="estadoActual" ColumnName="estadoActual" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
+                <ScalarProperty Name="inicioOperacion" ColumnName="inicioOperacion" />
+                <ScalarProperty Name="finOperacion" ColumnName="finOperacion" />
+                <ScalarProperty Name="esCritico" ColumnName="esCritico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guardia">
+            <EntityTypeMapping TypeName="BDSGMModel.Guardia">
+              <MappingFragment StoreEntitySet="Guardia">
+                <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
+                <ScalarProperty Name="coodinador_id" ColumnName="coodinador_id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+                <ScalarProperty Name="horaFin" ColumnName="horaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarea">
+            <EntityTypeMapping TypeName="BDSGMModel.Tarea">
+              <MappingFragment StoreEntitySet="Tarea">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="ubucacion" ColumnName="ubucacion" />
+                <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
+                <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Guardia_Empeado" TypeName="BDSGMModel.Guardia_Empeado" StoreEntitySet="Guardia_Empeado">
+            <EndProperty Name="Empleado">
+              <ScalarProperty Name="empleado_id" ColumnName="empleado_id" />
+            </EndProperty>
+            <EndProperty Name="Guardia">
+              <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Detalle_Tarea">
+            <EntityTypeMapping TypeName="BDSGMModel.Detalle_Tarea">
+              <MappingFragment StoreEntitySet="Detalle_Tarea">
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
+                <ScalarProperty Name="detalleTarea_id" ColumnName="detalleTarea_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recurso">
+            <EntityTypeMapping TypeName="BDSGMModel.Recurso">
+              <MappingFragment StoreEntitySet="Recurso">
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cantidadStock" ColumnName="cantidadStock" />
+                <ScalarProperty Name="recurso_id" ColumnName="recurso_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recurso_DetalleTarea">
+            <EntityTypeMapping TypeName="BDSGMModel.Recurso_DetalleTarea">
+              <MappingFragment StoreEntitySet="Recurso_DetalleTarea">
+                <ScalarProperty Name="cantidadUsada" ColumnName="cantidadUsada" />
+                <ScalarProperty Name="recurso_id" ColumnName="recurso_id" />
+                <ScalarProperty Name="detalleTarea_id" ColumnName="detalleTarea_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Empleado_DetalleTarea" TypeName="BDSGMModel.Empleado_DetalleTarea" StoreEntitySet="Empleado_DetalleTarea">
+            <EndProperty Name="Empleado">
+              <ScalarProperty Name="empleado_id" ColumnName="empleado_id" />
+            </EndProperty>
+            <EndProperty Name="Detalle_Tarea">
+              <ScalarProperty Name="detalleTarea_id" ColumnName="detalleTarea_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EquipoTarea" TypeName="BDSGMModel.EquipoTarea" StoreEntitySet="EquipoTarea">
+            <EndProperty Name="Tarea">
+              <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
+            </EndProperty>
+            <EndProperty Name="Equipo">
+              <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
