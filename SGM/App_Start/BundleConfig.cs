@@ -31,7 +31,7 @@ namespace SGM
                       "~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
                       "~/Content/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
                       "~/Content/bower_components/jquery-knob/dist/jquery.knob.min.js",
-                      "~/Content/bower_components/moment/min/moment.min.js",
+                      //"~/Content/bower_components/moment/min/moment.min.js",
                       "~/Content/bower_components/bootstrap-daterangepicker/daterangepicker.js",
                       "~/Content/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
                       "~/Content/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
