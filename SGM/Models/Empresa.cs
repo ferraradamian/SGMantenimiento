@@ -12,6 +12,7 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Empresa
     {
@@ -20,11 +21,22 @@ namespace SGM.Models
         {
             this.Empleado = new HashSet<Empleado>();
         }
-    
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Key]
         public int empresa_id { get; set; }
+
+        [Required(ErrorMessage = "El nombre de la empresa es requerido")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "El nombre de la empresa debe tener una longitud menor de 20 caracteres")]
         [Display(Name = "Nombre Empresa")]
         public string nombre { get; set; }
+
+        [StringLength(10, MinimumLength = 5, ErrorMessage = "El telefono debe tener una longitud menor o igual de 10 caracteres")]
+        [Display(Name = "Telefono")]
         public string telefono { get; set; }
+
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "El Email debe tener una longitud menor o igual de 20 caracteres")]
+        [Display(Name = "Email")]
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

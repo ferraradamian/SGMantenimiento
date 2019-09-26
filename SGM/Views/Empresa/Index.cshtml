@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SGM.Models.Empresa>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Empresas";
 }
 
-<h2>Index</h2>
+    <h2>Empresas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Empresa", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.empresa_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.empresa_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.empresa_id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.empresa_id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.empresa_id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.empresa_id })
         </td>
     </tr>
 }

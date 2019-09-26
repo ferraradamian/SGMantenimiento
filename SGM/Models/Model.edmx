@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="detalleTarea_id" />
           </Key>
-          <Property Name="detalleTarea_id" Type="int" Nullable="false" />
+          <Property Name="detalleTarea_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tarea_id" Type="int" Nullable="false" />
           <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="descripcion" Type="nchar" MaxLength="250" />
@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="empleado_id" />
           </Key>
-          <Property Name="empleado_id" Type="int" Nullable="false" />
+          <Property Name="empleado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="empresa_id" Type="int" Nullable="false" />
           <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido" Type="nchar" MaxLength="20" Nullable="false" />
@@ -33,14 +33,14 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Empleado_DetalleTarea' no tiene de
             <PropertyRef Name="empleado_id" />
             <PropertyRef Name="detalleTarea_id" />
           </Key>
-          <Property Name="empleado_id" Type="int" Nullable="false" />
+          <Property Name="empleado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="detalleTarea_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
             <PropertyRef Name="empresa_id" />
           </Key>
-          <Property Name="empresa_id" Type="int" Nullable="false" />
+          <Property Name="empresa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="telefono" Type="nchar" MaxLength="10" />
           <Property Name="email" Type="nchar" MaxLength="20" />
@@ -49,7 +49,7 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Empleado_DetalleTarea' no tiene de
           <Key>
             <PropertyRef Name="equipo_id" />
           </Key>
-          <Property Name="equipo_id" Type="int" Nullable="false" />
+          <Property Name="equipo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="estadoActual" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="marca" Type="nchar" MaxLength="15" Nullable="false" />
@@ -71,7 +71,7 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Empleado_DetalleTarea' no tiene de
           <Key>
             <PropertyRef Name="guardia_id" />
           </Key>
-          <Property Name="guardia_id" Type="int" Nullable="false" />
+          <Property Name="guardia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="coodinador_id" Type="int" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="horaInicio" Type="time" Precision="7" Nullable="false" />
@@ -89,7 +89,7 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Empleado_DetalleTarea' no tiene de
           <Key>
             <PropertyRef Name="recurso_id" />
           </Key>
-          <Property Name="recurso_id" Type="int" Nullable="false" />
+          <Property Name="recurso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cantidadStock" Type="float" Nullable="false" />
           <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="marca" Type="nchar" MaxLength="20" Nullable="false" />
@@ -110,7 +110,7 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           <Key>
             <PropertyRef Name="tarea_id" />
           </Key>
-          <Property Name="tarea_id" Type="int" Nullable="false" />
+          <Property Name="tarea_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="guardia_id" Type="int" Nullable="false" />
           <Property Name="estado" Type="nchar" MaxLength="10" />
           <Property Name="ubucacion" Type="nchar" MaxLength="50" />

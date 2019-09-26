@@ -26,8 +26,6 @@ namespace SGM.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Key]
         public int empleado_id { get; set; }
-
-        [Display(Name = "Nombre Empresa")]
         public int empresa_id { get; set; }
 
         [Required(ErrorMessage = "El nombre es requerido")]
@@ -47,8 +45,7 @@ namespace SGM.Models
         [StringLength(20, MinimumLength = 5, ErrorMessage = "La funcion debe tener una longitud menor o igual de 20 caracteres")]
         [Display(Name = "Funcion")]
         public string funcion { get; set; }
-
-        
+    
         public virtual Empresa Empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guardia> Guardia { get; set; }
