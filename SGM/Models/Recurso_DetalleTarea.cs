@@ -16,7 +16,7 @@ namespace SGM.Models
     {
         public int detalleTarea_id { get; set; }
         public int recurso_id { get; set; }
-        public double cantidadUsada { get; set; }
+        public Nullable<double> cantidadUsada { get; set; }
     
         public virtual Detalle_Tarea Detalle_Tarea { get; set; }
         public virtual Recurso Recurso { get; set; }

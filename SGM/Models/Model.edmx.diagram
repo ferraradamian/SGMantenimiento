@@ -20,7 +20,17 @@
         <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" />
         <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" />
         <AssociationConnector Association="BDSGMModel.Empleado_DetalleTarea" />
-        <AssociationConnector Association="BDSGMModel.EquipoTarea" />
+        <AssociationConnector Association="BDSGMModel.EquipoTarea" ManuallyRouted="true" >
+          <ConnectorPoint PointX="5.09375" PointY="5.625" />
+          <ConnectorPoint PointX="5.09375" PointY="5.4618561372070316" />
+          <ConnectorPoint PointX="5.9375" PointY="5.4618561372070316" />
+          <ConnectorPoint PointX="5.9375" PointY="4.1268929036458335" />
+          <ConnectorPoint PointX="7.625" PointY="4.1268929036458335" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BDSGMModel.Especialidad" Width="1.5" PointX="0.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Funcion" Width="1.5" PointX="1.125" PointY="4.25" />
+        <AssociationConnector Association="BDSGMModel.EspecialidadFuncion" />
+        <AssociationConnector Association="BDSGMModel.FuncionEmpleado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

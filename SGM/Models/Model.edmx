@@ -100,7 +100,6 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           <Key>
             <PropertyRef Name="detalleTarea_id" />
             <PropertyRef Name="recurso_id" />
-            <PropertyRef Name="cantidadUsada" />
           </Key>
           <Property Name="detalleTarea_id" Type="int" Nullable="false" />
           <Property Name="recurso_id" Type="int" Nullable="false" />
@@ -331,11 +330,23 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           <Property Name="empresa_id" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="funcion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleado_Empresa" FromRole="Empleado" ToRole="Empresa" />
           <NavigationProperty Name="Guardia" Relationship="Self.Guardia_Empeado" FromRole="Empleado" ToRole="Guardia" />
           <NavigationProperty Name="Detalle_Tarea" Relationship="BDSGMModel.Empleado_DetalleTarea" FromRole="Empleado" ToRole="Detalle_Tarea" />
+          <NavigationProperty Name="Funcion" Relationship="BDSGMModel.FuncionEmpleado" FromRole="Empleado" ToRole="Funcion" />
+          <Property Name="funcion_Id" Type="Int32" Nullable="false" />
+          <Property Name="documento_tipo" Type="String" Nullable="false" DefaultValue="DNI" />
+          <Property Name="documento_numero" Type="String" Nullable="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="2" />
+          <Property Name="factor" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="tel_celular_1" Type="Int16" Nullable="false" />
+          <Property Name="tel_celular_2" Type="Int16" Nullable="false" />
+          <Property Name="tel_radio" Type="Int16" Nullable="false" />
+          <Property Name="radio" Type="Int16" Nullable="false" />
+          <Property Name="interno" Type="Int16" Nullable="false" />
+          <Property Name="foto" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -343,9 +354,10 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           </Key>
           <Property Name="empresa_id" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="true" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="true" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Empresa" FromRole="Empresa" ToRole="Empleado" />
+          <Property Name="cuit" Type="Int16" Nullable="true" />
         </EntityType>
         <EntityType Name="Equipo">
           <Key>
@@ -459,6 +471,16 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
             <End Role="Equipo" EntitySet="Equipo" />
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
+          <EntitySet Name="EspecialidadSet" EntityType="BDSGMModel.Especialidad" />
+          <EntitySet Name="FuncionSet" EntityType="BDSGMModel.Funcion" />
+          <AssociationSet Name="EspecialidadFuncion" Association="BDSGMModel.EspecialidadFuncion">
+            <End Role="Especialidad" EntitySet="EspecialidadSet" />
+            <End Role="Funcion" EntitySet="FuncionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FuncionEmpleado" Association="BDSGMModel.FuncionEmpleado">
+            <End Role="Funcion" EntitySet="FuncionSet" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Detalle_Tarea">
           <Key>
@@ -487,11 +509,10 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           <Key>
             <PropertyRef Name="detalleTarea_id" />
             <PropertyRef Name="recurso_id" />
-            <PropertyRef Name="cantidadUsada" />
           </Key>
           <Property Name="detalleTarea_id" Type="Int32" Nullable="false" />
           <Property Name="recurso_id" Type="Int32" Nullable="false" />
-          <Property Name="cantidadUsada" Type="Double" Nullable="false" />
+          <Property Name="cantidadUsada" Type="Double" Nullable="true" />
           <NavigationProperty Name="Detalle_Tarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Recurso_DetalleTarea" ToRole="Detalle_Tarea" />
           <NavigationProperty Name="Recurso" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" FromRole="Recurso_DetalleTarea" ToRole="Recurso" />
         </EntityType>
@@ -539,6 +560,50 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
           <End Type="BDSGMModel.Equipo" Role="Equipo" Multiplicity="*" />
           <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="*" />
         </Association>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="especialidad_id" />
+          </Key>
+          <Property Name="especialidad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Funcion" Relationship="BDSGMModel.EspecialidadFuncion" FromRole="Especialidad" ToRole="Funcion" />
+        </EntityType>
+        <EntityType Name="Funcion">
+          <Key>
+            <PropertyRef Name="funcion_id" />
+          </Key>
+          <Property Name="funcion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Especialidad" Relationship="BDSGMModel.EspecialidadFuncion" FromRole="Funcion" ToRole="Especialidad" />
+          <Property Name="EspecialidadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.FuncionEmpleado" FromRole="Funcion" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="EspecialidadFuncion">
+          <End Type="BDSGMModel.Especialidad" Role="Especialidad" Multiplicity="1" />
+          <End Type="BDSGMModel.Funcion" Role="Funcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="especialidad_id" />
+            </Principal>
+            <Dependent Role="Funcion">
+              <PropertyRef Name="EspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FuncionEmpleado">
+          <End Type="BDSGMModel.Funcion" Role="Funcion" Multiplicity="1" />
+          <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcion">
+              <PropertyRef Name="funcion_id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="funcion_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -552,8 +617,7 @@ advertencia 6002: La tabla o vista 'BDSGM.dbo.Recurso_DetalleTarea' no tiene def
                 <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="funcion" ColumnName="funcion" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

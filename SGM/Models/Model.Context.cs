@@ -33,5 +33,7 @@ namespace SGM.Models
         public virtual DbSet<Detalle_Tarea> Detalle_Tarea { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<Recurso_DetalleTarea> Recurso_DetalleTarea { get; set; }
+        public virtual DbSet<Especialidad> EspecialidadSet { get; set; }
+        public virtual DbSet<Funcion> FuncionSet { get; set; }
     }
 }

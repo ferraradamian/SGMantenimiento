@@ -103,7 +103,7 @@
         
         <header class="main-header">
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="~/Home" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>S</b>T</span>
                 <!-- logo for regular state and mobile devices -->
@@ -412,8 +412,10 @@
                             <li>@Html.ActionLink("Empresas", "Index", "Empresa")</li>
                             <li>@Html.ActionLink("Equipos", "Index", "Equipo")</li>
                             <li>@Html.ActionLink("Recurso", "Index", "Recurso")</li>
+                            <li>@Html.ActionLink("Especialidad", "Index", "Especialidad")</li>
+                            <li>@Html.ActionLink("Ubicación", "Index", "Ubicación")</li>
                             @*<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
+        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
                         </ul>
                     </li>
                     <li class="active treeview">
@@ -428,8 +430,26 @@
                             <li>@Html.ActionLink("Tareas", "Index", "Tarea")</li>
                             <li>@Html.ActionLink("Detalle Tarea", "Index", "Detalle_Tarea")</li>
                             <li>@Html.ActionLink("Detalle Recurso", "Index", "Recurso_DetalleTarea")</li>
+                            <li>@Html.ActionLink("Novedades", "Index", "Novedades")</li>
                             @*<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i> <span>Reportes</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*<li>@Html.ActionLink("Tablero de Comando", "Index", "Tablero_Comando")</li>
+                            <li>@Html.ActionLink("Costos", "Index", "Costos")</li>*@
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Tablero de Comando</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Costos</a></li>
+
+                            @*<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
                         </ul>
                     </li>
                     @*<li class="treeview">
