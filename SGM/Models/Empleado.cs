@@ -17,9 +17,7 @@ namespace SGM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
-            this.documento_tipo = "DNI";
-            this.Guardia = new HashSet<Guardia>();
-            this.Detalle_Tarea = new HashSet<Detalle_Tarea>();
+            this.Empleado_Guardia = new HashSet<Cronograma>();
         }
     
         public int empleado_id { get; set; }
@@ -28,23 +26,22 @@ namespace SGM.Models
         public string apellido { get; set; }
         public string telefono_fijo { get; set; }
         public int funcion_Id { get; set; }
-        public string documento_tipo { get; set; }
-        public string documento_numero { get; set; }
-        public string grupo { get; set; }
-        public string factor { get; set; }
+        public Nullable<documento_tipo> documento_tipo { get; set; }
+        public Nullable<short> documento_numero { get; set; }
+        public string cuil { get; set; }
+        public Nullable<grupo_sanguineo> grupo_sanguineo { get; set; }
+        public Nullable<factor_rh> factor_rh { get; set; }
         public string email { get; set; }
-        public short tel_celular_1 { get; set; }
-        public short tel_celular_2 { get; set; }
-        public short tel_radio { get; set; }
-        public short radio { get; set; }
-        public short interno { get; set; }
-        public string foto { get; set; }
+        public Nullable<short> tel_celular_1 { get; set; }
+        public Nullable<short> tel_celular_2 { get; set; }
+        public Nullable<short> tel_radio { get; set; }
+        public Nullable<short> radio { get; set; }
+        public Nullable<short> interno { get; set; }
+        public byte[] foto { get; set; }
     
         public virtual Empresa Empresa { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Guardia> Guardia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Tarea> Detalle_Tarea { get; set; }
         public virtual Funcion Funcion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cronograma> Empleado_Guardia { get; set; }
     }
 }

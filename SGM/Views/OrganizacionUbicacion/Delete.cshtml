@@ -1,4 +1,4 @@
-﻿@model SGM.Models.Detalle_Tarea
+﻿@model SGM.Models.OrganizacionUbicacion
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Detalle_Tarea</h4>
+    <h4>OrganizacionUbicacion</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,19 +28,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
+            @Html.DisplayNameFor(model => model.OrganizacionEstructura.nivel_nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cantidad)
+            @Html.DisplayFor(model => model.OrganizacionEstructura.nivel_nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tarea.estado)
+            @Html.DisplayNameFor(model => model.OrganizacionUbicacion2.nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tarea.estado)
+            @Html.DisplayFor(model => model.OrganizacionUbicacion2.nombre)
         </dd>
 
     </dl>

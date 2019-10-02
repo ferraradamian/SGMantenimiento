@@ -202,19 +202,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Detalle_TareaController.cs" />
-    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EquipoController.cs" />
     <Compile Include="Controllers\GuardiasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecursoController.cs" />
-    <Compile Include="Controllers\Recurso_DetalleTareaController.cs" />
     <Compile Include="Controllers\TareaController.cs" />
+    <Compile Include="Controllers\EspecialidadController.cs" />
+    <Compile Include="Controllers\FuncionController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Detalle_Tarea.cs">
+    <Compile Include="Models\Cronograma.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\documento_tipo.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Empleado.cs">
@@ -229,7 +232,28 @@
     <Compile Include="Models\Especialidad.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\estado_equipo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\estado_tarea.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\factor_rh.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Falla.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FallaTarea.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Funcion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grupo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\grupo_sanguineo.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Guardia.cs">
@@ -250,10 +274,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\OrganizacionEstructuraController.cs" />
+    <Compile Include="Controllers\OrganizacionUbicacionController.cs" />
+    <Compile Include="Models\OrganizacionEstructura.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrganizacionUbicacion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Recurso.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Recurso_DetalleTarea.cs">
+    <Compile Include="Models\RecursoTarea.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sintomas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tarea.cs">
@@ -6635,6 +6670,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Model.edmx.sql" />
     <Content Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -7175,11 +7211,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Empleado\Create.cshtml" />
-    <Content Include="Views\Empleado\Delete.cshtml" />
-    <Content Include="Views\Empleado\Details.cshtml" />
-    <Content Include="Views\Empleado\Edit.cshtml" />
-    <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Empresa\Create.cshtml" />
     <Content Include="Views\Empresa\Delete.cshtml" />
     <Content Include="Views\Empresa\Details.cshtml" />
@@ -7209,21 +7240,36 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Detalle_Tarea\Create.cshtml" />
-    <Content Include="Views\Detalle_Tarea\Delete.cshtml" />
-    <Content Include="Views\Detalle_Tarea\Details.cshtml" />
-    <Content Include="Views\Detalle_Tarea\Edit.cshtml" />
-    <Content Include="Views\Detalle_Tarea\Index.cshtml" />
     <Content Include="Views\Recurso\Create.cshtml" />
     <Content Include="Views\Recurso\Delete.cshtml" />
     <Content Include="Views\Recurso\Details.cshtml" />
     <Content Include="Views\Recurso\Edit.cshtml" />
     <Content Include="Views\Recurso\Index.cshtml" />
-    <Content Include="Views\Recurso_DetalleTarea\Create.cshtml" />
-    <Content Include="Views\Recurso_DetalleTarea\Delete.cshtml" />
-    <Content Include="Views\Recurso_DetalleTarea\Details.cshtml" />
-    <Content Include="Views\Recurso_DetalleTarea\Edit.cshtml" />
-    <Content Include="Views\Recurso_DetalleTarea\Index.cshtml" />
+    <Content Include="Views\Especialidad\Create.cshtml" />
+    <Content Include="Views\Especialidad\Delete.cshtml" />
+    <Content Include="Views\Especialidad\Details.cshtml" />
+    <Content Include="Views\Especialidad\Edit.cshtml" />
+    <Content Include="Views\Especialidad\Index.cshtml" />
+    <Content Include="Views\Funcion\Create.cshtml" />
+    <Content Include="Views\Funcion\Delete.cshtml" />
+    <Content Include="Views\Funcion\Details.cshtml" />
+    <Content Include="Views\Funcion\Edit.cshtml" />
+    <Content Include="Views\Funcion\Index.cshtml" />
+    <Content Include="Views\OrganizacionEstructura\Create.cshtml" />
+    <Content Include="Views\OrganizacionEstructura\Delete.cshtml" />
+    <Content Include="Views\OrganizacionEstructura\Details.cshtml" />
+    <Content Include="Views\OrganizacionEstructura\Edit.cshtml" />
+    <Content Include="Views\OrganizacionEstructura\Index.cshtml" />
+    <Content Include="Views\OrganizacionUbicacion\Create.cshtml" />
+    <Content Include="Views\OrganizacionUbicacion\Delete.cshtml" />
+    <Content Include="Views\OrganizacionUbicacion\Details.cshtml" />
+    <Content Include="Views\OrganizacionUbicacion\Edit.cshtml" />
+    <Content Include="Views\OrganizacionUbicacion\Index.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
+    <Content Include="Views\Empleado\Delete.cshtml" />
+    <Content Include="Views\Empleado\Details.cshtml" />
+    <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

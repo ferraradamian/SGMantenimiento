@@ -1,4 +1,4 @@
-﻿@model SGM.Models.Detalle_Tarea
+﻿@model SGM.Models.Especialidad
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Detalle_Tarea</h4>
+    <h4>Especialidad</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -26,25 +26,9 @@
             @Html.DisplayFor(model => model.descripcion)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tarea.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tarea.estado)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.detalleTarea_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.especialidad_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

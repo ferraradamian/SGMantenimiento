@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SGM.Models;
 
-namespace SGM.Controllers
+namespace SGM
 {
     public class RecursoController : Controller
     {

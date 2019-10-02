@@ -12,19 +12,18 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Especialidad
+    public partial class Grupo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Especialidad()
+        public Grupo()
         {
-            this.Funcion = new HashSet<Funcion>();
+            this.Recurso = new HashSet<Recurso>();
         }
     
-        public byte especialidad_id { get; set; }
+        public short Id { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funcion> Funcion { get; set; }
+        public virtual ICollection<Recurso> Recurso { get; set; }
     }
 }

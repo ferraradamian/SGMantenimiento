@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SGM.Models.Detalle_Tarea>
+﻿@model IEnumerable<SGM.Models.Funcion>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,7 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tarea.estado)
+            @Html.DisplayNameFor(model => model.Especialidad.nombre)
         </th>
         <th></th>
     </tr>
@@ -35,15 +32,12 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cantidad)
+            @Html.DisplayFor(modelItem => item.Especialidad.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tarea.estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.detalleTarea_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.detalleTarea_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.detalleTarea_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.funcion_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.funcion_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.funcion_id })
         </td>
     </tr>
 }

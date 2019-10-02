@@ -12,25 +12,20 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_Tarea
+    public partial class Falla
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Detalle_Tarea()
+        public Falla()
         {
-            this.Recurso_DetalleTarea = new HashSet<Recurso_DetalleTarea>();
-            this.Empleado = new HashSet<Empleado>();
+            this.FallaTarea = new HashSet<FallaTarea>();
         }
     
-        public int detalleTarea_id { get; set; }
-        public int tarea_id { get; set; }
+        public int SintomasId { get; set; }
+        public int Id { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public Nullable<double> cantidad { get; set; }
     
-        public virtual Tarea Tarea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recurso_DetalleTarea> Recurso_DetalleTarea { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<FallaTarea> FallaTarea { get; set; }
+        public virtual Sintomas Sintomas { get; set; }
     }
 }

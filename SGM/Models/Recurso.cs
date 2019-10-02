@@ -17,15 +17,16 @@ namespace SGM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Recurso()
         {
-            this.Recurso_DetalleTarea = new HashSet<Recurso_DetalleTarea>();
+            this.RecursoTarea = new HashSet<RecursoTarea>();
         }
     
         public int recurso_id { get; set; }
-        public double cantidadStock { get; set; }
         public string nombre { get; set; }
-        public string marca { get; set; }
+        public string descripcion { get; set; }
+        public short GrupoId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recurso_DetalleTarea> Recurso_DetalleTarea { get; set; }
+        public virtual ICollection<RecursoTarea> RecursoTarea { get; set; }
+        public virtual Grupo Grupo { get; set; }
     }
 }

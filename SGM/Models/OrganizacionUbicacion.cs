@@ -12,30 +12,29 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tarea
+    public partial class OrganizacionUbicacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tarea()
+        public OrganizacionUbicacion()
         {
-            this.FallaTarea = new HashSet<FallaTarea>();
-            this.RecursoTarea = new HashSet<RecursoTarea>();
+            this.OrganizacionUbicacion1 = new HashSet<OrganizacionUbicacion>();
+            this.Equipo = new HashSet<Equipo>();
+            this.Tarea = new HashSet<Tarea>();
         }
     
-        public int tarea_id { get; set; }
+        public int Id { get; set; }
+        public string nombre { get; set; }
         public string descripcion { get; set; }
-        public Nullable<estado_tarea> estado_tarea { get; set; }
-        public System.DateTime fecha_hora { get; set; }
-        public Nullable<long> permiso_trabajo { get; set; }
-        public System.Guid CronogramaId { get; set; }
-        public Nullable<int> Equipo_equipo_id { get; set; }
+        public byte OrganizacionEstructuraId { get; set; }
         public int OrganizacionUbicacionId { get; set; }
     
-        public virtual Cronograma Cronograma { get; set; }
-        public virtual Equipo Equipo { get; set; }
-        public virtual OrganizacionUbicacion OrganizacionUbicacion { get; set; }
+        public virtual OrganizacionEstructura OrganizacionEstructura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FallaTarea> FallaTarea { get; set; }
+        public virtual ICollection<OrganizacionUbicacion> OrganizacionUbicacion1 { get; set; }
+        public virtual OrganizacionUbicacion OrganizacionUbicacion2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RecursoTarea> RecursoTarea { get; set; }
+        public virtual ICollection<Equipo> Equipo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tarea> Tarea { get; set; }
     }
 }

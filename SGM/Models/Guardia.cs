@@ -17,19 +17,16 @@ namespace SGM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Guardia()
         {
-            this.Tarea = new HashSet<Tarea>();
-            this.Empleado = new HashSet<Empleado>();
+            this.Empleado_Guardia = new HashSet<Cronograma>();
         }
     
         public int guardia_id { get; set; }
-        public Nullable<int> coodinador_id { get; set; }
-        public System.DateTime fecha { get; set; }
-        public System.TimeSpan horaInicio { get; set; }
-        public System.TimeSpan horaFin { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public Nullable<byte> duracion_horas { get; set; }
+        public bool guardia_activa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarea> Tarea { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<Cronograma> Empleado_Guardia { get; set; }
     }
 }

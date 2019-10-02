@@ -10,15 +10,13 @@
 namespace SGM.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Recurso_DetalleTarea
+    public enum documento_tipo : byte
     {
-        public int detalleTarea_id { get; set; }
-        public int recurso_id { get; set; }
-        public Nullable<double> cantidadUsada { get; set; }
-    
-        public virtual Detalle_Tarea Detalle_Tarea { get; set; }
-        public virtual Recurso Recurso { get; set; }
+        DNI = 0,
+        PAS = 1,
+        CI = 2,
+        LC = 3,
+        LE = 4
     }
 }

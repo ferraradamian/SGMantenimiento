@@ -7,8 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SGM.Models;
+using SGM.Controllers;
 
-namespace SGM.Controllers
+
+namespace SGM
 {
     public class EmpresaController : Controller
     {
@@ -78,7 +80,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "empresa_id,nombre,telefono,email")] Empresa empresa)
+        public ActionResult Edit([Bind(Include = "empresa_id,nombre,telefono,email")] EmpresaController empresa)
         {
             if (ModelState.IsValid)
             {

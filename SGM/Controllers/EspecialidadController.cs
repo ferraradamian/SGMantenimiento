@@ -10,112 +10,107 @@ using SGM.Models;
 
 namespace SGM
 {
-    public class TareaController : Controller
+    public class EspecialidadController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Tarea
+        // GET: Especialidad
         public ActionResult Index()
         {
-            var tarea = db.Tarea.Include(t => t.Guardia);
-            return View(tarea.ToList());
+            return View(db.EspecialidadSet.ToList());
         }
 
-        // GET: Tarea/Details/5
-        public ActionResult Details(int? id)
+        // GET: Especialidad/Details/5
+        public ActionResult Details(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarea tarea = db.Tarea.Find(id);
-            if (tarea == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            return View(tarea);
+            return View(especialidad);
         }
 
-        // GET: Tarea/Create
+        // GET: Especialidad/Create
         public ActionResult Create()
         {
-            ViewBag.guardia_id = new SelectList(db.Guardia, "guardia_id", "guardia_id");
             return View();
         }
 
-        // POST: Tarea/Create
+        // POST: Especialidad/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "tarea_id,guardia_id,tiempoDuracion,estado,planta,costo,descripcion")] Tarea tarea)
+        public ActionResult Create([Bind(Include = "especialidad_id,nombre,descripcion")] Especialidad especialidad)
         {
             if (ModelState.IsValid)
             {
-                db.Tarea.Add(tarea);
+                db.EspecialidadSet.Add(especialidad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.guardia_id = new SelectList(db.Guardia, "guardia_id", "guardia_id", tarea.guardia_id);
-            return View(tarea);
+            return View(especialidad);
         }
 
-        // GET: Tarea/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Especialidad/Edit/5
+        public ActionResult Edit(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarea tarea = db.Tarea.Find(id);
-            if (tarea == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.guardia_id = new SelectList(db.Guardia, "guardia_id", "guardia_id", tarea.guardia_id);
-            return View(tarea);
+            return View(especialidad);
         }
 
-        // POST: Tarea/Edit/5
+        // POST: Especialidad/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "tarea_id,guardia_id,tiempoDuracion,estado,planta,costo,descripcion")] Tarea tarea)
+        public ActionResult Edit([Bind(Include = "especialidad_id,nombre,descripcion")] Especialidad especialidad)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tarea).State = EntityState.Modified;
+                db.Entry(especialidad).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.guardia_id = new SelectList(db.Guardia, "guardia_id", "guardia_id", tarea.guardia_id);
-            return View(tarea);
+            return View(especialidad);
         }
 
-        // GET: Tarea/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Especialidad/Delete/5
+        public ActionResult Delete(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tarea tarea = db.Tarea.Find(id);
-            if (tarea == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            return View(tarea);
+            return View(especialidad);
         }
 
-        // POST: Tarea/Delete/5
+        // POST: Especialidad/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(byte id)
         {
-            Tarea tarea = db.Tarea.Find(id);
-            db.Tarea.Remove(tarea);
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            db.EspecialidadSet.Remove(especialidad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

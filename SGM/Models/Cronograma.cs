@@ -12,19 +12,26 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Especialidad
+    public partial class Cronograma
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Especialidad()
+        public Cronograma()
         {
-            this.Funcion = new HashSet<Funcion>();
+            this.Tarea = new HashSet<Tarea>();
         }
     
-        public byte especialidad_id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public System.Guid Id { get; set; }
+        public int Guardia_guardia_id { get; set; }
+        public int Empleado_empleado_id { get; set; }
+        public System.DateTime fecha_inicio { get; set; }
+        public System.TimeSpan hora_inicio { get; set; }
+        public System.DateTime fecha_fin { get; set; }
+        public System.TimeSpan hora_fin { get; set; }
+        public string observaciones { get; set; }
     
+        public virtual Empleado Empleado { get; set; }
+        public virtual Guardia Guardia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funcion> Funcion { get; set; }
+        public virtual ICollection<Tarea> Tarea { get; set; }
     }
 }
