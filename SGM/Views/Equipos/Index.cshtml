@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SGM.Models.Equipo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado_equipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fabricante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero_parte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero_serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inicioOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.finOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esCritico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizacionUbicacion.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado_equipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fabricante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero_parte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero_serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inicioOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.finOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esCritico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizacionUbicacion.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.equipo_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.equipo_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.equipo_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,106 @@
+﻿@model SGM.Models.Equipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_equipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fabricante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fabricante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_parte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_parte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inicioOperacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inicioOperacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.finOperacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.finOperacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esCritico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esCritico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizacionUbicacion.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizacionUbicacion.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.equipo_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

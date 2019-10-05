@@ -1,4 +1,4 @@
-﻿@model SGM.Models.Guardia
+﻿@model SGM.Models.Falla
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Guardia</h4>
+    <h4>Falla</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,27 +20,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
+            @Html.DisplayNameFor(model => model.Sintomas.nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.duracion_horas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.duracion_horas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.guardia_activa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.guardia_activa)
+            @Html.DisplayFor(model => model.Sintomas.nombre)
         </dd>
 
     </dl>

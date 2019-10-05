@@ -1,0 +1,34 @@
+﻿@model SGM.Models.FallaTarea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FallaTarea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Falla.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falla.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarea.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarea.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

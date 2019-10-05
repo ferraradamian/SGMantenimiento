@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SGM.Models.Guardia>
+﻿@model IEnumerable<SGM.Models.Recurso>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,7 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.duracion_horas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.guardia_activa)
+            @Html.DisplayNameFor(model => model.Grupo.nombre)
         </th>
         <th></th>
     </tr>
@@ -35,15 +32,12 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.duracion_horas)
+            @Html.DisplayFor(modelItem => item.Grupo.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.guardia_activa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.guardia_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.guardia_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.guardia_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.recurso_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.recurso_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.recurso_id })
         </td>
     </tr>
 }

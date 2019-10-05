@@ -10,107 +10,107 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class SintomasController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Sintomas
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            return View(db.Sintomas.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Sintomas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Sintomas sintomas = db.Sintomas.Find(id);
+            if (sintomas == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(sintomas);
         }
 
-        // GET: Guardias/Create
+        // GET: Sintomas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Sintomas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "Id,nombre")] Sintomas sintomas)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.Sintomas.Add(sintomas);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            return View(sintomas);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Sintomas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Sintomas sintomas = db.Sintomas.Find(id);
+            if (sintomas == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(sintomas);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Sintomas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "Id,nombre")] Sintomas sintomas)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(sintomas).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(sintomas);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Sintomas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Sintomas sintomas = db.Sintomas.Find(id);
+            if (sintomas == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(sintomas);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Sintomas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Sintomas sintomas = db.Sintomas.Find(id);
+            db.Sintomas.Remove(sintomas);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

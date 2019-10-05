@@ -10,107 +10,107 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class EmpresasController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Empresas
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            return View(db.Empresa.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Empresas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empresa empresa = db.Empresa.Find(id);
+            if (empresa == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(empresa);
         }
 
-        // GET: Guardias/Create
+        // GET: Empresas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Empresas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "empresa_id,nombre,telefono,email,cuit")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.Empresa.Add(empresa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            return View(empresa);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Empresas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empresa empresa = db.Empresa.Find(id);
+            if (empresa == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(empresa);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Empresas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "empresa_id,nombre,telefono,email,cuit")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(empresa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(empresa);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Empresas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empresa empresa = db.Empresa.Find(id);
+            if (empresa == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(empresa);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Empresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Empresa empresa = db.Empresa.Find(id);
+            db.Empresa.Remove(empresa);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

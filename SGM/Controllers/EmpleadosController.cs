@@ -10,107 +10,116 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class EmpleadosController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Empleados
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            var empleado = db.Empleado.Include(e => e.Empresa).Include(e => e.Funcion);
+            return View(empleado.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Empleados/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empleado empleado = db.Empleado.Find(id);
+            if (empleado == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(empleado);
         }
 
-        // GET: Guardias/Create
+        // GET: Empleados/Create
         public ActionResult Create()
         {
+            ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre");
+            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre");
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Empleados/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "empleado_id,empresa_id,nombre,apellido,telefono_fijo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,email,tel_celular_1,tel_celular_2,tel_radio,radio,interno,foto")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.Empleado.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
+            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            return View(empleado);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Empleados/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empleado empleado = db.Empleado.Find(id);
+            if (empleado == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
+            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            return View(empleado);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Empleados/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "empleado_id,empresa_id,nombre,apellido,telefono_fijo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,email,tel_celular_1,tel_celular_2,tel_radio,radio,interno,foto")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
+            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            return View(empleado);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Empleados/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Empleado empleado = db.Empleado.Find(id);
+            if (empleado == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(empleado);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Empleados/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Empleado empleado = db.Empleado.Find(id);
+            db.Empleado.Remove(empleado);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

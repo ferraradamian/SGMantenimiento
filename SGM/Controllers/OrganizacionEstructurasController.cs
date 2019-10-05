@@ -10,107 +10,107 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class OrganizacionEstructurasController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: OrganizacionEstructuras
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            return View(db.OrganizacionEstructuraSet.ToList());
         }
 
-        // GET: Guardias/Details/5
-        public ActionResult Details(int? id)
+        // GET: OrganizacionEstructuras/Details/5
+        public ActionResult Details(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            if (organizacionEstructura == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(organizacionEstructura);
         }
 
-        // GET: Guardias/Create
+        // GET: OrganizacionEstructuras/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: OrganizacionEstructuras/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "Id,nivel,nivel_nombre")] OrganizacionEstructura organizacionEstructura)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.OrganizacionEstructuraSet.Add(organizacionEstructura);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            return View(organizacionEstructura);
         }
 
-        // GET: Guardias/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: OrganizacionEstructuras/Edit/5
+        public ActionResult Edit(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            if (organizacionEstructura == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(organizacionEstructura);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: OrganizacionEstructuras/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "Id,nivel,nivel_nombre")] OrganizacionEstructura organizacionEstructura)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(organizacionEstructura).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(organizacionEstructura);
         }
 
-        // GET: Guardias/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: OrganizacionEstructuras/Delete/5
+        public ActionResult Delete(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            if (organizacionEstructura == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(organizacionEstructura);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: OrganizacionEstructuras/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(byte id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            db.OrganizacionEstructuraSet.Remove(organizacionEstructura);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

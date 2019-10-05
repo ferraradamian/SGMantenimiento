@@ -10,107 +10,116 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class RecursoTareasController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: RecursoTareas
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            var recursoTarea = db.RecursoTarea.Include(r => r.Recurso).Include(r => r.Tarea);
+            return View(recursoTarea.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: RecursoTareas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            RecursoTarea recursoTarea = db.RecursoTarea.Find(id);
+            if (recursoTarea == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(recursoTarea);
         }
 
-        // GET: Guardias/Create
+        // GET: RecursoTareas/Create
         public ActionResult Create()
         {
+            ViewBag.Recurso_recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre");
+            ViewBag.Tarea_tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion");
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: RecursoTareas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "recurso_id,cantidadUsada,unidad,Recurso_recurso_id,Tarea_tarea_id")] RecursoTarea recursoTarea)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.RecursoTarea.Add(recursoTarea);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            ViewBag.Recurso_recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recursoTarea.Recurso_recurso_id);
+            ViewBag.Tarea_tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", recursoTarea.Tarea_tarea_id);
+            return View(recursoTarea);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: RecursoTareas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            RecursoTarea recursoTarea = db.RecursoTarea.Find(id);
+            if (recursoTarea == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            ViewBag.Recurso_recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recursoTarea.Recurso_recurso_id);
+            ViewBag.Tarea_tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", recursoTarea.Tarea_tarea_id);
+            return View(recursoTarea);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: RecursoTareas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "recurso_id,cantidadUsada,unidad,Recurso_recurso_id,Tarea_tarea_id")] RecursoTarea recursoTarea)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(recursoTarea).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            ViewBag.Recurso_recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recursoTarea.Recurso_recurso_id);
+            ViewBag.Tarea_tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", recursoTarea.Tarea_tarea_id);
+            return View(recursoTarea);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: RecursoTareas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            RecursoTarea recursoTarea = db.RecursoTarea.Find(id);
+            if (recursoTarea == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(recursoTarea);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: RecursoTareas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            RecursoTarea recursoTarea = db.RecursoTarea.Find(id);
+            db.RecursoTarea.Remove(recursoTarea);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

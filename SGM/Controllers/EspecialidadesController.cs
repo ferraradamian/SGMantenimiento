@@ -10,107 +10,107 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class EspecialidadesController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Especialidades
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            return View(db.EspecialidadSet.ToList());
         }
 
-        // GET: Guardias/Details/5
-        public ActionResult Details(int? id)
+        // GET: Especialidades/Details/5
+        public ActionResult Details(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(especialidad);
         }
 
-        // GET: Guardias/Create
+        // GET: Especialidades/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Especialidades/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "especialidad_id,nombre,descripcion")] Especialidad especialidad)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.EspecialidadSet.Add(especialidad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            return View(especialidad);
         }
 
-        // GET: Guardias/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Especialidades/Edit/5
+        public ActionResult Edit(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(especialidad);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Especialidades/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "especialidad_id,nombre,descripcion")] Especialidad especialidad)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(especialidad).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(especialidad);
         }
 
-        // GET: Guardias/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Especialidades/Delete/5
+        public ActionResult Delete(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            if (especialidad == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(especialidad);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Especialidades/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(byte id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            db.EspecialidadSet.Remove(especialidad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

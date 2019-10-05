@@ -1,0 +1,154 @@
+﻿@model SGM.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono_fijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono_fijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documento_tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documento_tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.documento_numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.documento_numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cuil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo_sanguineo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo_sanguineo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.factor_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.factor_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_celular_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_celular_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_celular_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_celular_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_radio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.radio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.interno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.interno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcion.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Funcion.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.empleado_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

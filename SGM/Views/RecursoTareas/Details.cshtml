@@ -1,0 +1,50 @@
+﻿@model SGM.Models.RecursoTarea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecursoTarea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadUsada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadUsada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recurso.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recurso.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarea.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarea.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.recurso_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

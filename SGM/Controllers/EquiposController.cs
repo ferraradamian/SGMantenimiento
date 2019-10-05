@@ -10,107 +10,112 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class EquiposController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Equipos
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            var equipo = db.Equipo.Include(e => e.OrganizacionUbicacion);
+            return View(equipo.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Equipos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Equipo equipo = db.Equipo.Find(id);
+            if (equipo == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(equipo);
         }
 
-        // GET: Guardias/Create
+        // GET: Equipos/Create
         public ActionResult Create()
         {
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre");
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Equipos/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "equipo_id,nombre,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.Equipo.Add(equipo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            return View(equipo);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Equipos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Equipo equipo = db.Equipo.Find(id);
+            if (equipo == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            return View(equipo);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Equipos/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "equipo_id,nombre,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(equipo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            return View(equipo);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Equipos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Equipo equipo = db.Equipo.Find(id);
+            if (equipo == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(equipo);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Equipos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Equipo equipo = db.Equipo.Find(id);
+            db.Equipo.Remove(equipo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

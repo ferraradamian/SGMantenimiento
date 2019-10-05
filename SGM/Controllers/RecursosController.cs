@@ -10,107 +10,112 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class RecursosController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Recursos
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            var recurso = db.Recurso.Include(r => r.Grupo);
+            return View(recurso.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Recursos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Recurso recurso = db.Recurso.Find(id);
+            if (recurso == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(recurso);
         }
 
-        // GET: Guardias/Create
+        // GET: Recursos/Create
         public ActionResult Create()
         {
+            ViewBag.GrupoId = new SelectList(db.Grupo, "Id", "nombre");
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Recursos/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Create([Bind(Include = "recurso_id,nombre,descripcion,GrupoId")] Recurso recurso)
         {
             if (ModelState.IsValid)
             {
-                db.Guardia.Add(guardia);
+                db.Recurso.Add(recurso);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            ViewBag.GrupoId = new SelectList(db.Grupo, "Id", "nombre", recurso.GrupoId);
+            return View(recurso);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Recursos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Recurso recurso = db.Recurso.Find(id);
+            if (recurso == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            ViewBag.GrupoId = new SelectList(db.Grupo, "Id", "nombre", recurso.GrupoId);
+            return View(recurso);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Recursos/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,nombre,descripcion,duracion_horas,guardia_activa")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "recurso_id,nombre,descripcion,GrupoId")] Recurso recurso)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(recurso).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            ViewBag.GrupoId = new SelectList(db.Grupo, "Id", "nombre", recurso.GrupoId);
+            return View(recurso);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Recursos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Recurso recurso = db.Recurso.Find(id);
+            if (recurso == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(recurso);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Recursos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Recurso recurso = db.Recurso.Find(id);
+            db.Recurso.Remove(recurso);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

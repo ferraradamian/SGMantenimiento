@@ -1,0 +1,74 @@
+﻿@model SGM.Models.Tarea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tarea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_tarea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_tarea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.permiso_trabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.permiso_trabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cronograma.observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cronograma.observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipo.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipo.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrganizacionUbicacion.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrganizacionUbicacion.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tarea_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
