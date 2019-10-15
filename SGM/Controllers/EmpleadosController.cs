@@ -40,7 +40,7 @@ namespace SGM.Controllers
         public ActionResult Create()
         {
             ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre");
-            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre");
+            ViewBag.funcion_Id = new SelectList(db.Funcion, "funcion_id", "nombre");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "empleado_id,empresa_id,nombre,apellido,telefono_fijo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,email,tel_celular_1,tel_celular_2,tel_radio,radio,interno,foto")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "empleado_id,empresa_id,nombre,apellido,legajo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,telefono_fijo,tel_celular_1,tel_celular_2,tel_radio,radio,interno,email,foto,direccion,numero,pais,provincia,ciudad,codigo_postal")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace SGM.Controllers
             }
 
             ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
-            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            ViewBag.funcion_Id = new SelectList(db.Funcion, "funcion_id", "nombre", empleado.funcion_Id);
             return View(empleado);
         }
 
@@ -76,7 +76,7 @@ namespace SGM.Controllers
                 return HttpNotFound();
             }
             ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
-            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            ViewBag.funcion_Id = new SelectList(db.Funcion, "funcion_id", "nombre", empleado.funcion_Id);
             return View(empleado);
         }
 
@@ -85,7 +85,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "empleado_id,empresa_id,nombre,apellido,telefono_fijo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,email,tel_celular_1,tel_celular_2,tel_radio,radio,interno,foto")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "empleado_id,empresa_id,nombre,apellido,legajo,funcion_Id,documento_tipo,documento_numero,cuil,grupo_sanguineo,factor_rh,telefono_fijo,tel_celular_1,tel_celular_2,tel_radio,radio,interno,email,foto,direccion,numero,pais,provincia,ciudad,codigo_postal")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace SGM.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.empresa_id = new SelectList(db.Empresa, "empresa_id", "nombre", empleado.empresa_id);
-            ViewBag.funcion_Id = new SelectList(db.FuncionSet, "funcion_id", "nombre", empleado.funcion_Id);
+            ViewBag.funcion_Id = new SelectList(db.Funcion, "funcion_id", "nombre", empleado.funcion_Id);
             return View(empleado);
         }
 

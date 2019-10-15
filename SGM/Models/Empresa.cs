@@ -24,7 +24,7 @@ namespace SGM.Models
         public string nombre { get; set; }
         public string telefono { get; set; }
         public string email { get; set; }
-        public Nullable<short> cuit { get; set; }
+        public Nullable<long> cuit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empleado> Empleado { get; set; }

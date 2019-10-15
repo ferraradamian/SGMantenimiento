@@ -416,15 +416,14 @@
                             <li>@Html.ActionLink("Fallas Tareas", "Index", "FallaTareas")</li>
                             <li>@Html.ActionLink("Funciones", "Index", "Funciones")</li>
                             <li>@Html.ActionLink("Grupos", "Index", "Grupos")</li>
-                            <li>@Html.ActionLink("Guardias", "Index", "Guardias")</li>
                             <li>@Html.ActionLink("Estructura", "Index", "OrganizacionEstructuras")</li>
                             <li>@Html.ActionLink("Ubicación", "Index", "OrganizacionUbicaciones")</li>
                             <li>@Html.ActionLink("Recurso", "Index", "Recursos")</li>
                             <li>@Html.ActionLink("Recursos Tareas", "Index", "RecursosTareas")</li>
                             <li>@Html.ActionLink("Sintomas", "Index", "Sintomas")</li>
-                            <li>@Html.ActionLink("Tareas", "Index", "Tareas")</li>
+        
                             @*<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
+                            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
                         </ul>
                     </li>
                     <li class="active treeview">
@@ -436,9 +435,11 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>@Html.ActionLink("Guardias", "Index", "Guardias")</li>
+                            <li>@Html.ActionLink("Cronogramas", "Index", "Cronogramas")</li>
+                            <li>@Html.ActionLink("Tareas", "Index", "Tareas")</li>
 
                             @*<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
+        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>*@
                         </ul>
                     </li>
                     <li class="active treeview">
@@ -1144,7 +1145,7 @@
                 </div>
                 <!-- /.row (main row) -->
 
-            </section>
+            
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -1348,8 +1349,10 @@
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-    </div>
+        <div class="control-sidebar-bg">
+
+        </div>
+        
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

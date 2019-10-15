@@ -22,6 +22,7 @@ namespace SGM.Models
     
         public int equipo_id { get; set; }
         public string nombre { get; set; }
+        public string descripcion { get; set; }
         public Nullable<estado_equipo> estado_equipo { get; set; }
         public string fabricante { get; set; }
         public string marca { get; set; }

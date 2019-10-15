@@ -13,11 +13,11 @@
     <EntitySet Name="Tarea" EntityType="BDSGMModel.Store.Tarea" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Recurso" EntityType="BDSGMModel.Store.Recurso" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="RecursoTarea" EntityType="BDSGMModel.Store.RecursoTarea" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EspecialidadSet" EntityType="BDSGMModel.Store.EspecialidadSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FuncionSet" EntityType="BDSGMModel.Store.FuncionSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrganizacionEstructuraSet" EntityType="BDSGMModel.Store.OrganizacionEstructuraSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrganizacionUbicacionSet" EntityType="BDSGMModel.Store.OrganizacionUbicacionSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Empleado_Guardia" EntityType="BDSGMModel.Store.Empleado_Guardia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Especialidad" EntityType="BDSGMModel.Store.Especialidad" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Funcion" EntityType="BDSGMModel.Store.Funcion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrganizacionEstructura" EntityType="BDSGMModel.Store.OrganizacionEstructura" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrganizacionUbicacion" EntityType="BDSGMModel.Store.OrganizacionUbicacion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cronograma" EntityType="BDSGMModel.Store.Cronograma" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Falla" EntityType="BDSGMModel.Store.Falla" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FallaTarea" EntityType="BDSGMModel.Store.FallaTarea" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Sintomas" EntityType="BDSGMModel.Store.Sintomas" store:Type="Tables" Schema="dbo" />
@@ -36,35 +36,35 @@
       <End Role="Guardia_Empeado" EntitySet="Guardia_Empeado" />
     </AssociationSet>
     <AssociationSet Name="EspecialidadFuncion" Association="BDSGMModel.Store.EspecialidadFuncion">
-      <End Role="Especialidad" EntitySet="EspecialidadSet" />
-      <End Role="Funcion" EntitySet="FuncionSet" />
+      <End Role="Especialidad" EntitySet="Especialidad" />
+      <End Role="Funcion" EntitySet="Funcion" />
     </AssociationSet>
     <AssociationSet Name="FuncionEmpleado" Association="BDSGMModel.Store.FuncionEmpleado">
-      <End Role="Funcion" EntitySet="FuncionSet" />
+      <End Role="Funcion" EntitySet="Funcion" />
       <End Role="Empleado" EntitySet="Empleado" />
     </AssociationSet>
     <AssociationSet Name="OrganizacionEstructuraOrganizacionUbicacion" Association="BDSGMModel.Store.OrganizacionEstructuraOrganizacionUbicacion">
-      <End Role="OrganizacionEstructura" EntitySet="OrganizacionEstructuraSet" />
-      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+      <End Role="OrganizacionEstructura" EntitySet="OrganizacionEstructura" />
+      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
     </AssociationSet>
     <AssociationSet Name="OrgUbicOrgUbic" Association="BDSGMModel.Store.OrgUbicOrgUbic">
-      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
-      <End Role="OrganizacionUbicacion1" EntitySet="OrganizacionUbicacionSet" />
+      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
+      <End Role="OrganizacionUbicacion1" EntitySet="OrganizacionUbicacion" />
     </AssociationSet>
     <AssociationSet Name="OrganizacionUbicacionEquipo" Association="BDSGMModel.Store.OrganizacionUbicacionEquipo">
-      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
       <End Role="Equipo" EntitySet="Equipo" />
     </AssociationSet>
-    <AssociationSet Name="EmpleadoEmpleado_Guardia" Association="BDSGMModel.Store.EmpleadoEmpleado_Guardia">
+    <AssociationSet Name="EmpleadoCronograma" Association="BDSGMModel.Store.EmpleadoCronograma">
       <End Role="Empleado" EntitySet="Empleado" />
-      <End Role="Empleado_Guardia" EntitySet="Empleado_Guardia" />
+      <End Role="Cronograma" EntitySet="Cronograma" />
     </AssociationSet>
-    <AssociationSet Name="GuardiaEmpleado_Guardia" Association="BDSGMModel.Store.GuardiaEmpleado_Guardia">
+    <AssociationSet Name="GuardiaCronograma" Association="BDSGMModel.Store.GuardiaCronograma">
       <End Role="Guardia" EntitySet="Guardia" />
-      <End Role="Empleado_Guardia" EntitySet="Empleado_Guardia" />
+      <End Role="Cronograma" EntitySet="Cronograma" />
     </AssociationSet>
     <AssociationSet Name="CronogramaTarea" Association="BDSGMModel.Store.CronogramaTarea">
-      <End Role="Cronograma" EntitySet="Empleado_Guardia" />
+      <End Role="Cronograma" EntitySet="Cronograma" />
       <End Role="Tarea" EntitySet="Tarea" />
     </AssociationSet>
     <AssociationSet Name="EquipoTarea" Association="BDSGMModel.Store.EquipoTarea">
@@ -72,7 +72,7 @@
       <End Role="Tarea" EntitySet="Tarea" />
     </AssociationSet>
     <AssociationSet Name="OrganizacionUbicacionTarea" Association="BDSGMModel.Store.OrganizacionUbicacionTarea">
-      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+      <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
       <End Role="Tarea" EntitySet="Tarea" />
     </AssociationSet>
     <AssociationSet Name="FallaFallaTarea" Association="BDSGMModel.Store.FallaFallaTarea">
@@ -104,41 +104,49 @@
     <Key>
       <PropertyRef Name="empleado_id" />
     </Key>
-    <Property Name="empleado_id" Type="int" Nullable="false" />
+    <Property Name="empleado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="empresa_id" Type="int" Nullable="false" />
-    <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="apellido" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="telefono_fijo" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="apellido" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="legajo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="funcion_Id" Type="int" Nullable="false" />
     <Property Name="documento_tipo" Type="tinyint" Nullable="true" />
-    <Property Name="documento_numero" Type="smallint" Nullable="true" />
-    <Property Name="cuil" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="documento_numero" Type="int" Nullable="true" />
+    <Property Name="cuil" Type="nvarchar(max)" Nullable="true" />
     <Property Name="grupo_sanguineo" Type="tinyint" Nullable="true" />
     <Property Name="factor_rh" Type="tinyint" Nullable="true" />
+    <Property Name="telefono_fijo" Type="bigint" Nullable="true" />
+    <Property Name="tel_celular_1" Type="bigint" Nullable="true" />
+    <Property Name="tel_celular_2" Type="bigint" Nullable="true" />
+    <Property Name="tel_radio" Type="bigint" Nullable="true" />
+    <Property Name="radio" Type="bigint" Nullable="true" />
+    <Property Name="interno" Type="int" Nullable="true" />
     <Property Name="email" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="tel_celular_1" Type="smallint" Nullable="true" />
-    <Property Name="tel_celular_2" Type="smallint" Nullable="true" />
-    <Property Name="tel_radio" Type="smallint" Nullable="true" />
-    <Property Name="radio" Type="smallint" Nullable="true" />
-    <Property Name="interno" Type="smallint" Nullable="true" />
     <Property Name="foto" Type="varbinary(max)" Nullable="true" />
+    <Property Name="direccion" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="numero" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="pais" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="provincia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ciudad" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="codigo_postal" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Empresa">
     <Key>
       <PropertyRef Name="empresa_id" />
     </Key>
-    <Property Name="empresa_id" Type="int" Nullable="false" />
+    <Property Name="empresa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="20" />
-    <Property Name="telefono" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="telefono" Type="nvarchar(max)" Nullable="true" />
     <Property Name="email" Type="nchar" Nullable="true" MaxLength="20" />
-    <Property Name="cuit" Type="smallint" Nullable="true" />
+    <Property Name="cuit" Type="bigint" Nullable="true" />
   </EntityType>
   <EntityType Name="Equipo">
     <Key>
       <PropertyRef Name="equipo_id" />
     </Key>
-    <Property Name="equipo_id" Type="int" Nullable="false" />
+    <Property Name="equipo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="estado_equipo" Type="tinyint" Nullable="true" />
     <Property Name="fabricante" Type="nvarchar(max)" Nullable="true" />
     <Property Name="marca" Type="nchar" Nullable="true" MaxLength="15" />
@@ -154,7 +162,7 @@
     <Key>
       <PropertyRef Name="guardia_id" />
     </Key>
-    <Property Name="guardia_id" Type="int" Nullable="false" />
+    <Property Name="guardia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="duracion_horas" Type="tinyint" Nullable="true" />
@@ -164,7 +172,7 @@
     <Key>
       <PropertyRef Name="tarea_id" />
     </Key>
-    <Property Name="tarea_id" Type="int" Nullable="false" />
+    <Property Name="tarea_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="nchar" Nullable="false" MaxLength="250" />
     <Property Name="estado_tarea" Type="tinyint" Nullable="true" />
     <Property Name="fecha_hora" Type="datetime" Nullable="false" />
@@ -177,7 +185,7 @@
     <Key>
       <PropertyRef Name="recurso_id" />
     </Key>
-    <Property Name="recurso_id" Type="int" Nullable="false" />
+    <Property Name="recurso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="50" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="GrupoId" Type="smallint" Nullable="false" />
@@ -186,13 +194,13 @@
     <Key>
       <PropertyRef Name="recurso_id" />
     </Key>
-    <Property Name="recurso_id" Type="int" Nullable="false" />
+    <Property Name="recurso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cantidadUsada" Type="float" Nullable="false" />
     <Property Name="unidad" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Recurso_recurso_id" Type="int" Nullable="false" />
     <Property Name="Tarea_tarea_id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="EspecialidadSet">
+  <EntityType Name="Especialidad">
     <Key>
       <PropertyRef Name="especialidad_id" />
     </Key>
@@ -200,34 +208,34 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="FuncionSet">
+  <EntityType Name="Funcion">
     <Key>
       <PropertyRef Name="funcion_id" />
     </Key>
-    <Property Name="funcion_id" Type="int" Nullable="false" />
+    <Property Name="funcion_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="EspecialidadId" Type="tinyint" Nullable="false" />
   </EntityType>
-  <EntityType Name="OrganizacionEstructuraSet">
+  <EntityType Name="OrganizacionEstructura">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="tinyint" Nullable="false" />
     <Property Name="nivel" Type="tinyint" Nullable="false" />
     <Property Name="nivel_nombre" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="OrganizacionUbicacionSet">
+  <EntityType Name="OrganizacionUbicacion">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="OrganizacionEstructuraId" Type="tinyint" Nullable="false" />
-    <Property Name="OrganizacionUbicacionId" Type="int" Nullable="false" />
+    <Property Name="OrganizacionUbicacionId" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="Empleado_Guardia">
+  <EntityType Name="Cronograma">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -264,19 +272,24 @@
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Grupo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+      <Key>
+          <PropertyRef Name="Id" />
+      </Key>
+      <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+      <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+      <Property Name="cod_grupo1" Type="nvarchar(max)" Nullable="true" />
+      <Property Name="desc_grupo1" Type="nvarchar(max)" Nullable="true" />
+      <Property Name="cod_grupo2" Type="nvarchar(max)" Nullable="true" />
+      <Property Name="desc_grupo2" Type="nvarchar(max)" Nullable="true" />
+
   </EntityType>
   <EntityType Name="Guardia_Empeado">
     <Key>
       <PropertyRef Name="Guardia_Empeado_Guardia_empleado_id" />
-      <PropertyRef Name="Guardia_Empeado_Empleado_guardia_id" />
+      <PropertyRef Name="Guardia_Empeado_Cronograma_id" />
     </Key>
     <Property Name="Guardia_Empeado_Guardia_empleado_id" Type="int" Nullable="false" />
-    <Property Name="Guardia_Empeado_Empleado_guardia_id" Type="int" Nullable="false" />
+    <Property Name="Guardia_Empeado_Cronograma_id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Empleado_Empresa">
     <End Role="Empresa" Type="BDSGMModel.Store.Empresa" Multiplicity="1" />
@@ -291,8 +304,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="EspecialidadFuncion">
-    <End Role="Especialidad" Type="BDSGMModel.Store.EspecialidadSet" Multiplicity="1" />
-    <End Role="Funcion" Type="BDSGMModel.Store.FuncionSet" Multiplicity="*" />
+    <End Role="Especialidad" Type="BDSGMModel.Store.Especialidad" Multiplicity="1" />
+    <End Role="Funcion" Type="BDSGMModel.Store.Funcion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Especialidad">
         <PropertyRef Name="especialidad_id" />
@@ -303,7 +316,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FuncionEmpleado">
-    <End Role="Funcion" Type="BDSGMModel.Store.FuncionSet" Multiplicity="1" />
+    <End Role="Funcion" Type="BDSGMModel.Store.Funcion" Multiplicity="1" />
     <End Role="Empleado" Type="BDSGMModel.Store.Empleado" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Funcion">
@@ -315,8 +328,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OrganizacionEstructuraOrganizacionUbicacion">
-    <End Role="OrganizacionEstructura" Type="BDSGMModel.Store.OrganizacionEstructuraSet" Multiplicity="1" />
-    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacionSet" Multiplicity="*" />
+    <End Role="OrganizacionEstructura" Type="BDSGMModel.Store.OrganizacionEstructura" Multiplicity="1" />
+    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OrganizacionEstructura">
         <PropertyRef Name="Id" />
@@ -327,8 +340,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OrgUbicOrgUbic">
-    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacionSet" Multiplicity="1" />
-    <End Role="OrganizacionUbicacion1" Type="BDSGMModel.Store.OrganizacionUbicacionSet" Multiplicity="*" />
+    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacion" Multiplicity="0..1" />
+    <End Role="OrganizacionUbicacion1" Type="BDSGMModel.Store.OrganizacionUbicacion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OrganizacionUbicacion">
         <PropertyRef Name="Id" />
@@ -339,7 +352,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OrganizacionUbicacionEquipo">
-    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacionSet" Multiplicity="1" />
+    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacion" Multiplicity="1" />
     <End Role="Equipo" Type="BDSGMModel.Store.Equipo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OrganizacionUbicacion">
@@ -350,32 +363,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="EmpleadoEmpleado_Guardia">
+  <Association Name="EmpleadoCronograma">
     <End Role="Empleado" Type="BDSGMModel.Store.Empleado" Multiplicity="1" />
-    <End Role="Empleado_Guardia" Type="BDSGMModel.Store.Empleado_Guardia" Multiplicity="*" />
+    <End Role="Cronograma" Type="BDSGMModel.Store.Cronograma" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Empleado">
         <PropertyRef Name="empleado_id" />
       </Principal>
-      <Dependent Role="Empleado_Guardia">
+      <Dependent Role="Cronograma">
         <PropertyRef Name="Empleado_empleado_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="GuardiaEmpleado_Guardia">
+  <Association Name="GuardiaCronograma">
     <End Role="Guardia" Type="BDSGMModel.Store.Guardia" Multiplicity="1" />
-    <End Role="Empleado_Guardia" Type="BDSGMModel.Store.Empleado_Guardia" Multiplicity="*" />
+    <End Role="Cronograma" Type="BDSGMModel.Store.Cronograma" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Guardia">
         <PropertyRef Name="guardia_id" />
       </Principal>
-      <Dependent Role="Empleado_Guardia">
+      <Dependent Role="Cronograma">
         <PropertyRef Name="Guardia_guardia_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="CronogramaTarea">
-    <End Role="Cronograma" Type="BDSGMModel.Store.Empleado_Guardia" Multiplicity="1" />
+    <End Role="Cronograma" Type="BDSGMModel.Store.Cronograma" Multiplicity="1" />
     <End Role="Tarea" Type="BDSGMModel.Store.Tarea" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cronograma">
@@ -399,7 +412,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="OrganizacionUbicacionTarea">
-    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacionSet" Multiplicity="1" />
+    <End Role="OrganizacionUbicacion" Type="BDSGMModel.Store.OrganizacionUbicacion" Multiplicity="1" />
     <End Role="Tarea" Type="BDSGMModel.Store.Tarea" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="OrganizacionUbicacion">
@@ -502,7 +515,7 @@
         <PropertyRef Name="guardia_id" />
       </Principal>
       <Dependent Role="Guardia_Empeado">
-        <PropertyRef Name="Guardia_Empeado_Empleado_guardia_id" />
+        <PropertyRef Name="Guardia_Empeado_Cronograma_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -514,45 +527,53 @@
           <Key>
             <PropertyRef Name="empleado_id" />
           </Key>
-          <Property Name="empleado_id" Type="Int32" Nullable="false" />
+          <Property Name="empleado_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="empresa_id" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="telefono_fijo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="true" />
+          <Property Name="nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK_Empleado_Empresa" FromRole="Empleado" ToRole="Empresa" />
           <NavigationProperty Name="Funcion" Relationship="BDSGMModel.FuncionEmpleado" FromRole="Empleado" ToRole="Funcion" />
+          <Property Name="legajo" Type="String" Nullable="false" />
           <Property Name="funcion_Id" Type="Int32" Nullable="false" />
           <Property Name="documento_tipo" Type="BDSGMModel.documento_tipo" Nullable="true" />
-          <Property Name="documento_numero" Type="Int16" Nullable="true" />
-          <Property Name="cuil" Type="String" Nullable="false" />
+          <Property Name="documento_numero" Type="Int32" Nullable="true" />
+          <Property Name="cuil" Type="String" Nullable="true" />
           <Property Name="grupo_sanguineo" Type="BDSGMModel.grupo_sanguineo" Nullable="true" />
           <Property Name="factor_rh" Type="BDSGMModel.factor_rh" Nullable="true" />
+          <Property Name="telefono_fijo" Type="Int64" Nullable="true" />
+          <Property Name="tel_celular_1" Type="Int64" Nullable="true" />
+          <Property Name="tel_celular_2" Type="Int64" Nullable="true" />
+          <Property Name="tel_radio" Type="Int64" Nullable="true" />
+          <Property Name="radio" Type="Int64" Nullable="true" />
+          <Property Name="interno" Type="Int32" Nullable="true" />
           <Property Name="email" Type="String" Nullable="true" />
-          <Property Name="tel_celular_1" Type="Int16" Nullable="true" />
-          <Property Name="tel_celular_2" Type="Int16" Nullable="true" />
-          <Property Name="tel_radio" Type="Int16" Nullable="true" />
-          <Property Name="radio" Type="Int16" Nullable="true" />
-          <Property Name="interno" Type="Int16" Nullable="true" />
           <Property Name="foto" Type="Binary" Nullable="true" />
-          <NavigationProperty Name="Empleado_Guardia" Relationship="BDSGMModel.EmpleadoEmpleado_Guardia" FromRole="Empleado" ToRole="Empleado_Guardia" />
+          <NavigationProperty Name="Cronograma" Relationship="BDSGMModel.EmpleadoCronograma" FromRole="Empleado" ToRole="Cronograma" />
+          <Property Name="direccion" Type="String" Nullable="true" />
+          <Property Name="numero" Type="String" Nullable="true" />
+          <Property Name="pais" Type="String" Nullable="false" />
+          <Property Name="provincia" Type="String" Nullable="false" />
+          <Property Name="ciudad" Type="String" Nullable="true" />
+          <Property Name="codigo_postal" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
             <PropertyRef Name="empresa_id" />
           </Key>
-          <Property Name="empresa_id" Type="Int32" Nullable="false" />
+          <Property Name="empresa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="true" />
+          <Property Name="telefono" Type="String" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Name="email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="true" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Empresa" FromRole="Empresa" ToRole="Empleado" />
-          <Property Name="cuit" Type="Int16" Nullable="true" />
+          <Property Name="cuit" Type="Int64" Nullable="true" />
         </EntityType>
         <EntityType Name="Equipo">
           <Key>
             <PropertyRef Name="equipo_id" />
           </Key>
-          <Property Name="equipo_id" Type="Int32" Nullable="false" />
+          <Property Name="equipo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="true" />
           <Property Name="estado_equipo" Type="BDSGMModel.estado_equipo" Nullable="true" />
           <Property Name="fabricante" Type="String" Nullable="true" />
           <Property Name="marca" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="true" />
@@ -570,9 +591,9 @@
           <Key>
             <PropertyRef Name="guardia_id" />
           </Key>
-          <Property Name="guardia_id" Type="Int32" Nullable="false" />
+          <Property Name="guardia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
-          <NavigationProperty Name="Empleado_Guardia" Relationship="BDSGMModel.GuardiaEmpleado_Guardia" FromRole="Guardia" ToRole="Empleado_Guardia" />
+          <NavigationProperty Name="Cronograma" Relationship="BDSGMModel.GuardiaCronograma" FromRole="Guardia" ToRole="Cronograma" />
           <Property Name="descripcion" Type="String" Nullable="true" />
           <Property Name="duracion_horas" Type="Byte" Nullable="true" />
           <Property Name="guardia_activa" Type="Boolean" Nullable="false" />
@@ -581,7 +602,7 @@
           <Key>
             <PropertyRef Name="tarea_id" />
           </Key>
-          <Property Name="tarea_id" Type="Int32" Nullable="false" />
+          <Property Name="tarea_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="estado_tarea" Type="BDSGMModel.estado_tarea" Nullable="true" />
           <Property Name="fecha_hora" Type="DateTime" Nullable="false" />
@@ -627,41 +648,41 @@
           </AssociationSet>
           <EntitySet Name="Recurso" EntityType="BDSGMModel.Recurso" />
           <EntitySet Name="RecursoTarea" EntityType="BDSGMModel.RecursoTarea" />
-          <EntitySet Name="EspecialidadSet" EntityType="BDSGMModel.Especialidad" />
-          <EntitySet Name="FuncionSet" EntityType="BDSGMModel.Funcion" />
+          <EntitySet Name="Especialidad" EntityType="BDSGMModel.Especialidad" />
+          <EntitySet Name="Funcion" EntityType="BDSGMModel.Funcion" />
           <AssociationSet Name="EspecialidadFuncion" Association="BDSGMModel.EspecialidadFuncion">
-            <End Role="Especialidad" EntitySet="EspecialidadSet" />
-            <End Role="Funcion" EntitySet="FuncionSet" />
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Funcion" EntitySet="Funcion" />
           </AssociationSet>
           <AssociationSet Name="FuncionEmpleado" Association="BDSGMModel.FuncionEmpleado">
-            <End Role="Funcion" EntitySet="FuncionSet" />
+            <End Role="Funcion" EntitySet="Funcion" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <EntitySet Name="OrganizacionEstructuraSet" EntityType="BDSGMModel.OrganizacionEstructura" />
-          <EntitySet Name="OrganizacionUbicacionSet" EntityType="BDSGMModel.OrganizacionUbicacion" />
+          <EntitySet Name="OrganizacionEstructura" EntityType="BDSGMModel.OrganizacionEstructura" />
+          <EntitySet Name="OrganizacionUbicacion" EntityType="BDSGMModel.OrganizacionUbicacion" />
           <AssociationSet Name="OrganizacionEstructuraOrganizacionUbicacion" Association="BDSGMModel.OrganizacionEstructuraOrganizacionUbicacion">
-            <End Role="OrganizacionEstructura" EntitySet="OrganizacionEstructuraSet" />
-            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+            <End Role="OrganizacionEstructura" EntitySet="OrganizacionEstructura" />
+            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
           </AssociationSet>
           <AssociationSet Name="OrgUbicOrgUbic" Association="BDSGMModel.OrgUbicOrgUbic">
-            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
-            <End Role="OrganizacionUbicacion1" EntitySet="OrganizacionUbicacionSet" />
+            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
+            <End Role="OrganizacionUbicacion1" EntitySet="OrganizacionUbicacion" />
           </AssociationSet>
           <AssociationSet Name="OrganizacionUbicacionEquipo" Association="BDSGMModel.OrganizacionUbicacionEquipo">
-            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
             <End Role="Equipo" EntitySet="Equipo" />
           </AssociationSet>
-          <EntitySet Name="Empleado_Guardia" EntityType="BDSGMModel.Cronograma" />
-          <AssociationSet Name="EmpleadoEmpleado_Guardia" Association="BDSGMModel.EmpleadoEmpleado_Guardia">
+          <EntitySet Name="Cronograma" EntityType="BDSGMModel.Cronograma" />
+          <AssociationSet Name="EmpleadoCronograma" Association="BDSGMModel.EmpleadoCronograma">
             <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Empleado_Guardia" EntitySet="Empleado_Guardia" />
+            <End Role="Cronograma" EntitySet="Cronograma" />
           </AssociationSet>
-          <AssociationSet Name="GuardiaEmpleado_Guardia" Association="BDSGMModel.GuardiaEmpleado_Guardia">
+          <AssociationSet Name="GuardiaCronograma" Association="BDSGMModel.GuardiaCronograma">
             <End Role="Guardia" EntitySet="Guardia" />
-            <End Role="Empleado_Guardia" EntitySet="Empleado_Guardia" />
+            <End Role="Cronograma" EntitySet="Cronograma" />
           </AssociationSet>
           <AssociationSet Name="CronogramaTarea" Association="BDSGMModel.CronogramaTarea">
-            <End Role="Cronograma" EntitySet="Empleado_Guardia" />
+            <End Role="Cronograma" EntitySet="Cronograma" />
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
           <AssociationSet Name="EquipoTarea" Association="BDSGMModel.EquipoTarea">
@@ -669,7 +690,7 @@
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
           <AssociationSet Name="OrganizacionUbicacionTarea" Association="BDSGMModel.OrganizacionUbicacionTarea">
-            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacionSet" />
+            <End Role="OrganizacionUbicacion" EntitySet="OrganizacionUbicacion" />
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
           <EntitySet Name="Falla" EntityType="BDSGMModel.Falla" />
@@ -705,7 +726,7 @@
           <Key>
             <PropertyRef Name="recurso_id" />
           </Key>
-          <Property Name="recurso_id" Type="Int32" Nullable="false" />
+          <Property Name="recurso_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="descripcion" Type="String" Nullable="true" />
           <NavigationProperty Name="RecursoTarea" Relationship="BDSGMModel.RecursoRecursoTarea" FromRole="Recurso" ToRole="RecursoTarea" />
@@ -716,7 +737,7 @@
           <Key>
             <PropertyRef Name="recurso_id" />
           </Key>
-          <Property Name="recurso_id" Type="Int32" Nullable="false" />
+          <Property Name="recurso_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cantidadUsada" Type="Double" Nullable="false" />
           <Property Name="unidad" Type="String" Nullable="false" />
           <NavigationProperty Name="Recurso" Relationship="BDSGMModel.RecursoRecursoTarea" FromRole="RecursoTarea" ToRole="Recurso" />
@@ -737,7 +758,7 @@
           <Key>
             <PropertyRef Name="funcion_id" />
           </Key>
-          <Property Name="funcion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="funcion_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="true" />
           <NavigationProperty Name="Especialidad" Relationship="BDSGMModel.EspecialidadFuncion" FromRole="Funcion" ToRole="Especialidad" />
@@ -772,7 +793,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="nivel" Type="Byte" Nullable="false" />
           <Property Name="nivel_nombre" Type="String" Nullable="false" />
           <NavigationProperty Name="OrganizacionUbicacion" Relationship="BDSGMModel.OrganizacionEstructuraOrganizacionUbicacion" FromRole="OrganizacionEstructura" ToRole="OrganizacionUbicacion" />
@@ -781,14 +802,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="true" />
           <NavigationProperty Name="OrganizacionEstructura" Relationship="BDSGMModel.OrganizacionEstructuraOrganizacionUbicacion" FromRole="OrganizacionUbicacion" ToRole="OrganizacionEstructura" />
           <Property Name="OrganizacionEstructuraId" Type="Byte" Nullable="false" />
           <NavigationProperty Name="OrganizacionUbicacion1" Relationship="BDSGMModel.OrgUbicOrgUbic" FromRole="OrganizacionUbicacion" ToRole="OrganizacionUbicacion1" />
           <NavigationProperty Name="OrganizacionUbicacion2" Relationship="BDSGMModel.OrgUbicOrgUbic" FromRole="OrganizacionUbicacion1" ToRole="OrganizacionUbicacion" />
-          <Property Name="OrganizacionUbicacionId" Type="Int32" Nullable="false" />
+          <Property Name="OrganizacionUbicacionId" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Equipo" Relationship="BDSGMModel.OrganizacionUbicacionEquipo" FromRole="OrganizacionUbicacion" ToRole="Equipo" />
           <NavigationProperty Name="Tarea" Relationship="BDSGMModel.OrganizacionUbicacionTarea" FromRole="OrganizacionUbicacion" ToRole="Tarea" />
         </EntityType>
@@ -805,7 +826,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="OrgUbicOrgUbic">
-          <End Type="BDSGMModel.OrganizacionUbicacion" Role="OrganizacionUbicacion" Multiplicity="1" />
+          <End Type="BDSGMModel.OrganizacionUbicacion" Role="OrganizacionUbicacion" Multiplicity="0..1" />
           <End Type="BDSGMModel.OrganizacionUbicacion" Role="OrganizacionUbicacion1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrganizacionUbicacion">
@@ -861,10 +882,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.EmpleadoEmpleado_Guardia" FromRole="Empleado_Guardia" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.EmpleadoCronograma" FromRole="Cronograma" ToRole="Empleado" />
           <Property Name="Guardia_guardia_id" Type="Int32" Nullable="false" />
           <Property Name="Empleado_empleado_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Guardia" Relationship="BDSGMModel.GuardiaEmpleado_Guardia" FromRole="Empleado_Guardia" ToRole="Guardia" />
+          <NavigationProperty Name="Guardia" Relationship="BDSGMModel.GuardiaCronograma" FromRole="Cronograma" ToRole="Guardia" />
           <Property Name="fecha_inicio" Type="DateTime" Nullable="false" />
           <Property Name="hora_inicio" Type="Time" Nullable="false" />
           <Property Name="fecha_fin" Type="DateTime" Nullable="false" />
@@ -872,26 +893,26 @@
           <NavigationProperty Name="Tarea" Relationship="BDSGMModel.CronogramaTarea" FromRole="Cronograma" ToRole="Tarea" />
           <Property Name="observaciones" Type="String" Nullable="true" />
         </EntityType>
-        <Association Name="EmpleadoEmpleado_Guardia">
+        <Association Name="EmpleadoCronograma">
           <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="BDSGMModel.Cronograma" Role="Empleado_Guardia" Multiplicity="*" />
+          <End Type="BDSGMModel.Cronograma" Role="Cronograma" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="empleado_id" />
             </Principal>
-            <Dependent Role="Empleado_Guardia">
+            <Dependent Role="Cronograma">
               <PropertyRef Name="Empleado_empleado_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="GuardiaEmpleado_Guardia">
+        <Association Name="GuardiaCronograma">
           <End Type="BDSGMModel.Guardia" Role="Guardia" Multiplicity="1" />
-          <End Type="BDSGMModel.Cronograma" Role="Empleado_Guardia" Multiplicity="*" />
+          <End Type="BDSGMModel.Cronograma" Role="Cronograma" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Guardia">
               <PropertyRef Name="guardia_id" />
             </Principal>
-            <Dependent Role="Empleado_Guardia">
+            <Dependent Role="Cronograma">
               <PropertyRef Name="Guardia_guardia_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1027,6 +1048,10 @@
           <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <NavigationProperty Name="Recurso" Relationship="BDSGMModel.GrupoRecurso" FromRole="Grupo" ToRole="Recurso" />
+          <Property Name="cod_grupo1" Type="String" Nullable="true" />
+          <Property Name="desc_grupo1" Type="String" Nullable="true" />
+          <Property Name="cod_grupo2" Type="String" Nullable="true" />
+          <Property Name="desc_grupo2" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="GrupoRecurso">
           <End Type="BDSGMModel.Grupo" Role="Grupo" Multiplicity="1" />
@@ -1053,20 +1078,27 @@
           <ScalarProperty Name="empresa_id" ColumnName="empresa_id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido" ColumnName="apellido" />
-          <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+          <ScalarProperty Name="legajo" ColumnName="legajo" />
           <ScalarProperty Name="funcion_Id" ColumnName="funcion_Id" />
           <ScalarProperty Name="documento_tipo" ColumnName="documento_tipo" />
           <ScalarProperty Name="documento_numero" ColumnName="documento_numero" />
           <ScalarProperty Name="cuil" ColumnName="cuil" />
           <ScalarProperty Name="grupo_sanguineo" ColumnName="grupo_sanguineo" />
           <ScalarProperty Name="factor_rh" ColumnName="factor_rh" />
-          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
           <ScalarProperty Name="tel_celular_1" ColumnName="tel_celular_1" />
           <ScalarProperty Name="tel_celular_2" ColumnName="tel_celular_2" />
           <ScalarProperty Name="tel_radio" ColumnName="tel_radio" />
           <ScalarProperty Name="radio" ColumnName="radio" />
           <ScalarProperty Name="interno" ColumnName="interno" />
+          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="pais" ColumnName="pais" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1086,6 +1118,7 @@
         <MappingFragment StoreEntitySet="Equipo">
           <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="estado_equipo" ColumnName="estado_equipo" />
           <ScalarProperty Name="fabricante" ColumnName="fabricante" />
           <ScalarProperty Name="marca" ColumnName="marca" />
@@ -1145,18 +1178,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EspecialidadSet">
+    <EntitySetMapping Name="Especialidad">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.Especialidad)">
-        <MappingFragment StoreEntitySet="EspecialidadSet">
+        <MappingFragment StoreEntitySet="Especialidad">
           <ScalarProperty Name="especialidad_id" ColumnName="especialidad_id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FuncionSet">
+    <EntitySetMapping Name="Funcion">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.Funcion)">
-        <MappingFragment StoreEntitySet="FuncionSet">
+        <MappingFragment StoreEntitySet="Funcion">
           <ScalarProperty Name="funcion_id" ColumnName="funcion_id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -1164,18 +1197,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrganizacionEstructuraSet">
+    <EntitySetMapping Name="OrganizacionEstructura">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.OrganizacionEstructura)">
-        <MappingFragment StoreEntitySet="OrganizacionEstructuraSet">
+        <MappingFragment StoreEntitySet="OrganizacionEstructura">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nivel" ColumnName="nivel" />
           <ScalarProperty Name="nivel_nombre" ColumnName="nivel_nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrganizacionUbicacionSet">
+    <EntitySetMapping Name="OrganizacionUbicacion">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.OrganizacionUbicacion)">
-        <MappingFragment StoreEntitySet="OrganizacionUbicacionSet">
+        <MappingFragment StoreEntitySet="OrganizacionUbicacion">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -1184,9 +1217,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Empleado_Guardia">
+    <EntitySetMapping Name="Cronograma">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.Cronograma)">
-        <MappingFragment StoreEntitySet="Empleado_Guardia">
+        <MappingFragment StoreEntitySet="Cronograma">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Guardia_guardia_id" ColumnName="Guardia_guardia_id" />
           <ScalarProperty Name="Empleado_empleado_id" ColumnName="Empleado_empleado_id" />
@@ -1218,18 +1251,22 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Sintomas">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.Sintomas)">
-        <MappingFragment StoreEntitySet="Sintomas">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
+          <MappingFragment StoreEntitySet="Sintomas">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+              <ScalarProperty Name="nombre" ColumnName="nombre" />
+          </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Grupo">
       <EntityTypeMapping TypeName="IsTypeOf(BDSGMModel.Grupo)">
-        <MappingFragment StoreEntitySet="Grupo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </MappingFragment>
+          <MappingFragment StoreEntitySet="Grupo">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+              <ScalarProperty Name="nombre" ColumnName="nombre" />
+              <ScalarProperty Name="cod_grupo1" ColumnName="cod_grupo1" />
+              <ScalarProperty Name="desc_grupo1" ColumnName="desc_grupo1" />
+              <ScalarProperty Name="cod_grupo2" ColumnName="cod_grupo2" />
+              <ScalarProperty Name="desc_grupo2" ColumnName="desc_grupo2" />
+          </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="Guardia_Empeado" TypeName="BDSGMModel.Guardia_Empeado" StoreEntitySet="Guardia_Empeado">
@@ -1237,7 +1274,7 @@
         <ScalarProperty Name="empleado_id" ColumnName="Guardia_Empeado_Guardia_empleado_id" />
       </EndProperty>
       <EndProperty Name="Guardia">
-        <ScalarProperty Name="guardia_id" ColumnName="Guardia_Empeado_Empleado_guardia_id" />
+        <ScalarProperty Name="guardia_id" ColumnName="Guardia_Empeado_Cronograma_id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

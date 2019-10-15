@@ -22,6 +22,10 @@ namespace SGM.Models
     
         public short Id { get; set; }
         public string nombre { get; set; }
+        public string cod_grupo1 { get; set; }
+        public string desc_grupo1 { get; set; }
+        public string cod_grupo2 { get; set; }
+        public string desc_grupo2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recurso> Recurso { get; set; }

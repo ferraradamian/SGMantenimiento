@@ -46,7 +46,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,nombre")] Grupo grupo)
+        public ActionResult Create([Bind(Include = "Id,nombre,cod_grupo1,desc_grupo1,cod_grupo2,desc_grupo2")] Grupo grupo)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,nombre")] Grupo grupo)
+        public ActionResult Edit([Bind(Include = "Id,nombre,cod_grupo1,desc_grupo1,cod_grupo2,desc_grupo2")] Grupo grupo)
         {
             if (ModelState.IsValid)
             {

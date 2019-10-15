@@ -17,7 +17,7 @@ namespace SGM.Controllers
         // GET: OrganizacionEstructuras
         public ActionResult Index()
         {
-            return View(db.OrganizacionEstructuraSet.ToList());
+            return View(db.OrganizacionEstructura.ToList());
         }
 
         // GET: OrganizacionEstructuras/Details/5
@@ -27,7 +27,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructura.Find(id);
             if (organizacionEstructura == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace SGM.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.OrganizacionEstructuraSet.Add(organizacionEstructura);
+                db.OrganizacionEstructura.Add(organizacionEstructura);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructura.Find(id);
             if (organizacionEstructura == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructura.Find(id);
             if (organizacionEstructura == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructuraSet.Find(id);
-            db.OrganizacionEstructuraSet.Remove(organizacionEstructura);
+            OrganizacionEstructura organizacionEstructura = db.OrganizacionEstructura.Find(id);
+            db.OrganizacionEstructura.Remove(organizacionEstructura);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

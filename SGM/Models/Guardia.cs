@@ -17,7 +17,7 @@ namespace SGM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Guardia()
         {
-            this.Empleado_Guardia = new HashSet<Cronograma>();
+            this.Cronograma = new HashSet<Cronograma>();
         }
     
         public int guardia_id { get; set; }
@@ -27,6 +27,6 @@ namespace SGM.Models
         public bool guardia_activa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cronograma> Empleado_Guardia { get; set; }
+        public virtual ICollection<Cronograma> Cronograma { get; set; }
     }
 }

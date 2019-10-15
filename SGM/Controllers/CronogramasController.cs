@@ -17,8 +17,8 @@ namespace SGM.Controllers
         // GET: Cronogramas
         public ActionResult Index()
         {
-            var empleado_Guardia = db.Empleado_Guardia.Include(c => c.Empleado).Include(c => c.Guardia);
-            return View(empleado_Guardia.ToList());
+            var Cronograma = db.Cronograma.Include(c => c.Empleado).Include(c => c.Guardia);
+            return View(Cronograma.ToList());
         }
 
         // GET: Cronogramas/Details/5
@@ -28,7 +28,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cronograma cronograma = db.Empleado_Guardia.Find(id);
+            Cronograma cronograma = db.Cronograma.Find(id);
             if (cronograma == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace SGM.Controllers
             if (ModelState.IsValid)
             {
                 cronograma.Id = Guid.NewGuid();
-                db.Empleado_Guardia.Add(cronograma);
+                db.Cronograma.Add(cronograma);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cronograma cronograma = db.Empleado_Guardia.Find(id);
+            Cronograma cronograma = db.Cronograma.Find(id);
             if (cronograma == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cronograma cronograma = db.Empleado_Guardia.Find(id);
+            Cronograma cronograma = db.Cronograma.Find(id);
             if (cronograma == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Cronograma cronograma = db.Empleado_Guardia.Find(id);
-            db.Empleado_Guardia.Remove(cronograma);
+            Cronograma cronograma = db.Cronograma.Find(id);
+            db.Cronograma.Remove(cronograma);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

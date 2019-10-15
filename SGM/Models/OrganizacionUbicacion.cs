@@ -26,7 +26,7 @@ namespace SGM.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public byte OrganizacionEstructuraId { get; set; }
-        public int OrganizacionUbicacionId { get; set; }
+        public Nullable<int> OrganizacionUbicacionId { get; set; }
     
         public virtual OrganizacionEstructura OrganizacionEstructura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

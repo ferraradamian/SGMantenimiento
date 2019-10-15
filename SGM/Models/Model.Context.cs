@@ -32,11 +32,11 @@ namespace SGM.Models
         public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<RecursoTarea> RecursoTarea { get; set; }
-        public virtual DbSet<Especialidad> EspecialidadSet { get; set; }
-        public virtual DbSet<Funcion> FuncionSet { get; set; }
-        public virtual DbSet<OrganizacionEstructura> OrganizacionEstructuraSet { get; set; }
-        public virtual DbSet<OrganizacionUbicacion> OrganizacionUbicacionSet { get; set; }
-        public virtual DbSet<Cronograma> Empleado_Guardia { get; set; }
+        public virtual DbSet<Especialidad> Especialidad { get; set; }
+        public virtual DbSet<Funcion> Funcion { get; set; }
+        public virtual DbSet<OrganizacionEstructura> OrganizacionEstructura { get; set; }
+        public virtual DbSet<OrganizacionUbicacion> OrganizacionUbicacion { get; set; }
+        public virtual DbSet<Cronograma> Cronograma { get; set; }
         public virtual DbSet<Falla> Falla { get; set; }
         public virtual DbSet<FallaTarea> FallaTarea { get; set; }
         public virtual DbSet<Sintomas> Sintomas { get; set; }

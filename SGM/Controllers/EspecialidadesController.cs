@@ -17,7 +17,7 @@ namespace SGM.Controllers
         // GET: Especialidades
         public ActionResult Index()
         {
-            return View(db.EspecialidadSet.ToList());
+            return View(db.Especialidad.ToList());
         }
 
         // GET: Especialidades/Details/5
@@ -27,7 +27,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            Especialidad especialidad = db.Especialidad.Find(id);
             if (especialidad == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace SGM.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.EspecialidadSet.Add(especialidad);
+                db.Especialidad.Add(especialidad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            Especialidad especialidad = db.Especialidad.Find(id);
             if (especialidad == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Especialidad especialidad = db.EspecialidadSet.Find(id);
+            Especialidad especialidad = db.Especialidad.Find(id);
             if (especialidad == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Especialidad especialidad = db.EspecialidadSet.Find(id);
-            db.EspecialidadSet.Remove(especialidad);
+            Especialidad especialidad = db.Especialidad.Find(id);
+            db.Especialidad.Remove(especialidad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,7 +17,7 @@ namespace SGM.Controllers
         // GET: Funciones
         public ActionResult Index()
         {
-            var funcionSet = db.FuncionSet.Include(f => f.Especialidad);
+            var funcionSet = db.Funcion.Include(f => f.Especialidad);
             return View(funcionSet.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Funcion funcion = db.FuncionSet.Find(id);
+            Funcion funcion = db.Funcion.Find(id);
             if (funcion == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace SGM.Controllers
         // GET: Funciones/Create
         public ActionResult Create()
         {
-            ViewBag.EspecialidadId = new SelectList(db.EspecialidadSet, "especialidad_id", "nombre");
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "especialidad_id", "nombre");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace SGM.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.FuncionSet.Add(funcion);
+                db.Funcion.Add(funcion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EspecialidadId = new SelectList(db.EspecialidadSet, "especialidad_id", "nombre", funcion.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "especialidad_id", "nombre", funcion.EspecialidadId);
             return View(funcion);
         }
 
@@ -68,12 +68,12 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Funcion funcion = db.FuncionSet.Find(id);
+            Funcion funcion = db.Funcion.Find(id);
             if (funcion == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EspecialidadId = new SelectList(db.EspecialidadSet, "especialidad_id", "nombre", funcion.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "especialidad_id", "nombre", funcion.EspecialidadId);
             return View(funcion);
         }
 
@@ -90,7 +90,7 @@ namespace SGM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EspecialidadId = new SelectList(db.EspecialidadSet, "especialidad_id", "nombre", funcion.EspecialidadId);
+            ViewBag.EspecialidadId = new SelectList(db.Especialidad, "especialidad_id", "nombre", funcion.EspecialidadId);
             return View(funcion);
         }
 
@@ -101,7 +101,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Funcion funcion = db.FuncionSet.Find(id);
+            Funcion funcion = db.Funcion.Find(id);
             if (funcion == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Funcion funcion = db.FuncionSet.Find(id);
-            db.FuncionSet.Remove(funcion);
+            Funcion funcion = db.Funcion.Find(id);
+            db.Funcion.Remove(funcion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

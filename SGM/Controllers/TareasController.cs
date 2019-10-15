@@ -39,9 +39,9 @@ namespace SGM.Controllers
         // GET: Tareas/Create
         public ActionResult Create()
         {
-            ViewBag.CronogramaId = new SelectList(db.Empleado_Guardia, "Id", "observaciones");
+            ViewBag.CronogramaId = new SelectList(db.Cronograma, "Id", "observaciones");
             ViewBag.Equipo_equipo_id = new SelectList(db.Equipo, "equipo_id", "nombre");
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre");
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre");
             return View();
         }
 
@@ -59,9 +59,9 @@ namespace SGM.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CronogramaId = new SelectList(db.Empleado_Guardia, "Id", "observaciones", tarea.CronogramaId);
+            ViewBag.CronogramaId = new SelectList(db.Cronograma, "Id", "observaciones", tarea.CronogramaId);
             ViewBag.Equipo_equipo_id = new SelectList(db.Equipo, "equipo_id", "nombre", tarea.Equipo_equipo_id);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", tarea.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", tarea.OrganizacionUbicacionId);
             return View(tarea);
         }
 
@@ -77,9 +77,9 @@ namespace SGM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CronogramaId = new SelectList(db.Empleado_Guardia, "Id", "observaciones", tarea.CronogramaId);
+            ViewBag.CronogramaId = new SelectList(db.Cronograma, "Id", "observaciones", tarea.CronogramaId);
             ViewBag.Equipo_equipo_id = new SelectList(db.Equipo, "equipo_id", "nombre", tarea.Equipo_equipo_id);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", tarea.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", tarea.OrganizacionUbicacionId);
             return View(tarea);
         }
 
@@ -96,9 +96,9 @@ namespace SGM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CronogramaId = new SelectList(db.Empleado_Guardia, "Id", "observaciones", tarea.CronogramaId);
+            ViewBag.CronogramaId = new SelectList(db.Cronograma, "Id", "observaciones", tarea.CronogramaId);
             ViewBag.Equipo_equipo_id = new SelectList(db.Equipo, "equipo_id", "nombre", tarea.Equipo_equipo_id);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", tarea.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", tarea.OrganizacionUbicacionId);
             return View(tarea);
         }
 

@@ -39,7 +39,7 @@ namespace SGM.Controllers
         // GET: Equipos/Create
         public ActionResult Create()
         {
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre");
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "equipo_id,nombre,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
+        public ActionResult Create([Bind(Include = "equipo_id,nombre,descripcion,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace SGM.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", equipo.OrganizacionUbicacionId);
             return View(equipo);
         }
 
@@ -73,7 +73,7 @@ namespace SGM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", equipo.OrganizacionUbicacionId);
             return View(equipo);
         }
 
@@ -82,7 +82,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "equipo_id,nombre,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
+        public ActionResult Edit([Bind(Include = "equipo_id,nombre,descripcion,estado_equipo,fabricante,marca,modelo,numero_parte,numero_serie,inicioOperacion,finOperacion,esCritico,OrganizacionUbicacionId")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace SGM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", equipo.OrganizacionUbicacionId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", equipo.OrganizacionUbicacionId);
             return View(equipo);
         }
 

@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dcafceb8d9ec4cb8b69ff0fbbfe40457" Name="Diagram1" ZoomLevel="68">
-        <EntityTypeShape EntityType="BDSGMModel.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Empresa" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Equipo" Width="1.5" PointX="7" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Guardia" Width="1.5" PointX="9.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Tarea" Width="1.5" PointX="7" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Empleado" Width="1.75" PointX="3.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Empresa" Width="1.5" PointX="1.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Equipo" Width="1.75" PointX="6.375" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Guardia" Width="1.5" PointX="9.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDSGMModel.Tarea" Width="1.75" PointX="6.375" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="BDSGMModel.FK_Empleado_Empresa" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BDSGMModel.Recurso" Width="1.5" PointX="12.125" PointY="11.125" />
         <EntityTypeShape EntityType="BDSGMModel.RecursoTarea" Width="1.5" PointX="12.125" PointY="8.375" />
@@ -17,16 +17,16 @@
         <EntityTypeShape EntityType="BDSGMModel.Funcion" Width="1.5" PointX="1.125" PointY="4.25" />
         <AssociationConnector Association="BDSGMModel.EspecialidadFuncion" />
         <AssociationConnector Association="BDSGMModel.FuncionEmpleado" />
-        <EntityTypeShape EntityType="BDSGMModel.OrganizacionEstructura" Width="1.875" PointX="0.75" PointY="10.125" />
-        <EntityTypeShape EntityType="BDSGMModel.OrganizacionUbicacion" Width="2" PointX="3.75" PointY="9.625" />
+        <EntityTypeShape EntityType="BDSGMModel.OrganizacionEstructura" Width="1.5" PointX="1.125" PointY="10.125" />
+        <EntityTypeShape EntityType="BDSGMModel.OrganizacionUbicacion" Width="2" PointX="3.625" PointY="9.5" />
         <AssociationConnector Association="BDSGMModel.OrganizacionEstructuraOrganizacionUbicacion" />
         <AssociationConnector Association="BDSGMModel.OrgUbicOrgUbic" ManuallyRouted="false" >
         </AssociationConnector>
         <AssociationConnector Association="BDSGMModel.OrganizacionUbicacionEquipo" />
         <EntityTypeShape EntityType="BDSGMModel.EmpleadoGuardia" Width="1.5" PointX="10.625" PointY="6.375" />
-        <EntityTypeShape EntityType="BDSGMModel.Cronograma" Width="1.875" PointX="6" PointY="1.375" />
-        <AssociationConnector Association="BDSGMModel.EmpleadoEmpleado_Guardia" />
-        <AssociationConnector Association="BDSGMModel.GuardiaEmpleado_Guardia" />
+        <EntityTypeShape EntityType="BDSGMModel.Cronograma" Width="1.875" PointX="6.25" PointY="1" />
+        <AssociationConnector Association="BDSGMModel.EmpleadoCronograma" />
+        <AssociationConnector Association="BDSGMModel.GuardiaCronograma" />
         <AssociationConnector Association="BDSGMModel.CronogramaTarea" />
         <AssociationConnector Association="BDSGMModel.EquipoTarea" />
         <AssociationConnector Association="BDSGMModel.OrganizacionUbicacionTarea" />

@@ -17,7 +17,7 @@ namespace SGM.Controllers
         // GET: OrganizacionUbicaciones
         public ActionResult Index()
         {
-            var organizacionUbicacionSet = db.OrganizacionUbicacionSet.Include(o => o.OrganizacionEstructura).Include(o => o.OrganizacionUbicacion2);
+            var organizacionUbicacionSet = db.OrganizacionUbicacion.Include(o => o.OrganizacionEstructura).Include(o => o.OrganizacionUbicacion2);
             return View(organizacionUbicacionSet.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacionSet.Find(id);
+            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacion.Find(id);
             if (organizacionUbicacion == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace SGM.Controllers
         // GET: OrganizacionUbicaciones/Create
         public ActionResult Create()
         {
-            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructuraSet, "Id", "nivel_nombre");
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre");
+            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructura, "Id", "nivel_nombre");
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace SGM.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.OrganizacionUbicacionSet.Add(organizacionUbicacion);
+                db.OrganizacionUbicacion.Add(organizacionUbicacion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructuraSet, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
+            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructura, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
             return View(organizacionUbicacion);
         }
 
@@ -70,13 +70,13 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacionSet.Find(id);
+            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacion.Find(id);
             if (organizacionUbicacion == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructuraSet, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
+            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructura, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
             return View(organizacionUbicacion);
         }
 
@@ -93,8 +93,8 @@ namespace SGM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructuraSet, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
-            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacionSet, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
+            ViewBag.OrganizacionEstructuraId = new SelectList(db.OrganizacionEstructura, "Id", "nivel_nombre", organizacionUbicacion.OrganizacionEstructuraId);
+            ViewBag.OrganizacionUbicacionId = new SelectList(db.OrganizacionUbicacion, "Id", "nombre", organizacionUbicacion.OrganizacionUbicacionId);
             return View(organizacionUbicacion);
         }
 
@@ -105,7 +105,7 @@ namespace SGM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacionSet.Find(id);
+            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacion.Find(id);
             if (organizacionUbicacion == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacionSet.Find(id);
-            db.OrganizacionUbicacionSet.Remove(organizacionUbicacion);
+            OrganizacionUbicacion organizacionUbicacion = db.OrganizacionUbicacion.Find(id);
+            db.OrganizacionUbicacion.Remove(organizacionUbicacion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
