@@ -11,9 +11,7 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Equipo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,46 +19,15 @@ namespace SGM.Models
         {
             this.Tarea = new HashSet<Tarea>();
         }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Key]
+    
         public int equipo_id { get; set; }
-
-        [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "El nombre debe tener una longitud menor de 20 caracteres")]
-        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-
-        [Required(ErrorMessage = "El estado es requerido")]
-        [StringLength(10, MinimumLength = 3, ErrorMessage = "El estado debe tener una longitud menor de 10 caracteres")]
-        [Display(Name = " Estado actual")]
         public string estadoActual { get; set; }
-
-        [Required(ErrorMessage = "La marca es requerido")]
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "La marca debe tener una longitud menor de 15 caracteres")]
-        [Display(Name = "Marca")]
         public string marca { get; set; }
-
-        [Required(ErrorMessage = "El modelo es requerido")]
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "El nombre debe tener una longitud menor de 15 caracteres")]
-        [Display(Name = "Modelo")]
         public string modelo { get; set; }
-
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "El numero de serie debe tener una longitud menor de 20 caracteres")]
-        [Display(Name = "Numero Serie")]
         public string numeroSerie { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha Inicio Oper")]
         public System.DateTime inicioOperacion { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha Fin Oper")]
         public Nullable<System.DateTime> finOperacion { get; set; }
-
-        [Display(Name = "Es Critico")]
         public bool esCritico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

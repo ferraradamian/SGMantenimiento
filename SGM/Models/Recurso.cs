@@ -11,9 +11,7 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Recurso
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,23 +19,10 @@ namespace SGM.Models
         {
             this.Recurso_DetalleTarea = new HashSet<Recurso_DetalleTarea>();
         }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Key]
+    
         public int recurso_id { get; set; }
-
-        [Required(ErrorMessage = "El Stock es requerido")]
-        [Display(Name = "Stock")]
         public double cantidadStock { get; set; }
-
-        [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "El Nombre debe tener una longitud menor de 50 caracteres")]
-        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-
-        [Required(ErrorMessage = "La marca es requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "La marca debe tener una longitud menor de 20 caracteres")]
-        [Display(Name = "Marca")]
         public string marca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,9 +11,7 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,28 +20,12 @@ namespace SGM.Models
             this.Guardia = new HashSet<Guardia>();
             this.Detalle_Tarea = new HashSet<Detalle_Tarea>();
         }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Key]
+    
         public int empleado_id { get; set; }
         public int empresa_id { get; set; }
-
-        [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "El nombre debe tener una longitud menor de 20 caracteres")]
-        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-
-        [Required(ErrorMessage = "El Apellido es requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "El Apellido debe tener una longitud menor de 20 caracteres")]
-        [Display(Name = "Apellido")]
         public string apellido { get; set; }
-
-        [StringLength(10, MinimumLength = 5, ErrorMessage = "El telefono debe tener una longitud menor o igual de 10 caracteres")]
-        [Display(Name = "Telefono")]
         public string telefono { get; set; }
-
-        [StringLength(20, MinimumLength = 5, ErrorMessage = "La funcion debe tener una longitud menor o igual de 20 caracteres")]
-        [Display(Name = "Funcion")]
         public string funcion { get; set; }
     
         public virtual Empresa Empresa { get; set; }
