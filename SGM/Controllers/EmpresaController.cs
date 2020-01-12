@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SGM.Models;
+using SGM.Models.ViewsModel;
 
 namespace SGM.Controllers
 {
@@ -16,7 +17,7 @@ namespace SGM.Controllers
 
         // GET: Empresa
         public ActionResult Index()
-        {
+        { 
             return View(db.Empresa.ToList());
         }
 
@@ -46,12 +47,13 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "empresa_id,nombre,telefono,email")] Empresa empresa)
+        public ActionResult Create([Bind(Include = "nombre,telefono,email")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
                 db.Empresa.Add(empresa);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

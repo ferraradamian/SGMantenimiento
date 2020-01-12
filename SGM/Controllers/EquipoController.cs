@@ -46,7 +46,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "equipo_id,nombre,estadoActual,marca,modelo,numeroSerie,inicioOperacion,finOperacion,esCritico")] Equipo equipo)
+        public ActionResult Create([Bind(Include = "nombre,estadoActual,marca,modelo,numeroSerie,inicioOperacion,finOperacion,esCritico")] Equipo equipo)
         {
             if (ModelState.IsValid)
             {

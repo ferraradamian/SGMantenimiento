@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SGM.Models.Recurso>
 
 @{
-    ViewBag.Title = "Recurso";
+    ViewBag.Title = "Index";
 }
 
-<h2>Recurso</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo recurso", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costo)
         </th>
         <th></th>
     </tr>
@@ -35,9 +38,12 @@
             @Html.DisplayFor(modelItem => item.marca)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.recurso_id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.recurso_id }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.recurso_id })
+            @Html.DisplayFor(modelItem => item.costo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.recurso_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.recurso_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.recurso_id })
         </td>
     </tr>
 }

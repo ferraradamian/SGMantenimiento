@@ -23,29 +23,34 @@
         <th>
             @Html.DisplayNameFor(model => model.horaFin)
         </th>
+        @Html.DisplayNameFor(model => model.Empleado)
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.coodinador_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.horaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.horaFin)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.guardia_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.guardia_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.guardia_id })
-        </td>
-    </tr>
-}
-
-</table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.coodinador_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horaFin)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.guardia_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.guardia_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.guardia_id })
+            </td>
+        </tr>
+        foreach (var pp in item.Empleado)
+        {
+            @Html.DisplayFor(modelItemPP => pp.nombre)
+        }
+    }
+    </table>

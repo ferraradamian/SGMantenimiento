@@ -39,7 +39,7 @@ namespace SGM.Controllers
         // GET: Detalle_Tarea/Create
         public ActionResult Create()
         {
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "estado");
+            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad")] Detalle_Tarea detalle_Tarea)
+        public ActionResult Create([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad,costo,duracion,estado")] Detalle_Tarea detalle_Tarea)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace SGM.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "estado", detalle_Tarea.tarea_id);
+            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
             return View(detalle_Tarea);
         }
 
@@ -73,7 +73,7 @@ namespace SGM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "estado", detalle_Tarea.tarea_id);
+            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
             return View(detalle_Tarea);
         }
 
@@ -82,7 +82,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad")] Detalle_Tarea detalle_Tarea)
+        public ActionResult Edit([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad,costo,duracion,estado")] Detalle_Tarea detalle_Tarea)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace SGM.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "estado", detalle_Tarea.tarea_id);
+            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
             return View(detalle_Tarea);
         }
 

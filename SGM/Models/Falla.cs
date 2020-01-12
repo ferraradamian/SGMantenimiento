@@ -12,28 +12,22 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipo
+    public partial class Falla
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipo()
+        public Falla()
         {
-            this.Tarea = new HashSet<Tarea>();
-            this.Falla = new HashSet<Falla>();
+            this.Equipo = new HashSet<Equipo>();
         }
     
-        public int equipo_id { get; set; }
-        public string nombre { get; set; }
-        public string estadoActual { get; set; }
-        public string marca { get; set; }
-        public string modelo { get; set; }
-        public string numeroSerie { get; set; }
-        public System.DateTime inicioOperacion { get; set; }
-        public Nullable<System.DateTime> finOperacion { get; set; }
-        public bool esCritico { get; set; }
+        public int falla_id { get; set; }
+        public string descripcion { get; set; }
+        public string causa { get; set; }
+        public System.DateTime fecha { get; set; }
+        public string estado { get; set; }
+        public string costo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarea> Tarea { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Falla> Falla { get; set; }
+        public virtual ICollection<Equipo> Equipo { get; set; }
     }
 }

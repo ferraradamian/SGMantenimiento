@@ -23,17 +23,16 @@ namespace SGM.Models
     
         public int tarea_id { get; set; }
         public int guardia_id { get; set; }
-        public string estado { get; set; }
-        public double costo { get; set; }
         public string descripcion { get; set; }
-        public string ubucacion { get; set; }
         public string nombre { get; set; }
         public string fecha { get; set; }
+        public string tipo_matenimiento { get; set; }
+        public string repetir_cada { get; set; }
     
-        public virtual Guardia Guardia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_Tarea> Detalle_Tarea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipo> Equipo { get; set; }
+        public virtual Guardia Guardia { get; set; }
     }
 }

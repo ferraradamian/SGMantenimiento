@@ -25,13 +25,14 @@ namespace SGM.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Detalle_Tarea> Detalle_Tarea { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Equipo> Equipo { get; set; }
-        public virtual DbSet<Guardia> Guardia { get; set; }
-        public virtual DbSet<Tarea> Tarea { get; set; }
-        public virtual DbSet<Detalle_Tarea> Detalle_Tarea { get; set; }
+        public virtual DbSet<Falla> Falla { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<Recurso_DetalleTarea> Recurso_DetalleTarea { get; set; }
+        public virtual DbSet<Tarea> Tarea { get; set; }
+        public virtual DbSet<Guardia> Guardia { get; set; }
     }
 }

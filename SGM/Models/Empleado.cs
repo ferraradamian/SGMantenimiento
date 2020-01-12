@@ -17,8 +17,8 @@ namespace SGM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
-            this.Guardia = new HashSet<Guardia>();
             this.Detalle_Tarea = new HashSet<Detalle_Tarea>();
+            this.Guardia = new HashSet<Guardia>();
         }
     
         public int empleado_id { get; set; }
@@ -30,8 +30,8 @@ namespace SGM.Models
     
         public virtual Empresa Empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Guardia> Guardia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_Tarea> Detalle_Tarea { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Guardia> Guardia { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "tarea_id,guardia_id,tiempoDuracion,estado,planta,costo,descripcion")] Tarea tarea)
+        public ActionResult Create([Bind(Include = "tarea_id,guardia_id,descripcion,nombre,fecha,tipo_matenimiento,repetir_cada")] Tarea tarea)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "tarea_id,guardia_id,tiempoDuracion,estado,planta,costo,descripcion")] Tarea tarea)
+        public ActionResult Edit([Bind(Include = "tarea_id,guardia_id,descripcion,nombre,fecha,tipo_matenimiento,repetir_cada")] Tarea tarea)
         {
             if (ModelState.IsValid)
             {

@@ -26,6 +26,9 @@ namespace SGM.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public Nullable<double> cantidad { get; set; }
+        public string costo { get; set; }
+        public string duracion { get; set; }
+        public string estado { get; set; }
     
         public virtual Tarea Tarea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

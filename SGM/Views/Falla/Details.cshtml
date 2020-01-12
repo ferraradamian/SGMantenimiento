@@ -1,4 +1,4 @@
-﻿@model SGM.Models.Tarea
+﻿@model SGM.Models.Falla
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Tarea</h4>
+    <h4>Falla</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.causa)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.nombre)
+            @Html.DisplayFor(model => model.causa)
         </dd>
 
         <dt>
@@ -35,32 +35,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_matenimiento)
+            @Html.DisplayNameFor(model => model.estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tipo_matenimiento)
+            @Html.DisplayFor(model => model.estado)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.repetir_cada)
+            @Html.DisplayNameFor(model => model.costo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.repetir_cada)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Guardia.guardia_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Guardia.guardia_id)
+            @Html.DisplayFor(model => model.costo)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.tarea_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.falla_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

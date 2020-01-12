@@ -4,23 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dcafceb8d9ec4cb8b69ff0fbbfe40457" Name="Diagram1">
-        <EntityTypeShape EntityType="BDSGMModel.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Empresa" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Equipo" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Guardia" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSGMModel.Tarea" Width="1.5" PointX="7.625" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="BDSGMModel.FK_Empleado_Empresa" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSGMModel.FK_Tarea_Guardia" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSGMModel.Guardia_Empeado" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BDSGMModel.Detalle_Tarea" Width="1.5" PointX="9.75" PointY="2.25" />
-        <EntityTypeShape EntityType="BDSGMModel.Recurso" Width="1.5" PointX="13.375" PointY="5.25" />
-        <EntityTypeShape EntityType="BDSGMModel.Recurso_DetalleTarea" Width="1.5" PointX="12.125" PointY="2.5" />
+      <Diagram DiagramId="723da6adf5074ebcb8a7169d17e789c7" Name="Diagram1">
+        <EntityTypeShape EntityType="BDSGMModel.Detalle_Tarea" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="BDSGMModel.Empleado" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="BDSGMModel.Empresa" Width="1.5" PointX="8.25" PointY="1.875" />
+        <EntityTypeShape EntityType="BDSGMModel.Equipo" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="BDSGMModel.Falla" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="BDSGMModel.Recurso" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="BDSGMModel.Recurso_DetalleTarea" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="BDSGMModel.Tarea" Width="1.5" PointX="3" PointY="4.375" />
         <AssociationConnector Association="BDSGMModel.FK_Detalle_Tarea_Tarea" />
         <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" />
+        <AssociationConnector Association="BDSGMModel.FK_Empleado_Empresa" />
         <AssociationConnector Association="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" />
         <AssociationConnector Association="BDSGMModel.Empleado_DetalleTarea" />
         <AssociationConnector Association="BDSGMModel.EquipoTarea" />
+        <AssociationConnector Association="BDSGMModel.FallaEquipo" />
+        <EntityTypeShape EntityType="BDSGMModel.Guardia" Width="1.5" PointX="12.75" PointY="4.75" />
+        <AssociationConnector Association="BDSGMModel.FK_Tarea_Guardia" />
+        <AssociationConnector Association="BDSGMModel.Guardia_Empeado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

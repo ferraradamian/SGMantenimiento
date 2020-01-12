@@ -10,109 +10,107 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class GuardiasController : Controller
+    public class FallaController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Guardias
+        // GET: Falla
         public ActionResult Index()
         {
-            return View(db.Guardia.ToList());
+            return View(db.Falla.ToList());
         }
 
-        // GET: Guardias/Details/5
+        // GET: Falla/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Falla falla = db.Falla.Find(id);
+            if (falla == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(falla);
         }
 
-        // GET: Guardias/Create
+        // GET: Falla/Create
         public ActionResult Create()
         {
-            ViewBag.empleado_id = new SelectList(db.Empleado, "empleado_id", "nombre");
             return View();
         }
 
-        // POST: Guardias/Create
+        // POST: Falla/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guardia_id,coodinador_id,fecha,horaInicio,horaFin")] Guardia guardia, int empleado_id)
+        public ActionResult Create([Bind(Include = "falla_id,descripcion,causa,fecha,estado,costo")] Falla falla)
         {
             if (ModelState.IsValid)
             {
-                guardia.coodinador_id = empleado_id;
-                db.Guardia.Add(guardia);
+                db.Falla.Add(falla);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardia);
+            return View(falla);
         }
 
-        // GET: Guardias/Edit/5
+        // GET: Falla/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Falla falla = db.Falla.Find(id);
+            if (falla == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(falla);
         }
 
-        // POST: Guardias/Edit/5
+        // POST: Falla/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,coodinador_id,fecha,horaInicio,horaFin")] Guardia guardia)
+        public ActionResult Edit([Bind(Include = "falla_id,descripcion,causa,fecha,estado,costo")] Falla falla)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                db.Entry(falla).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(falla);
         }
 
-        // GET: Guardias/Delete/5
+        // GET: Falla/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardia guardia = db.Guardia.Find(id);
-            if (guardia == null)
+            Falla falla = db.Falla.Find(id);
+            if (falla == null)
             {
                 return HttpNotFound();
             }
-            return View(guardia);
+            return View(falla);
         }
 
-        // POST: Guardias/Delete/5
+        // POST: Falla/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Guardia guardia = db.Guardia.Find(id);
-            db.Guardia.Remove(guardia);
+            Falla falla = db.Falla.Find(id);
+            db.Falla.Remove(falla);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

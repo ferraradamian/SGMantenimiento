@@ -46,7 +46,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "recurso_id,cantidadStock,nombre,marca")] Recurso recurso)
+        public ActionResult Create([Bind(Include = "recurso_id,cantidadStock,nombre,marca,costo")] Recurso recurso)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "recurso_id,cantidadStock,nombre,marca")] Recurso recurso)
+        public ActionResult Edit([Bind(Include = "recurso_id,cantidadStock,nombre,marca,costo")] Recurso recurso)
         {
             if (ModelState.IsValid)
             {

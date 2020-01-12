@@ -21,7 +21,16 @@
             @Html.DisplayNameFor(model => model.cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tarea.estado)
+            @Html.DisplayNameFor(model => model.costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarea.descripcion)
         </th>
         <th></th>
     </tr>
@@ -38,7 +47,16 @@
             @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tarea.estado)
+            @Html.DisplayFor(modelItem => item.costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarea.descripcion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.detalleTarea_id }) |

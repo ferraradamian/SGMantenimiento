@@ -12,16 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ubucacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_matenimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.repetir_cada)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Guardia.guardia_id)
@@ -32,16 +35,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ubucacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costo)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_matenimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.repetir_cada)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Guardia.guardia_id)
