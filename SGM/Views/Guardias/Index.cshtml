@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SGM.Models.Guardia>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Guardia";
 }
 
-<h2>Index</h2>
+<h2>Guardia</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Guardia", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,7 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.horaFin)
         </th>
-        @Html.DisplayNameFor(model => model.Empleado)
         <th></th>
     </tr>
 
@@ -43,14 +42,10 @@
                 @Html.DisplayFor(modelItem => item.horaFin)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.guardia_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.guardia_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.guardia_id })
+                @Html.ActionLink("Editar", "Edit", new { id = item.guardia_id }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.guardia_id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.guardia_id })
             </td>
         </tr>
-        foreach (var pp in item.Empleado)
-        {
-            @Html.DisplayFor(modelItemPP => pp.nombre)
-        }
     }
     </table>

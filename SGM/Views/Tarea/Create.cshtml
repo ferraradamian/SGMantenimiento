@@ -1,88 +1,182 @@
-﻿@model SGM.Models.Tarea
+﻿@model SGM.Models.ViewsModel.TareaViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Tarea";
+    int id = 0;
 }
 
-<h2>Create</h2>
+<h2>Crear</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Tarea</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.tarea_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tarea_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tarea_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.guardia_id, "guardia_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("guardia_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.guardia_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipo_matenimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipo_matenimiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipo_matenimiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.repetir_cada, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.repetir_cada, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.repetir_cada, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    <h4>Tarea</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+ 
+    <div class="form-group">
+        @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cantidad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.costo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.costo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.costo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.duracion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.duracion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.duracion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="agregarEquipo">
+        <h4>Agregar Equipo</h4>
+        <input id="inputFilterEQ" type="text" placeholder="Nombre" />
+        <button type="button" id="btnBuscarEQ" class="btn-primary"> Buscar Equipo</button>
+        <br />
+        <table id="tableTareas" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].estadoActual)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].numeroSerie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].inicioOperacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectEquipos[0].finOperacion)
+                </th>
+                <th>Seleccionar</th>
+            </tr>
+
+
+            @foreach (var SalectEmpleados in Model.SelectEquipos)
+            {
+                <tr>
+                    @Html.HiddenFor(model => model.SelectEquipos[id].equipo_id)
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].estadoActual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].numeroSerie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].inicioOperacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.SelectEquipos[id].finOperacion)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(model => model.SelectEquipos[id].esSelect)
+                    </td>
+                </tr>
+                id++;
+            }
+        </table>
+        <button class="btn-secondary"> @Html.ActionLink("Agregar nuevo Equipo", "Create", "Equipo")</button>
+        <hr />
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-success" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a tareas", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+
+       function filtrarEquipo() {
+            var input, filter, table, tr, td, i, j, visible;
+            input = document.getElementById("inputFilterEQ");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tableTareas");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                visible = false;
+                td = tr[i].getElementsByTagName("td");
+                if (td[0].innerText.toUpperCase().indexOf(filter) > -1) {
+                    visible = true;
+                }
+                if (visible === true) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+       function stopRKey(evt) {
+            var evt = (evt) ? evt : ((event) ? event : null);
+            var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+            if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+        }
+
+    document.onkeypress = stopRKey;
+    document.getElementById("btnBuscarEQ").addEventListener('click', filtrarEquipo, false);
+
+</script>

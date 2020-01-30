@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SGM.Models.Tarea>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tarea";
 }
 
-<h2>Index</h2>
+<h2>Tarea</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,22 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tipo_matenimiento)
+            @Html.DisplayNameFor(model => model.cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.repetir_cada)
+            @Html.DisplayNameFor(model => model.costo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Guardia.guardia_id)
+            @Html.DisplayNameFor(model => model.duracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
         </th>
         <th></th>
     </tr>
@@ -35,27 +35,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha)
+            @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tipo_matenimiento)
+            @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.repetir_cada)
+            @Html.DisplayFor(modelItem => item.costo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Guardia.guardia_id)
+            @Html.DisplayFor(modelItem => item.duracion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.tarea_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.tarea_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.tarea_id })
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.tarea_id }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.tarea_id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.tarea_id })
         </td>
     </tr>
 }

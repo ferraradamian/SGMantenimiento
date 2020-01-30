@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SGM.Models.Falla>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Falla";
 }
 
-<h2>Index</h2>
+<h2>Falla</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nueva Falla", "Create")
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.costo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.falla_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.falla_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.falla_id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.falla_id }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.falla_id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.falla_id })
         </td>
     </tr>
 }

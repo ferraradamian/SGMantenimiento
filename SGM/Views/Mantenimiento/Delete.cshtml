@@ -1,4 +1,4 @@
-﻿@model SGM.Models.Empleado
+﻿@model SGM.Models.Mantenimeinto
 
 @{
     ViewBag.Title = "Eliminar";
@@ -6,9 +6,9 @@
 
 <h2>Eliminar</h2>
 
-<h3>¿Esta seguro de eliminar este Empleado?</h3>
+<h3>¿Esta seguro de eliminar este mantenimiento?</h3>
 <div>
-    <h4>Empleado</h4>
+    <h4>Mantenimiento</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,35 +20,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido)
+            @Html.DisplayNameFor(model => model.descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.apellido)
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.telefono)
+            @Html.DisplayNameFor(model => model.fecha)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.telefono)
+            @Html.DisplayFor(model => model.fecha)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.funcion)
+            @Html.DisplayNameFor(model => model.tipo_matenimiento)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.funcion)
+            @Html.DisplayFor(model => model.tipo_matenimiento)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Empresa.nombre)
+            @Html.DisplayNameFor(model => model.repetir_cada)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Empresa.nombre)
+            @Html.DisplayFor(model => model.repetir_cada)
         </dd>
 
     </dl>
@@ -58,7 +58,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Eliminar" class="btn btn-default" /> |
-            @Html.ActionLink("Volver a empleados", "Index")
+            @Html.ActionLink("Volver a Mantenimientos", "Index")
         </div>
     }
 </div>

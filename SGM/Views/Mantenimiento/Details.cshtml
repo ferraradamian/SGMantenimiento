@@ -1,21 +1,29 @@
-﻿@model SGM.Models.Guardia
+﻿@model SGM.Models.Mantenimeinto
 
 @{
-    ViewBag.Title = "Detalle guardia";
+    ViewBag.Title = "Detalle";
 }
 
-<h2>Detalle guardia</h2>
+<h2>Detalle</h2>
 
 <div>
-    <h4>Guardia</h4>
+    <h4>Manteniemiento</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.coodinador_id)
+            @Html.DisplayNameFor(model => model.nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.coodinador_id)
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
         <dt>
@@ -27,29 +35,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.horaInicio)
+            @Html.DisplayNameFor(model => model.tipo_matenimiento)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.horaInicio)
+            @Html.DisplayFor(model => model.tipo_matenimiento)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.horaFin)
+            @Html.DisplayNameFor(model => model.repetir_cada)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.horaFin)
+            @Html.DisplayFor(model => model.repetir_cada)
         </dd>
+
     </dl>
 </div>
 <hr />
 <div>
-    <h4>Empleados asignados a la guardia </h4>
+    <h4>Empleados asignados al Mantenimiento </h4>
     @foreach (var item in Model.Empleado)
-    {        
+    {
         <dl class="dl-horizontal">
-            
+
             <dt>
                 @Html.DisplayNameFor(model => item.apellido)
             </dt>
@@ -66,7 +75,7 @@
                 @Html.DisplayFor(model => item.nombre)
             </dd>
 
-           <dt>
+            <dt>
                 @Html.DisplayNameFor(model => item.telefono)
             </dt>
 
@@ -74,19 +83,19 @@
                 @Html.DisplayFor(model => item.telefono)
             </dd>
 
-            <dt >
+            <dt>
                 @Html.DisplayNameFor(model => item.funcion)
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => item.funcion)
-            </dd>            
-     </dl>
-     }
+            </dd>
+        </dl>
+    }
 </div>
 <hr />
 <div>
-    <h4>Tareas asignadas a la guardia </h4>
+    <h4>Tareas asignadas al Mantenimiento </h4>
     @foreach (var item in Model.Tarea)
     {
         <dl class="dl-horizontal">
@@ -139,9 +148,9 @@
                 @Html.DisplayFor(model => item.estado)
             </dd>
         </dl>
-      }
+    }
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.guardia_id }) |
-    @Html.ActionLink("Volver a Giardias", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.mantenimeinto_id }) |
+    @Html.ActionLink("Volver a Mantenimientos", "Index")
 </p>

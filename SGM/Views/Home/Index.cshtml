@@ -1,31 +1,44 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Pagina Inicio";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>SGM - Sistema de Gestión de Mantenimiento</h1>
+    <p class="lead">
+        Plataforma que permite planificar los mantenimientos preventivos a los diferentes
+        equipos e instalaciones permitiendo extender su vida útil, minimizar los tiempos de
+        indisponibilidad imprevistos y además poder recolectar los datos básicos de las tareas
+        desarrolladas en cada guardia, para su posterior análisis, búsqueda y actualización de
+        estadísticas.
+        Posibilidad de reunir en un único repositorio las novedades
+        junto con el personal que realizó la tarea, los tiempos de duración de las
+        intervenciones, los materiales utilizados y fundamentalmente es posible realizar un
+        relevamiento de los equipos actualmente instalados, sus características, tiempo de
+        funcionamiento, vida útil remanente, tiempo medio entre fallas (MTBF) y otros
+        parámetros útiles para la gestión del mantenimiento.
+        Trazabilidad de los mantenimientos realizados en cada
+        equipo o instalación, lo que permite detectar cuáles requieren un alto grado de
+        atención y cuáles son los repuestos y reparaciones más frecuentes, lo que ayudar a optimizar los recursos de mantenimiento.
+    </p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Ver más &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Guardias</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Administra todas las guardias desde aqui.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="~/Guardias">Ir a Guardias &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Tareas</h2>
+        <p>Visualizá todas las Tareas según su prioridad</p>
+        <p><a class="btn btn-default" href="~/Tarea">Ir a Tareas &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Novedades</h2>
+        <p>Con este módulo podrás cargar todas las novedades de las guardias.</p>
+        <p><a class="btn btn-default" href="~/Home">Ir a Novedades &raquo;</a></p>
     </div>
 </div>

@@ -11,22 +11,35 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Recurso
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Recurso()
         {
-            this.Recurso_DetalleTarea = new HashSet<Recurso_DetalleTarea>();
+            this.Recurso_Tarea = new HashSet<Recurso_Tarea>();
         }
     
         public int recurso_id { get; set; }
+        [Required]
+        [Display(Name = "Stock")]
         public double cantidadStock { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Marca")]
         public string marca { get; set; }
+        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Costo")]
         public double costo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recurso_DetalleTarea> Recurso_DetalleTarea { get; set; }
+        public virtual ICollection<Recurso_Tarea> Recurso_Tarea { get; set; }
     }
 }

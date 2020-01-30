@@ -1,10 +1,10 @@
 ﻿@model SGM.Models.Equipo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle Equipo";
 }
 
-<h2>Details</h2>
+<h2>Detalle Equipo</h2>
 
 <div>
     <h4>Equipo</h4>
@@ -75,8 +75,55 @@
         </dd>
 
     </dl>
+    <hr />
+    <h4>Fallas</h4>
+
+    @foreach (var item in Model.Falla)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.descripcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.descripcion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.causa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.causa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.fecha)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.fecha)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.estado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.estado)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.costo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.costo)
+            </dd>
+        </dl>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.equipo_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.equipo_id }) |
+    @Html.ActionLink("Volver a Equipos", "Index")
 </p>

@@ -10,112 +10,116 @@ using SGM.Models;
 
 namespace SGM.Controllers
 {
-    public class Detalle_TareaController : Controller
+    public class Recurso_TareaController : Controller
     {
         private BDSGMEntities db = new BDSGMEntities();
 
-        // GET: Detalle_Tarea
+        // GET: Recurso_Tarea
         public ActionResult Index()
         {
-            var detalle_Tarea = db.Detalle_Tarea.Include(d => d.Tarea);
-            return View(detalle_Tarea.ToList());
+            var recurso_Tarea = db.Recurso_Tarea.Include(r => r.Recurso).Include(r => r.Tarea);
+            return View(recurso_Tarea.ToList());
         }
 
-        // GET: Detalle_Tarea/Details/5
+        // GET: Recurso_Tarea/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Detalle_Tarea detalle_Tarea = db.Detalle_Tarea.Find(id);
-            if (detalle_Tarea == null)
+            Recurso_Tarea recurso_Tarea = db.Recurso_Tarea.Find(id);
+            if (recurso_Tarea == null)
             {
                 return HttpNotFound();
             }
-            return View(detalle_Tarea);
+            return View(recurso_Tarea);
         }
 
-        // GET: Detalle_Tarea/Create
+        // GET: Recurso_Tarea/Create
         public ActionResult Create()
         {
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion");
+            ViewBag.recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre");
+            ViewBag.Tarea_id = new SelectList(db.Tarea, "tarea_id", "nombre");
             return View();
         }
 
-        // POST: Detalle_Tarea/Create
+        // POST: Recurso_Tarea/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad,costo,duracion,estado")] Detalle_Tarea detalle_Tarea)
+        public ActionResult Create([Bind(Include = "Tarea_id,recurso_id,cantidadUsada")] Recurso_Tarea recurso_Tarea)
         {
             if (ModelState.IsValid)
             {
-                db.Detalle_Tarea.Add(detalle_Tarea);
+                db.Recurso_Tarea.Add(recurso_Tarea);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
-            return View(detalle_Tarea);
+            ViewBag.recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recurso_Tarea.recurso_id);
+            ViewBag.Tarea_id = new SelectList(db.Tarea, "tarea_id", "nombre", recurso_Tarea.Tarea_id);
+            return View(recurso_Tarea);
         }
 
-        // GET: Detalle_Tarea/Edit/5
+        // GET: Recurso_Tarea/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Detalle_Tarea detalle_Tarea = db.Detalle_Tarea.Find(id);
-            if (detalle_Tarea == null)
+            Recurso_Tarea recurso_Tarea = db.Recurso_Tarea.Find(id);
+            if (recurso_Tarea == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
-            return View(detalle_Tarea);
+            ViewBag.recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recurso_Tarea.recurso_id);
+            ViewBag.Tarea_id = new SelectList(db.Tarea, "tarea_id", "nombre", recurso_Tarea.Tarea_id);
+            return View(recurso_Tarea);
         }
 
-        // POST: Detalle_Tarea/Edit/5
+        // POST: Recurso_Tarea/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "detalleTarea_id,tarea_id,nombre,descripcion,cantidad,costo,duracion,estado")] Detalle_Tarea detalle_Tarea)
+        public ActionResult Edit([Bind(Include = "Tarea_id,recurso_id,cantidadUsada")] Recurso_Tarea recurso_Tarea)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detalle_Tarea).State = EntityState.Modified;
+                db.Entry(recurso_Tarea).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.tarea_id = new SelectList(db.Tarea, "tarea_id", "descripcion", detalle_Tarea.tarea_id);
-            return View(detalle_Tarea);
+            ViewBag.recurso_id = new SelectList(db.Recurso, "recurso_id", "nombre", recurso_Tarea.recurso_id);
+            ViewBag.Tarea_id = new SelectList(db.Tarea, "tarea_id", "nombre", recurso_Tarea.Tarea_id);
+            return View(recurso_Tarea);
         }
 
-        // GET: Detalle_Tarea/Delete/5
+        // GET: Recurso_Tarea/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Detalle_Tarea detalle_Tarea = db.Detalle_Tarea.Find(id);
-            if (detalle_Tarea == null)
+            Recurso_Tarea recurso_Tarea = db.Recurso_Tarea.Find(id);
+            if (recurso_Tarea == null)
             {
                 return HttpNotFound();
             }
-            return View(detalle_Tarea);
+            return View(recurso_Tarea);
         }
 
-        // POST: Detalle_Tarea/Delete/5
+        // POST: Recurso_Tarea/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Detalle_Tarea detalle_Tarea = db.Detalle_Tarea.Find(id);
-            db.Detalle_Tarea.Remove(detalle_Tarea);
+            Recurso_Tarea recurso_Tarea = db.Recurso_Tarea.Find(id);
+            db.Recurso_Tarea.Remove(recurso_Tarea);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

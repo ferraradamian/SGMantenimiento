@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SGM.Models;
+using SGM.Models.ViewsModel;
 
 namespace SGM.Controllers
 {
@@ -17,6 +18,7 @@ namespace SGM.Controllers
         // GET: Equipo
         public ActionResult Index()
         {
+
             return View(db.Equipo.ToList());
         }
 
@@ -38,7 +40,21 @@ namespace SGM.Controllers
         // GET: Equipo/Create
         public ActionResult Create()
         {
-            return View();
+            EquipoViewModel oEquipoViewModel = new EquipoViewModel();
+
+            oEquipoViewModel.SelectFallas = (from d in db.Falla
+                                             orderby d.descripcion
+                                             select new EquipoViewModel.SelectFalla
+                                             {
+                                                 falla_id = d.falla_id,
+                                                 descripcion = d.descripcion,
+                                                 causa = d.causa,
+                                                 fecha = d.fecha,
+                                                 estado = d.estado,
+                                                 costo = d.costo,
+                                                 esSelect = false
+                                             }).ToList();
+            return View(oEquipoViewModel);
         }
 
         // POST: Equipo/Create
@@ -46,16 +62,29 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "nombre,estadoActual,marca,modelo,numeroSerie,inicioOperacion,finOperacion,esCritico")] Equipo equipo)
+        public ActionResult Create(EquipoViewModel oEquipoViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Equipo.Add(equipo);
+                Equipo oEquipo = new Equipo();
+                oEquipo.nombre = oEquipoViewModel.nombre;
+                oEquipo.estadoActual = oEquipoViewModel.estadoActual;
+                oEquipo.marca = oEquipoViewModel.marca;
+                oEquipo.modelo = oEquipoViewModel.modelo;
+                oEquipo.numeroSerie = oEquipoViewModel.numeroSerie;
+                oEquipo.inicioOperacion = oEquipoViewModel.inicioOperacion;
+                oEquipo.finOperacion = oEquipoViewModel.finOperacion;
+                oEquipo.esCritico = oEquipoViewModel.esCritico;
+                foreach (var item in oEquipoViewModel.SelectFallas.Where(d => d.esSelect == true))
+                {
+                    oEquipo.Falla.Add(db.Falla.Find(item.falla_id));
+                }
+                db.Equipo.Add(oEquipo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(equipo);
+            return View(oEquipoViewModel);
         }
 
         // GET: Equipo/Edit/5

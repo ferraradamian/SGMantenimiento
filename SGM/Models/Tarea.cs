@@ -11,28 +11,52 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Tarea
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tarea()
         {
-            this.Detalle_Tarea = new HashSet<Detalle_Tarea>();
+            this.Recurso_Tarea = new HashSet<Recurso_Tarea>();
+            this.Guardia = new HashSet<Guardia>();
             this.Equipo = new HashSet<Equipo>();
+            this.Mantenimeinto = new HashSet<Mantenimeinto>();
         }
     
         public int tarea_id { get; set; }
-        public int guardia_id { get; set; }
-        public string descripcion { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-        public string fecha { get; set; }
-        public string tipo_matenimiento { get; set; }
-        public string repetir_cada { get; set; }
+        [StringLength(250, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Descripcion")]
+        public string descripcion { get; set; }
+
+        [Display(Name = "Cabtidad")]
+        public Nullable<double> cantidad { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Costo")]
+        public double costo { get; set; }
+
+        [Required]
+        [Display(Name = "Duracion")]
+        public int duracion { get; set; }
+
+        [Required]
+        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Estado")]
+        public string estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Tarea> Detalle_Tarea { get; set; }
+        public virtual ICollection<Recurso_Tarea> Recurso_Tarea { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Guardia> Guardia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipo> Equipo { get; set; }
-        public virtual Guardia Guardia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mantenimeinto> Mantenimeinto { get; set; }
     }
 }

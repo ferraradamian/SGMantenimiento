@@ -12,13 +12,13 @@ namespace SGM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Recurso_DetalleTarea
+    public partial class Recurso_Tarea
     {
-        public int detalleTarea_id { get; set; }
+        public int Tarea_id { get; set; }
         public int recurso_id { get; set; }
         public double cantidadUsada { get; set; }
     
-        public virtual Detalle_Tarea Detalle_Tarea { get; set; }
         public virtual Recurso Recurso { get; set; }
+        public virtual Tarea Tarea { get; set; }
     }
 }

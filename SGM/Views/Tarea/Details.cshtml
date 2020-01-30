@@ -1,23 +1,15 @@
 ﻿@model SGM.Models.Tarea
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
 <div>
     <h4>Tarea</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.nombre)
         </dt>
@@ -27,40 +19,119 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayNameFor(model => model.descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fecha)
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_matenimiento)
+            @Html.DisplayNameFor(model => model.cantidad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tipo_matenimiento)
+            @Html.DisplayFor(model => model.cantidad)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.repetir_cada)
+            @Html.DisplayNameFor(model => model.costo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.repetir_cada)
+            @Html.DisplayFor(model => model.costo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Guardia.guardia_id)
+            @Html.DisplayNameFor(model => model.duracion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Guardia.guardia_id)
+            @Html.DisplayFor(model => model.duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
         </dd>
 
     </dl>
+    <hr />
+    <h4>Equipos</h4>
+    
+        @foreach (var item in Model.Equipo)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => item.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.estadoActual)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.estadoActual)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.marca)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.marca)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.modelo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.modelo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.numeroSerie)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.numeroSerie)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.inicioOperacion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.inicioOperacion)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.finOperacion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.finOperacion)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => item.esCritico)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => item.esCritico)
+                </dd>
+            </dl>
+         }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.tarea_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.tarea_id }) |
+    @Html.ActionLink("Volver a tareas", "Index")
 </p>

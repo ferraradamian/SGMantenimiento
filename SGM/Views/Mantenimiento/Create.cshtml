@@ -1,5 +1,4 @@
-﻿@model SGM.Models.ViewsModel.GuardiaViewModel
-
+﻿@model SGM.Models.ViewsModel.MantenimientoViewModel
 
 @{
     ViewBag.Title = "Crear";
@@ -9,20 +8,28 @@
 <h2>Crear</h2>
 
 
-@using (Html.BeginForm( new { onsubmit="return pulsar()"})) 
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Guardia</h4>
+    <h4>Preventivo</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.coodinador_id, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("empleado_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.coodinador_id, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -35,20 +42,21 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.horaInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.tipo_matenimiento, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.horaInicio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.horaInicio, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.tipo_matenimiento, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tipo_matenimiento, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.horaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.repetir_cada, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.horaFin, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.horaFin, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.repetir_cada, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.repetir_cada, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <hr />
     <div>
         <h4>Agregar Empleado</h4>
@@ -59,7 +67,7 @@
         <table id="tableEmpleados" class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.SalectEmpleados[0].apellido)                    
+                    @Html.DisplayNameFor(model => model.SalectEmpleados[0].apellido)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SalectEmpleados[0].nombre)
@@ -83,7 +91,7 @@
                     <td>
                         @Html.DisplayFor(model => model.SalectEmpleados[id].apellido)
                         @Html.HiddenFor(model => model.SalectEmpleados[id].apellido)
-                       
+
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.SalectEmpleados[id].nombre)
@@ -109,7 +117,8 @@
     </div>
     <div>
         <h4>Agregar tarea</h4>
-        <input  id="inputFilterTarea" type="text" placeholder="Tarea" />
+
+        <input id="inputFilterTarea" type="text" placeholder="Tarea" />
         <button type="button" id="btnBuscarTar" class="btn-primary"> Buscar tarea</button>
         <br />
         <table id="tableTareas" class="table">
@@ -178,14 +187,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Guardar Guardia" class="btn btn-success" />
+            <input type="submit" value="Crear" class="btn btn-success" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Volver a Giardias", "Index")
+    @Html.ActionLink("Volver a Mantenimientos", "Index")
 </div>
 
 @section Scripts {
@@ -193,7 +202,7 @@
 }
 
 <script>
-   
+
 
     function filtrarEmpleado() {
          var input, filter, table, tr, td, i, j, visible;

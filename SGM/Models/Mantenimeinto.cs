@@ -13,39 +13,41 @@ namespace SGM.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class Falla
+    public partial class Mantenimeinto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Falla()
+        public Mantenimeinto()
         {
-            this.Equipo = new HashSet<Equipo>();
+            this.Empleado = new HashSet<Empleado>();
+            this.Tarea = new HashSet<Tarea>();
         }
     
-        public int falla_id { get; set; }
+        public int mantenimeinto_id { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Nombre")]
+        public string nombre { get; set; }
         [Required]
         [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
         [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
-        [Required]
-        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Causa")]
-        public string causa { get; set; }
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Fecha")]
         public System.DateTime fecha { get; set; }
         [Required]
-        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Estado")]
-        public string estado { get; set; }
+        [StringLength(10, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Tipo Mant")]
+        public string tipo_matenimiento { get; set; }
         [Required]
-        [DataType(DataType.Currency)]
-        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Causa")]
-        public double costo { get; set; }
+        [StringLength(10, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Repetir Cada")]
+        public string repetir_cada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipo> Equipo { get; set; }
+        public virtual ICollection<Empleado> Empleado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tarea> Tarea { get; set; }
     }
 }

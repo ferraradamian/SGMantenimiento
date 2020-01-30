@@ -1,24 +1,16 @@
 ﻿@model SGM.Models.Tarea
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Esta seguro de eliminar esta tarea?</h3>
 <div>
     <h4>Tarea</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.nombre)
         </dt>
@@ -28,35 +20,43 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayNameFor(model => model.descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.fecha)
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_matenimiento)
+            @Html.DisplayNameFor(model => model.cantidad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tipo_matenimiento)
+            @Html.DisplayFor(model => model.cantidad)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.repetir_cada)
+            @Html.DisplayNameFor(model => model.costo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.repetir_cada)
+            @Html.DisplayFor(model => model.costo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Guardia.guardia_id)
+            @Html.DisplayNameFor(model => model.duracion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Guardia.guardia_id)
+            @Html.DisplayFor(model => model.duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
         </dd>
 
     </dl>
@@ -65,8 +65,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a tareas", "Index")
         </div>
     }
 </div>

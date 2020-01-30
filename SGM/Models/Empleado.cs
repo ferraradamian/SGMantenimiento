@@ -11,27 +11,40 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
-            this.Detalle_Tarea = new HashSet<Detalle_Tarea>();
             this.Guardia = new HashSet<Guardia>();
+            this.Mantenimeinto = new HashSet<Mantenimeinto>();
         }
     
         public int empleado_id { get; set; }
         public int empresa_id { get; set; }
+        [Required]
+        [StringLength(120, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Apellido")]
         public string apellido { get; set; }
+        [Phone]
+        [StringLength(10, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Telefono")]
         public string telefono { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Funcion")]
         public string funcion { get; set; }
     
         public virtual Empresa Empresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Tarea> Detalle_Tarea { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guardia> Guardia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mantenimeinto> Mantenimeinto { get; set; }
     }
 }
