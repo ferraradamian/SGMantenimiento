@@ -24,12 +24,13 @@ namespace SGM.Models
         public int recurso_id { get; set; }
         [Required]
         [Display(Name = "Stock")]
-        public double cantidadStock { get; set; }
+        public double cantidadStock { get; set; } 
 
         [Required]
         [StringLength(50, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
         [Display(Name = "Nombre")]
-        public string nombre { get; set; }
+        public string nombre { get; set; } 
+
         [Required]
         [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
         [Display(Name = "Marca")]
