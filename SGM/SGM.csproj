@@ -260,6 +260,7 @@
     <Compile Include="Models\Tarea.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewsModel\CronogramaViewModel.cs" />
     <Compile Include="Models\ViewsModel\EquipoViewModel.cs" />
     <Compile Include="Models\ViewsModel\GuardiaViewModel.cs" />
     <Compile Include="Models\ViewsModel\MantenimientoViewModel.cs" />

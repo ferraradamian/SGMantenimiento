@@ -1,7 +1,132 @@
-﻿
+﻿@model SGM.Models.ViewsModel.CronogramaViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Cronograma Guardias</h2>
+<h2>Cronograma</h2>
+       
+
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'mantenimiento')">Mantenimientos</button>
+        <button class="tablinks" onclick="openCity(event, 'guardia')">Guardias</button>
+    </div>
+
+    <div id="mantenimiento" class="tabcontent">
+        <h3>Filtros</h3>
+        <input type="search" placeholder="Nombre" />
+        <input type="search" placeholder="Fecha" />
+        <button>Buscar</button>
+        <br />
+        <br />
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mantenimientos[0].nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mantenimientos[0].descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mantenimientos[0].tipo_matenimiento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mantenimientos[0].fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mantenimientos[0].repetir_cada)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Mantenimientos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tipo_matenimiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.repetir_cada)
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="guardia" class="tabcontent">
+        <h3>Filtros</h3>
+        <input type="search" placeholder="Coordinador" />
+        <input type="search" placeholder="Fecha" />
+        <button>Buscar</button>
+        <br />
+        <br />
+        <table class="table">
+            <thead class="thead">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Guardias[0].coordinador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Guardias[0].fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Guardias[0].horaInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Guardias[0].horaFin)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Guardias)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.coordinador)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.horaInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.horaFin)
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
+<script>
+    function openCity(evt, tbsName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tbsName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
 

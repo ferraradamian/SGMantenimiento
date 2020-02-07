@@ -43,6 +43,7 @@ namespace SGM
 
 
              bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/Site.css",
                          "~/Content/bower_components/bootstrap/dist/css/bootstrap.min.css",
                          "~/Content/bower_components/font-awesome/css/font-awesome.min.css",
                          "~/Content/bower_components/Ionicons/css/ionicons.min.css",
