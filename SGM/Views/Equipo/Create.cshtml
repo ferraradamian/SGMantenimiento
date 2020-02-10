@@ -152,9 +152,13 @@
 </div>
 }
 
-    <div>
-        @Html.ActionLink("Volver a Equipos", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Volver a Equipos", "Index")
+    <br />
+    <button>
+        <a href="javascript:history.back();">Volver</a>
+    </button>
+</div>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
