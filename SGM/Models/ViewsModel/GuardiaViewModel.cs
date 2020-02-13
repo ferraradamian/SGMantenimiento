@@ -15,7 +15,8 @@ namespace SGM.Models.ViewsModel
         //}
 
         public int guardia_id { get; set; }
-        [Required]
+
+
         [Display(Name = "Cordinador")]
         public Nullable<int> coodinador_id { get; set; }
 
