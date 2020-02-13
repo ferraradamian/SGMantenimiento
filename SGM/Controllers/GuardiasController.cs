@@ -72,15 +72,6 @@ namespace SGM.Controllers
 
                                                  }).ToList();
 
-            //if (!String.IsNullOrEmpty(searchEmpleado))
-            //{
-            //    oGuardiaViewModel.SalectEmpleados = oGuardiaViewModel.SalectEmpleados.Where(s => s.apellido.Contains(searchEmpleado)).ToList();
-            //}
-            //if (!String.IsNullOrEmpty(searchTarea))
-            //{
-            //    oGuardiaViewModel.SelectTareas = oGuardiaViewModel.SelectTareas.Where(s => s.nombre.Contains(searchTarea)).ToList();
-            //}
-
             return View(oGuardiaViewModel);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,8 +15,16 @@ namespace SGM.Models.ViewsModel
         //}
 
         public int guardia_id { get; set; }
+        [Required]
+        [Display(Name = "Cordinador")]
         public Nullable<int> coodinador_id { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Fecha")]
         public System.DateTime fecha { get; set; }
+       
         public System.TimeSpan horaInicio { get; set; }
         public System.TimeSpan horaFin { get; set; }
 
