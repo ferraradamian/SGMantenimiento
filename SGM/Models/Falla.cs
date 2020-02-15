@@ -11,8 +11,7 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Falla
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,27 +21,10 @@ namespace SGM.Models
         }
     
         public int falla_id { get; set; }
-        [Required]
-        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
-        [Required]
-        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Causa")]
         public string causa { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "Fecha")]
         public System.DateTime fecha { get; set; }
-        [Required]
-        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Estado")]
         public string estado { get; set; }
-        [Required]
-        [DataType(DataType.Currency)]
-        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Causa")]
         public double costo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

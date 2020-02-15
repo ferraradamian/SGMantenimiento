@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SGM.Models.Guardia>
+﻿@model List<SGM.Models.ViewsModel.GuardiaViewModel>
 
 @{
     ViewBag.Title = "Guardia";
@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.coodinador_id)
+            @Html.DisplayNameFor(model => model[0].coodinador_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha)
+            @Html.DisplayNameFor(model => model[0].fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.horaInicio)
+            @Html.DisplayNameFor(model => model[0].horaInicio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.horaFin)
+            @Html.DisplayNameFor(model => model[0].horaFin)
         </th>
         <th></th>
     </tr>
@@ -30,7 +30,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.coodinador_id)
+                @Html.DisplayFor(modelItem => item.nombreCoordinador)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.fecha)

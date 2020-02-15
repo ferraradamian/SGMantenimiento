@@ -11,8 +11,7 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Empresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,18 +21,8 @@ namespace SGM.Models
         }
     
         public int empresa_id { get; set; }
-        [Required]
-        [StringLength(50, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-        [Required]
-        [StringLength(20, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Telefono")]
         public string telefono { get; set; }
-        [Required]
-        [EmailAddress]
-        [StringLength(120, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
-        [Display(Name = "Email")]
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

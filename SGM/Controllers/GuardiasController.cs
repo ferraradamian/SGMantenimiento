@@ -17,8 +17,20 @@ namespace SGM.Controllers
 
         // GET: Guardias
         public ActionResult Index()
-        {
-            return View(db.Guardia.ToList());
+        {            
+            List<GuardiaViewModel> oListGuardia = new List<GuardiaViewModel>();
+            foreach (Guardia guardia in db.Guardia)
+            {
+                GuardiaViewModel oGuardia = new GuardiaViewModel();
+                oGuardia.guardia_id = guardia.guardia_id;
+                oGuardia.coodinador_id = guardia.coodinador_id;
+                oGuardia.nombreCoordinador = db.Empleado.Where(e => e.empleado_id == guardia.coodinador_id).First().nombre + " " + db.Empleado.Where(e => e.empleado_id == guardia.coodinador_id).First().apellido;
+                oGuardia.fecha = guardia.fecha;
+                oGuardia.horaInicio = guardia.horaInicio;
+                oGuardia.horaFin = guardia.horaFin;
+                oListGuardia.Add(oGuardia);
+            }
+            return View(oListGuardia);
         }
 
         // GET: Guardias/Details/5
@@ -33,6 +45,7 @@ namespace SGM.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.nombreCoordinador = db.Empleado.Where(e => e.empleado_id == guardia.coodinador_id).First().nombre + " " + db.Empleado.Where(e => e.empleado_id == guardia.coodinador_id).First().apellido;
             return View(guardia);
         }
 
@@ -118,7 +131,7 @@ namespace SGM.Controllers
             if (guardia == null)
             {
                 return HttpNotFound();
-            }
+            }             
             return View(guardia);
         }
 
@@ -150,6 +163,7 @@ namespace SGM.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(guardia);
         }
 

@@ -164,7 +164,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EquipoTarea_Equipo">
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1" />
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EquipoTarea" Type="Self.EquipoTarea" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Equipo">
@@ -176,7 +178,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EquipoTarea_Tarea">
-          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EquipoTarea" Type="Self.EquipoTarea" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tarea">
@@ -188,7 +192,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FallaEquipo_Equipo">
-          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1" />
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="FallaEquipo" Type="Self.FallaEquipo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Equipo">
@@ -212,7 +218,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Guardia_Empeado_Empleado">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Guardia_Empeado" Type="Self.Guardia_Empeado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
@@ -224,7 +232,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Guardia_Empeado_Guardia">
-          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1" />
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Guardia_Empeado" Type="Self.Guardia_Empeado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Guardia">
@@ -236,7 +246,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Preventivo_Empleado">
-          <End Role="Mantenimeinto" Type="Self.Mantenimeinto" Multiplicity="1" />
+          <End Role="Mantenimeinto" Type="Self.Mantenimeinto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="MantenimientoEmpleado" Type="Self.MantenimientoEmpleado" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mantenimeinto">
@@ -260,7 +272,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recurso_DetalleTarea_Detalle_Tarea">
-          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Recurso_Tarea" Type="Self.Recurso_Tarea" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tarea">
@@ -284,7 +298,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TareaGuardia_Guardia">
-          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1" />
+          <End Role="Guardia" Type="Self.Guardia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TareaGuardia" Type="Self.TareaGuardia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Guardia">
@@ -296,7 +312,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TareaGuardia_Tarea">
-          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TareaGuardia" Type="Self.TareaGuardia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tarea">
@@ -308,7 +326,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TareaPeventivo_Preventivo">
-          <End Role="Mantenimeinto" Type="Self.Mantenimeinto" Multiplicity="1" />
+          <End Role="Mantenimeinto" Type="Self.Mantenimeinto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TareaMantenimiento" Type="Self.TareaMantenimiento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mantenimeinto">
@@ -415,9 +435,13 @@
         <EntityContainer Name="BDSGMEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleado" EntityType="BDSGMModel.Empleado" />
           <EntitySet Name="Empresa" EntityType="BDSGMModel.Empresa" />
+          <EntitySet Name="Equipo" EntityType="BDSGMModel.Equipo" />
+          <EntitySet Name="Falla" EntityType="BDSGMModel.Falla" />
           <EntitySet Name="Guardia" EntityType="BDSGMModel.Guardia" />
+          <EntitySet Name="Mantenimeinto" EntityType="BDSGMModel.Mantenimeinto" />
           <EntitySet Name="Recurso" EntityType="BDSGMModel.Recurso" />
           <EntitySet Name="Recurso_Tarea" EntityType="BDSGMModel.Recurso_Tarea" />
+          <EntitySet Name="Tarea" EntityType="BDSGMModel.Tarea" />
           <AssociationSet Name="FK_Empleado_Empresa" Association="BDSGMModel.FK_Empleado_Empresa">
             <End Role="Empresa" EntitySet="Empresa" />
             <End Role="Empleado" EntitySet="Empleado" />
@@ -426,39 +450,35 @@
             <End Role="Recurso" EntitySet="Recurso" />
             <End Role="Recurso_Tarea" EntitySet="Recurso_Tarea" />
           </AssociationSet>
+          <AssociationSet Name="FK_Recurso_DetalleTarea_Detalle_Tarea" Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea">
+            <End Role="Tarea" EntitySet="Tarea" />
+            <End Role="Recurso_Tarea" EntitySet="Recurso_Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="EquipoTarea" Association="BDSGMModel.EquipoTarea">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+          <AssociationSet Name="FallaEquipo" Association="BDSGMModel.FallaEquipo">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="Falla" EntitySet="Falla" />
+          </AssociationSet>
           <AssociationSet Name="Guardia_Empeado" Association="BDSGMModel.Guardia_Empeado">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Guardia" EntitySet="Guardia" />
           </AssociationSet>
-          <EntitySet Name="Tarea" EntityType="BDSGMModel.Tarea" />
-          <AssociationSet Name="FK_Recurso_DetalleTarea_Detalle_Tarea" Association="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea">
-            <End Role="Tarea" EntitySet="Tarea" />
-            <End Role="Recurso_Tarea" EntitySet="Recurso_Tarea" />
+          <AssociationSet Name="MantenimientoEmpleado" Association="BDSGMModel.MantenimientoEmpleado">
+            <End Role="Mantenimeinto" EntitySet="Mantenimeinto" />
+            <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
           <AssociationSet Name="TareaGuardia" Association="BDSGMModel.TareaGuardia">
             <End Role="Guardia" EntitySet="Guardia" />
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
-          <EntitySet Name="Equipo" EntityType="BDSGMModel.Equipo" />
-          <AssociationSet Name="EquipoTarea" Association="BDSGMModel.EquipoTarea">
-            <End Role="Equipo" EntitySet="Equipo" />
-            <End Role="Tarea" EntitySet="Tarea" />
-          </AssociationSet>
-          <EntitySet Name="Falla" EntityType="BDSGMModel.Falla" />
-          <AssociationSet Name="FallaEquipo" Association="BDSGMModel.FallaEquipo">
-            <End Role="Equipo" EntitySet="Equipo" />
-            <End Role="Falla" EntitySet="Falla" />
-          </AssociationSet>
-          <EntitySet Name="Mantenimeinto" EntityType="BDSGMModel.Mantenimeinto" />
-          <AssociationSet Name="MantenimientoEmpleado" Association="BDSGMModel.MantenimientoEmpleado">
-            <End Role="Mantenimeinto" EntitySet="Mantenimeinto" />
-            <End Role="Empleado" EntitySet="Empleado" />
-          </AssociationSet>
           <AssociationSet Name="TareaMantenimiento" Association="BDSGMModel.TareaMantenimiento">
             <End Role="Mantenimeinto" EntitySet="Mantenimeinto" />
             <End Role="Tarea" EntitySet="Tarea" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="Empleado">
           <Key>
             <PropertyRef Name="empleado_id" />
@@ -483,6 +503,34 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Empleado" Relationship="BDSGMModel.FK_Empleado_Empresa" FromRole="Empresa" ToRole="Empleado" />
         </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="equipo_id" />
+          </Key>
+          <Property Name="equipo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="estadoActual" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numeroSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="inicioOperacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="finOperacion" Type="DateTime" Precision="0" />
+          <Property Name="esCritico" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.EquipoTarea" FromRole="Equipo" ToRole="Tarea" />
+          <NavigationProperty Name="Falla" Relationship="BDSGMModel.FallaEquipo" FromRole="Equipo" ToRole="Falla" />
+        </EntityType>
+        <EntityType Name="Falla">
+          <Key>
+            <PropertyRef Name="falla_id" />
+          </Key>
+          <Property Name="falla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="causa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Equipo" Relationship="BDSGMModel.FallaEquipo" FromRole="Falla" ToRole="Equipo" />
+        </EntityType>
         <EntityType Name="Guardia">
           <Key>
             <PropertyRef Name="guardia_id" />
@@ -494,6 +542,19 @@
           <Property Name="horaFin" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="Empleado" Relationship="BDSGMModel.Guardia_Empeado" FromRole="Guardia" ToRole="Empleado" />
           <NavigationProperty Name="Tarea" Relationship="BDSGMModel.TareaGuardia" FromRole="Guardia" ToRole="Tarea" />
+        </EntityType>
+        <EntityType Name="Mantenimeinto">
+          <Key>
+            <PropertyRef Name="mantenimeinto_id" />
+          </Key>
+          <Property Name="mantenimeinto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tipo_matenimiento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="repetir_cada" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.MantenimientoEmpleado" FromRole="Mantenimeinto" ToRole="Empleado" />
+          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.TareaMantenimiento" FromRole="Mantenimeinto" ToRole="Tarea" />
         </EntityType>
         <EntityType Name="Recurso">
           <Key>
@@ -517,6 +578,22 @@
           <Property Name="cantidadUsada" Type="Double" Nullable="false" />
           <NavigationProperty Name="Recurso" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Recurso" FromRole="Recurso_Tarea" ToRole="Recurso" />
           <NavigationProperty Name="Tarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Recurso_Tarea" ToRole="Tarea" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="tarea_id" />
+          </Key>
+          <Property Name="tarea_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="cantidad" Type="Double" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <Property Name="duracion" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recurso_Tarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Tarea" ToRole="Recurso_Tarea" />
+          <NavigationProperty Name="Equipo" Relationship="BDSGMModel.EquipoTarea" FromRole="Tarea" ToRole="Equipo" />
+          <NavigationProperty Name="Guardia" Relationship="BDSGMModel.TareaGuardia" FromRole="Tarea" ToRole="Guardia" />
+          <NavigationProperty Name="Mantenimeinto" Relationship="BDSGMModel.TareaMantenimiento" FromRole="Tarea" ToRole="Mantenimeinto" />
         </EntityType>
         <Association Name="FK_Empleado_Empresa">
           <End Type="BDSGMModel.Empresa" Role="Empresa" Multiplicity="1" />
@@ -542,28 +619,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Guardia_Empeado">
-          <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="*" />
-          <End Type="BDSGMModel.Guardia" Role="Guardia" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Tarea">
-          <Key>
-            <PropertyRef Name="tarea_id" />
-          </Key>
-          <Property Name="tarea_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
-          <Property Name="cantidad" Type="Double" />
-          <Property Name="costo" Type="Double" Nullable="false" />
-          <Property Name="duracion" Type="Int32" Nullable="false" />
-          <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recurso_Tarea" Relationship="BDSGMModel.FK_Recurso_DetalleTarea_Detalle_Tarea" FromRole="Tarea" ToRole="Recurso_Tarea" />
-          <NavigationProperty Name="Guardia" Relationship="BDSGMModel.TareaGuardia" FromRole="Tarea" ToRole="Guardia" />
-          <NavigationProperty Name="Equipo" Relationship="BDSGMModel.EquipoTarea" FromRole="Tarea" ToRole="Equipo" />
-          <NavigationProperty Name="Mantenimeinto" Relationship="BDSGMModel.TareaMantenimiento" FromRole="Tarea" ToRole="Mantenimeinto" />
-        </EntityType>
         <Association Name="FK_Recurso_DetalleTarea_Detalle_Tarea">
-          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="1" />
+          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="BDSGMModel.Recurso_Tarea" Role="Recurso_Tarea" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tarea">
@@ -574,62 +633,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="TareaGuardia">
-          <End Type="BDSGMModel.Guardia" Role="Guardia" Multiplicity="*" />
-          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Equipo">
-          <Key>
-            <PropertyRef Name="equipo_id" />
-          </Key>
-          <Property Name="equipo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="estadoActual" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="numeroSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="inicioOperacion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="finOperacion" Type="DateTime" Precision="0" />
-          <Property Name="esCritico" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.EquipoTarea" FromRole="Equipo" ToRole="Tarea" />
-          <NavigationProperty Name="Falla" Relationship="BDSGMModel.FallaEquipo" FromRole="Equipo" ToRole="Falla" />
-        </EntityType>
         <Association Name="EquipoTarea">
           <End Type="BDSGMModel.Equipo" Role="Equipo" Multiplicity="*" />
           <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="*" />
         </Association>
-        <EntityType Name="Falla">
-          <Key>
-            <PropertyRef Name="falla_id" />
-          </Key>
-          <Property Name="falla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="causa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="estado" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="costo" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Equipo" Relationship="BDSGMModel.FallaEquipo" FromRole="Falla" ToRole="Equipo" />
-        </EntityType>
         <Association Name="FallaEquipo">
           <End Type="BDSGMModel.Equipo" Role="Equipo" Multiplicity="*" />
           <End Type="BDSGMModel.Falla" Role="Falla" Multiplicity="*" />
         </Association>
-        <EntityType Name="Mantenimeinto">
-          <Key>
-            <PropertyRef Name="mantenimeinto_id" />
-          </Key>
-          <Property Name="mantenimeinto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="tipo_matenimiento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="repetir_cada" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Empleado" Relationship="BDSGMModel.MantenimientoEmpleado" FromRole="Mantenimeinto" ToRole="Empleado" />
-          <NavigationProperty Name="Tarea" Relationship="BDSGMModel.TareaMantenimiento" FromRole="Mantenimeinto" ToRole="Tarea" />
-        </EntityType>
+        <Association Name="Guardia_Empeado">
+          <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <End Type="BDSGMModel.Guardia" Role="Guardia" Multiplicity="*" />
+        </Association>
         <Association Name="MantenimientoEmpleado">
           <End Type="BDSGMModel.Mantenimeinto" Role="Mantenimeinto" Multiplicity="*" />
           <End Type="BDSGMModel.Empleado" Role="Empleado" Multiplicity="*" />
+        </Association>
+        <Association Name="TareaGuardia">
+          <End Type="BDSGMModel.Guardia" Role="Guardia" Multiplicity="*" />
+          <End Type="BDSGMModel.Tarea" Role="Tarea" Multiplicity="*" />
         </Association>
         <Association Name="TareaMantenimiento">
           <End Type="BDSGMModel.Mantenimeinto" Role="Mantenimeinto" Multiplicity="*" />
@@ -663,6 +685,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Equipo">
+            <EntityTypeMapping TypeName="BDSGMModel.Equipo">
+              <MappingFragment StoreEntitySet="Equipo">
+                <ScalarProperty Name="esCritico" ColumnName="esCritico" />
+                <ScalarProperty Name="finOperacion" ColumnName="finOperacion" />
+                <ScalarProperty Name="inicioOperacion" ColumnName="inicioOperacion" />
+                <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="estadoActual" ColumnName="estadoActual" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Falla">
+            <EntityTypeMapping TypeName="BDSGMModel.Falla">
+              <MappingFragment StoreEntitySet="Falla">
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="causa" ColumnName="causa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="falla_id" ColumnName="falla_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Guardia">
             <EntityTypeMapping TypeName="BDSGMModel.Guardia">
               <MappingFragment StoreEntitySet="Guardia">
@@ -671,6 +720,18 @@
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="coodinador_id" ColumnName="coodinador_id" />
                 <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mantenimeinto">
+            <EntityTypeMapping TypeName="BDSGMModel.Mantenimeinto">
+              <MappingFragment StoreEntitySet="Mantenimeinto">
+                <ScalarProperty Name="repetir_cada" ColumnName="repetir_cada" />
+                <ScalarProperty Name="tipo_matenimiento" ColumnName="tipo_matenimiento" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="mantenimeinto_id" ColumnName="mantenimeinto_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -694,14 +755,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Guardia_Empeado" TypeName="BDSGMModel.Guardia_Empeado" StoreEntitySet="Guardia_Empeado">
-            <EndProperty Name="Guardia">
-              <ScalarProperty Name="guardia_id" ColumnName="Guardia_guardia_id" />
-            </EndProperty>
-            <EndProperty Name="Empleado">
-              <ScalarProperty Name="empleado_id" ColumnName="Empleado_empleado_id" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Tarea">
             <EntityTypeMapping TypeName="BDSGMModel.Tarea">
               <MappingFragment StoreEntitySet="Tarea">
@@ -715,29 +768,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="TareaGuardia" TypeName="BDSGMModel.TareaGuardia" StoreEntitySet="TareaGuardia">
-            <EndProperty Name="Tarea">
-              <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
-            </EndProperty>
-            <EndProperty Name="Guardia">
-              <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Equipo">
-            <EntityTypeMapping TypeName="BDSGMModel.Equipo">
-              <MappingFragment StoreEntitySet="Equipo">
-                <ScalarProperty Name="esCritico" ColumnName="esCritico" />
-                <ScalarProperty Name="finOperacion" ColumnName="finOperacion" />
-                <ScalarProperty Name="inicioOperacion" ColumnName="inicioOperacion" />
-                <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
-                <ScalarProperty Name="modelo" ColumnName="modelo" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="estadoActual" ColumnName="estadoActual" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="equipo_id" ColumnName="equipo_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="EquipoTarea" TypeName="BDSGMModel.EquipoTarea" StoreEntitySet="EquipoTarea">
             <EndProperty Name="Tarea">
               <ScalarProperty Name="tarea_id" ColumnName="Tarea_tarea_id" />
@@ -746,18 +776,6 @@
               <ScalarProperty Name="equipo_id" ColumnName="Equipo_equipo_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Falla">
-            <EntityTypeMapping TypeName="BDSGMModel.Falla">
-              <MappingFragment StoreEntitySet="Falla">
-                <ScalarProperty Name="costo" ColumnName="costo" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="causa" ColumnName="causa" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="falla_id" ColumnName="falla_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="FallaEquipo" TypeName="BDSGMModel.FallaEquipo" StoreEntitySet="FallaEquipo">
             <EndProperty Name="Falla">
               <ScalarProperty Name="falla_id" ColumnName="Falla_falla_id" />
@@ -766,24 +784,28 @@
               <ScalarProperty Name="equipo_id" ColumnName="Equipo_equipo_id" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Mantenimeinto">
-            <EntityTypeMapping TypeName="BDSGMModel.Mantenimeinto">
-              <MappingFragment StoreEntitySet="Mantenimeinto">
-                <ScalarProperty Name="repetir_cada" ColumnName="repetir_cada" />
-                <ScalarProperty Name="tipo_matenimiento" ColumnName="tipo_matenimiento" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="mantenimeinto_id" ColumnName="mantenimeinto_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="Guardia_Empeado" TypeName="BDSGMModel.Guardia_Empeado" StoreEntitySet="Guardia_Empeado">
+            <EndProperty Name="Guardia">
+              <ScalarProperty Name="guardia_id" ColumnName="Guardia_guardia_id" />
+            </EndProperty>
+            <EndProperty Name="Empleado">
+              <ScalarProperty Name="empleado_id" ColumnName="Empleado_empleado_id" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="MantenimientoEmpleado" TypeName="BDSGMModel.MantenimientoEmpleado" StoreEntitySet="MantenimientoEmpleado">
             <EndProperty Name="Empleado">
               <ScalarProperty Name="empleado_id" ColumnName="empleado_id" />
             </EndProperty>
             <EndProperty Name="Mantenimeinto">
               <ScalarProperty Name="mantenimeinto_id" ColumnName="preventivo_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TareaGuardia" TypeName="BDSGMModel.TareaGuardia" StoreEntitySet="TareaGuardia">
+            <EndProperty Name="Tarea">
+              <ScalarProperty Name="tarea_id" ColumnName="tarea_id" />
+            </EndProperty>
+            <EndProperty Name="Guardia">
+              <ScalarProperty Name="guardia_id" ColumnName="guardia_id" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="TareaMantenimiento" TypeName="BDSGMModel.TareaMantenimiento" StoreEntitySet="TareaMantenimiento">
@@ -794,7 +816,7 @@
               <ScalarProperty Name="mantenimeinto_id" ColumnName="preventivo_id" />
             </EndProperty>
           </AssociationSetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
