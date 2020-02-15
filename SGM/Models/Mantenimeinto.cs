@@ -11,7 +11,8 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Mantenimeinto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +23,30 @@ namespace SGM.Models
         }
     
         public int mantenimeinto_id { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
+
+        [Required]
+        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
+
+        [Required]
+        [StringLength(500, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Descripcion")]
         public System.DateTime fecha { get; set; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Tipo Mant")]
         public string tipo_matenimiento { get; set; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "El {0} debe tener al menos {1} caracteres", MinimumLength = 1)]
+        [Display(Name = "Repetir Cada")]
         public string repetir_cada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

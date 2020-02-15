@@ -11,7 +11,8 @@ namespace SGM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Guardia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,27 @@ namespace SGM.Models
         }
     
         public int guardia_id { get; set; }
+
+        [Required]
+        [Display(Name = "Cordinador")]
         public Nullable<int> coodinador_id { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Fecha")]
         public System.DateTime fecha { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        [Display(Name = "Hr Inicio")]
         public System.TimeSpan horaInicio { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        [Display(Name = "Hr Fin")]
         public System.TimeSpan horaFin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

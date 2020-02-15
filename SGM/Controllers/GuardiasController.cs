@@ -95,28 +95,33 @@ namespace SGM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GuardiaViewModel oGuardiaViewModel, int empleado_id)
         {
-            if (ModelState.IsValid)
-            {                            
-                var guardia = new Guardia();
-                guardia.coodinador_id = empleado_id;
-                guardia.fecha = oGuardiaViewModel.fecha;
-                guardia.horaInicio = oGuardiaViewModel.horaInicio;
-                guardia.horaFin = oGuardiaViewModel.horaFin;
-                foreach(var item in oGuardiaViewModel.SalectEmpleados.Where(a => a.esSelect == true))
-                {
-                    Empleado oEmpleado = db.Empleado.Find(item.empleado_id);
-                    guardia.Empleado.Add(oEmpleado);
-                }
-                foreach (var item in oGuardiaViewModel.SelectTareas.Where(a => a.esSelect == true))
-                {
-                    Tarea oTarea = db.Tarea.Find(item.tarea_id);
-                    guardia.Tarea.Add(oTarea);
-                }
-                db.Guardia.Add(guardia);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ViewBag.empleado_id = new SelectList(db.Empleado, "empleado_id", "nombre");
+            bool overlap = db.Guardia.Where(h => oGuardiaViewModel.horaInicio < h.horaFin && h.horaInicio < oGuardiaViewModel.horaFin && oGuardiaViewModel.fecha == h.fecha).Count() != 0;
+            if (!overlap) { 
 
+                if (ModelState.IsValid)
+                {                            
+                    var guardia = new Guardia();
+                    guardia.coodinador_id = empleado_id;
+                    guardia.fecha = oGuardiaViewModel.fecha;
+                    guardia.horaInicio = oGuardiaViewModel.horaInicio;
+                    guardia.horaFin = oGuardiaViewModel.horaFin;
+                    foreach(var item in oGuardiaViewModel.SalectEmpleados.Where(a => a.esSelect == true))
+                    {
+                        Empleado oEmpleado = db.Empleado.Find(item.empleado_id);
+                        guardia.Empleado.Add(oEmpleado);
+                    }
+                    foreach (var item in oGuardiaViewModel.SelectTareas.Where(a => a.esSelect == true))
+                    {
+                        Tarea oTarea = db.Tarea.Find(item.tarea_id);
+                        guardia.Tarea.Add(oTarea);
+                    }
+                    db.Guardia.Add(guardia);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError("", "El horario se superpone con otra guardia");
             return View(oGuardiaViewModel);
         }
 
