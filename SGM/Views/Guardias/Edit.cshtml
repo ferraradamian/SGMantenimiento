@@ -1,7 +1,8 @@
-﻿@model SGM.Models.Guardia
+﻿@model SGM.Models.ViewsModel.GuardiaViewModel
 
 @{
     ViewBag.Title = "Editar";
+    int id = 0;
 }
 
 <h2>Editar</h2>
@@ -10,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Guardia</h4>
         <hr />
@@ -20,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.coodinador_id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.coodinador_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("empleado_id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.coodinador_id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,9 +50,136 @@
             </div>
         </div>
 
+        <hr />
+        <div>
+            <h4>Agregar Empleado</h4>
+
+            <input id="inputFilterEmp" type="text" placeholder="Apellido" />
+            <button type="button" id="btnBuscarEmp" class="btn-primary"> Buscar empleado</button>
+            <br />
+            <table id="tableEmpleados" class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalectEmpleados[0].apellido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalectEmpleados[0].nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalectEmpleados[0].telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SalectEmpleados[0].funcion)
+                    </th>
+
+                    <th>Seleccionar</th>
+                </tr>
+
+
+                @foreach (var SalectEmpleados in Model.SalectEmpleados)
+                {
+                    <tr>
+                        @Html.HiddenFor(model => model.SalectEmpleados[id].empleado_id)
+                        @Html.HiddenFor(model => model.SalectEmpleados[id].empresa_id)
+                        <td>
+                            @Html.DisplayFor(model => model.SalectEmpleados[id].apellido)
+                            @Html.HiddenFor(model => model.SalectEmpleados[id].apellido)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SalectEmpleados[id].nombre)
+                            @Html.HiddenFor(model => model.SalectEmpleados[id].nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SalectEmpleados[id].telefono)
+                            @Html.HiddenFor(model => model.SalectEmpleados[id].telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SalectEmpleados[id].funcion)
+                            @Html.HiddenFor(model => model.SalectEmpleados[id].funcion)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(model => model.SalectEmpleados[id].esSelect)
+                        </td>
+                    </tr>
+                    id++;
+                }
+            </table>
+            <button class="btn-secondary"> @Html.ActionLink("Agregar nuevo Empleado", "Create", "Empleado")</button>
+            <hr />
+        </div>
+        <div>
+            <h4>Agregar tarea</h4>
+            <input id="inputFilterTarea" type="text" placeholder="Tarea" />
+            <button type="button" id="btnBuscarTar" class="btn-primary"> Buscar tarea</button>
+            <br />
+            <table id="tableTareas" class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].duracion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].costo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SelectTareas[0].estado)
+                    </th>
+
+                    <th>Seleccionar</th>
+                </tr>
+                @{id = 0;}
+                @foreach (var item in Model.SelectTareas)
+                {
+                    <tr>
+                        @Html.HiddenFor(model => model.SelectTareas[id].tarea_id)
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].nombre)
+                            @Html.HiddenFor(model => model.SelectTareas[id].nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].descripcion)
+                            @Html.HiddenFor(model => model.SelectTareas[id].descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].duracion)
+                            @Html.HiddenFor(model => model.SelectTareas[id].duracion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].costo)
+                            @Html.HiddenFor(model => model.SelectTareas[id].costo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].cantidad)
+                            @Html.HiddenFor(model => model.SelectTareas[id].cantidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.SelectTareas[id].estado)
+                            @Html.HiddenFor(model => model.SelectTareas[id].estado)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(model => model.SelectTareas[id].esSelect)
+                        </td>
+
+                    </tr>
+                    id++;
+                }
+            </table>
+            <button> @Html.ActionLink("Agregar nueva Tarea", "Create", "Tarea")</button>
+            <hr />
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -64,3 +192,61 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+
+
+    function filtrarEmpleado() {
+        var input, filter, table, tr, td, i, j, visible;
+        input = document.getElementById("inputFilterEmp");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableEmpleados");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            visible = false;
+            td = tr[i].getElementsByTagName("td");
+            if (td[0].innerText.toUpperCase().indexOf(filter) > -1) {
+                visible = true;
+            }
+            if (visible === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function filtrarTareas() {
+        var input, filter, table, tr, td, i, j, visible;
+        input = document.getElementById("inputFilterTarea");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tableTareas");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            visible = false;
+            td = tr[i].getElementsByTagName("td");
+            if (td[0].innerText.toUpperCase().indexOf(filter) > -1) {
+                visible = true;
+            }
+            if (visible === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function stopRKey(evt) {
+        var evt = (evt) ? evt : ((event) ? event : null);
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+        if ((evt.keyCode == 13) && (node.type == "text")) { return false; }
+    }
+
+    document.onkeypress = stopRKey;
+
+
+    document.getElementById("btnBuscarEmp").addEventListener('click', filtrarEmpleado, false);
+    document.getElementById("btnBuscarTar").addEventListener('click', filtrarTareas, false);
+</script>

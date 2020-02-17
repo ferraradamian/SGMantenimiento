@@ -16,10 +16,10 @@ namespace SGM.Controllers
         private BDSGMEntities db = new BDSGMEntities();
 
         // GET: Guardias
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string fecha)
         {            
             List<GuardiaViewModel> oListGuardia = new List<GuardiaViewModel>();
-            foreach (Guardia guardia in db.Guardia)
+            foreach (Guardia guardia in db.Guardia.OrderBy(g => g.fecha))
             {
                 GuardiaViewModel oGuardia = new GuardiaViewModel();
                 oGuardia.guardia_id = guardia.guardia_id;
@@ -30,6 +30,15 @@ namespace SGM.Controllers
                 oGuardia.horaFin = guardia.horaFin;
                 oListGuardia.Add(oGuardia);
             }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                oListGuardia = oListGuardia.Where(s => s.nombreCoordinador.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+            if (!String.IsNullOrEmpty(fecha))
+            {
+                oListGuardia = oListGuardia.Where(s => s.fecha.ToString("dd/MM/yyyy")== fecha).ToList();
+            }
+            
             return View(oListGuardia);
         }
 
@@ -136,8 +145,57 @@ namespace SGM.Controllers
             if (guardia == null)
             {
                 return HttpNotFound();
-            }             
-            return View(guardia);
+            }
+
+            ViewBag.DefaultDescription = guardia.fecha;
+            ViewBag.empleado_id = new SelectList(db.Empleado, "empleado_id", "nombre",guardia.coodinador_id);
+            GuardiaViewModel oGuardia = new GuardiaViewModel();
+            oGuardia.coodinador_id = guardia.coodinador_id;
+            oGuardia.guardia_id = guardia.guardia_id;
+            oGuardia.fecha = guardia.fecha;
+            oGuardia.horaInicio = guardia.horaInicio;
+            oGuardia.horaFin = guardia.horaFin;
+            oGuardia.SelectTareas = (from d in db.Tarea
+                                              orderby d.nombre
+                                              select new GuardiaViewModel.selectTarea
+                                              {
+                                                  tarea_id = d.tarea_id,
+                                                  nombre = d.nombre,
+                                                  descripcion = d.descripcion,
+                                                  cantidad = d.cantidad,
+                                                  costo = d.costo,
+                                                  duracion = d.duracion,
+                                                  estado = d.estado,
+                                                  esSelect = false
+
+                                              }).ToList();
+
+            oGuardia.SalectEmpleados = (from d in db.Empleado
+                                                 orderby d.apellido
+                                                 select new GuardiaViewModel.salectEmpleado
+                                                 {
+                                                     empleado_id = d.empleado_id,
+                                                     empresa_id = d.empresa_id,
+                                                     nombre = d.nombre,
+                                                     apellido = d.apellido,
+                                                     telefono = d.telefono,
+                                                     funcion = d.funcion,
+                                                     esSelect = false
+
+                                                 }).ToList();
+            foreach (Empleado oEmpleado in guardia.Empleado)
+            {
+                oGuardia.SalectEmpleados.Where(e => e.empleado_id == oEmpleado.empleado_id).First().esSelect = true;
+
+            }
+
+            foreach (Tarea oTarea in guardia.Tarea)
+            {
+                oGuardia.SelectTareas.Where(e => e.tarea_id == oTarea.tarea_id).First().esSelect = true;
+
+            }
+
+                return View(oGuardia);
         }
 
         // POST: Guardias/Edit/5
@@ -145,15 +203,35 @@ namespace SGM.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guardia_id,coodinador_id,fecha,horaInicio,horaFin")] Guardia guardia)
+        public ActionResult Edit(GuardiaViewModel oGuardia, int empleado_id)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardia).State = EntityState.Modified;
+                Guardia Dguardia = db.Guardia.Find(oGuardia.guardia_id);
+                db.Guardia.Remove(Dguardia);
                 db.SaveChanges();
+
+                var guardia = new Guardia();
+                guardia.coodinador_id = empleado_id;
+                guardia.fecha = oGuardia.fecha;
+                guardia.horaInicio = oGuardia.horaInicio;
+                guardia.horaFin = oGuardia.horaFin;
+                foreach (var item in oGuardia.SalectEmpleados.Where(a => a.esSelect == true))
+                {
+                    Empleado oEmpleado = db.Empleado.Find(item.empleado_id);
+                    guardia.Empleado.Add(oEmpleado);
+                }
+                foreach (var item in oGuardia.SelectTareas.Where(a => a.esSelect == true))
+                {
+                    Tarea oTarea = db.Tarea.Find(item.tarea_id);
+                    guardia.Tarea.Add(oTarea);
+                }
+                db.Guardia.Add(guardia);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            return View(guardia);
+            return View(oGuardia);
         }
 
         // GET: Guardias/Delete/5

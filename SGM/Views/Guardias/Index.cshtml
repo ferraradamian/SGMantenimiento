@@ -9,6 +9,20 @@
 <p>
     @Html.ActionLink("Crear Nueva Guardia", "Create")
 </p>
+@using (Html.BeginForm("Index", "Guardias", FormMethod.Get))
+{
+<p>
+    Nombre: @Html.TextBox("SearchString")
+    @{
+        DateTime dt = DateTime.Now;
+    }
+    Fecha: @Html.TextBox("fecha", String.Format("{0:dd/MM/yyyy}", dt),
+     new { @class = "datefield", type = "string" })
+
+
+    <input type="submit" value="Filtrar" />
+</p>
+}
 <table class="table">
     <tr>
         <th>
@@ -48,4 +62,4 @@
             </td>
         </tr>
     }
-    </table>
+</table>
